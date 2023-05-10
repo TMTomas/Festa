@@ -6,11 +6,11 @@ import java.util.List;
 public class Contactos {
 
 	// 1 - Atributos
-	private String primeiroNome;
-	private String ultimoNome;
-	private String numero;
-	private List<String> Lista;
-	private List<String> Convidados;
+	protected String primeiroNome;
+	protected String ultimoNome;
+	protected String numero;
+	protected List<String> Lista;
+	protected List<String> Convidados;
 
 	// 2 - Construtores
 
