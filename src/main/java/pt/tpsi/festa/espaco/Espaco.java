@@ -2,16 +2,13 @@ package pt.tpsi.festa.espaco;
 
 public class Espaco {
 
-	// ATRIBUTOS
-	protected int numero_pessoas;
-	protected double preço;
-	protected int dia;
-	protected int mes;
-	protected int ano;
-	protected String localidade;
-	// CONSTRUTORES
+	// 1 - ATRIBUTOS
+
+	// 2 - CONSTRUTORES
 	
-	// GETS E SETS
-	// COMPORTAMENTOS
-	// METODOS COMPLEMENTARES
+	// 3 - GETS E SETS
+	
+	// 4 - COMPORTAMENTOS
+	
+	// 5 - METODOS COMPLEMENTARES
 }

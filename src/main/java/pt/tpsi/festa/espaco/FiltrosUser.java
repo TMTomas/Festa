@@ -8,7 +8,7 @@ public class FiltrosUser {
 	protected String postalCode;
 	protected String localidade;
 	// 2 - CONSTRUTORES
-	public void filtros() {
+	public FiltrosUser() {
 		
 	}
 	// contrutor com parametros 
@@ -20,10 +20,23 @@ public class FiltrosUser {
 		this.localidade = localidade;
 	}
 	// contrutor clone
-	public void filtrosUser(FiltrosUser filtrosUser) {
+	public FiltrosUser(FiltrosUser filtrosUser) {
 		
 	}
 	// 3 - GETS E SETS
+	public String getRua() {
+		return rua;
+	}
+	public String getPais() {
+		return pais;
+	}
+	public String getPostalCode() {
+		return postalCode;
+	}
+	public String getLocalidade() {
+		return localidade;
+	}
+	
 	// 4 - COMPORTAMENTOS
 	// 5 - METODOS COMPLEMENTARES
 }
