@@ -1,6 +1,6 @@
 package pt.tpsi.festa.espaco;
 
-public class Filtros {
+public class FiltrosUser {
 	
 	// 1 - ATRIBUTOS
 	protected String rua;
@@ -12,7 +12,7 @@ public class Filtros {
 		
 	}
 	// contrutor com parametros 
-	public Filtros(String rua, String pais, String postalCode, String localidade) {
+	public FiltrosUser(String rua, String pais, String postalCode, String localidade) {
 		super();
 		this.rua = rua;
 		this.pais = pais;
@@ -20,7 +20,7 @@ public class Filtros {
 		this.localidade = localidade;
 	}
 	// contrutor clone
-	public void filtros(Filtros filtros) {
+	public void filtrosUser(FiltrosUser filtrosUser) {
 		
 	}
 	// 3 - GETS E SETS
