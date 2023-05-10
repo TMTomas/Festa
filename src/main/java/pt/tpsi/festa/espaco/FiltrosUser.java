@@ -3,15 +3,20 @@ package pt.tpsi.festa.espaco;
 public class FiltrosUser {
 	
 	// 1 - ATRIBUTOS
+	
 	protected String rua;
 	protected String pais;
 	protected String postalCode;
 	protected String localidade;
+	
 	// 2 - CONSTRUTORES
+	
+		// construtor default 
 	public FiltrosUser() {
 		
 	}
-	// contrutor com parametros 
+	
+		// contrutor com parametros 
 	public FiltrosUser(String rua, String pais, String postalCode, String localidade) {
 		super();
 		this.rua = rua;
@@ -19,10 +24,12 @@ public class FiltrosUser {
 		this.postalCode = postalCode;
 		this.localidade = localidade;
 	}
-	// contrutor clone
+	
+		// contrutor clone
 	public FiltrosUser(FiltrosUser filtrosUser) {
 		
 	}
+	
 	// 3 - GETS E SETS
 	public String getRua() {
 		return rua;
@@ -36,7 +43,17 @@ public class FiltrosUser {
 	public String getLocalidade() {
 		return localidade;
 	}
+
+	
 	
 	// 4 - COMPORTAMENTOS
+	
+	
 	// 5 - METODOS COMPLEMENTARES
+	
+	@Override
+	public String toString() {
+		return "FiltrosUser [rua=" + rua + ", pais=" + pais + ", postalCode=" + postalCode + ", localidade="
+				+ localidade + "]";
+	}
 }
