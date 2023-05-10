@@ -1,6 +1,8 @@
 package pt.tpsi.festa.contactos;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class ContactosPessoais extends Contactos {
 	
@@ -17,6 +19,8 @@ public class ContactosPessoais extends Contactos {
 	// CONTRUTOR COM PARAMETROS
 	public ContactosPessoais(String primeiroNome, String ultimoNome, String numero, Date dataNascimento) {
 		super(primeiroNome, ultimoNome, numero);
+		this.Lista = new ArrayList<String>();
+		this.Convidados = new ArrayList<String>();
 		this.dataNascimento = dataNascimento;
 	}
 
