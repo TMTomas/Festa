@@ -11,6 +11,11 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>pt.brunojesus</groupId>
+			<artifactId>product-search-api</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
 			<version>5.3.1</version>
@@ -23,4 +28,12 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	<repositories>
+		<repository>
+			<id>mvn-brunojesus</id>
+			<name>Bruno Jesus MVN Repo</name>
+			<url>https://mvn.brunojesus.pt/releases</url>
+		</repository>
+	</repositories>
 </project>
