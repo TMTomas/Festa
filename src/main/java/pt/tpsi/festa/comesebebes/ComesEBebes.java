@@ -1,7 +1,10 @@
 package pt.tpsi.festa.comesebebes;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import pt.brunojesus.productsearch.api.ProductSearch;
 import pt.brunojesus.productsearch.api.model.Product;
 import pt.brunojesus.productsearch.api.model.Store;
@@ -13,8 +16,11 @@ public class ComesEBebes {
 	protected List<Product> carrinho = new ArrayList<Product>();
 
 	// ACESSORES
-	public List<Product> getCarrinho() {
-		return carrinho;
+	public String getCarrinho() {
+		return carrinho.stream().sorted(Comparator.comparingDouble(Product::getCurrentPrice).reversed())
+				.map(product -> "Item: " + product.getName() + "\n Preço: " + product.getCurrentPrice()
+						+ product.getCurrency() + "\n--------------------------------")
+				.collect(Collectors.joining("\n"));
 	}
 
 	public void setCarrinho(List<Product> carrinho) {
@@ -26,26 +32,40 @@ public class ComesEBebes {
 	}
 
 	// CONSTRUTOR 2 - com parâmetros
-	public ComesEBebes(ArrayList<Product> carrinho, ProductSearch productSearch) {
+	public ComesEBebes(ArrayList<Product> carrinho) {
 		super();
 		this.carrinho = carrinho;
 	}
 
-	// 4 - COMPORTAMENTOS
+	// CONSTRUTOR 3 - copia
+//	public ComesEBebes(ComesEBebes comesEBebes) {
+//		this(comesEBebes.getCarrinho());
+//	}
+
+	// COMPORTAMENTOS
 	public void buscarProduto(String nome) throws ProductFetchException, NoSuchStoreException {
 		ProductSearch productSearch = new ProductSearch();
-		productSearch.search(Store.PINGO_DOCE, nome).forEach(pro -> {
-		System.out.println(pro.getName());
-		System.out.println(pro.getCurrentPrice());
-		}
-		);
+		productSearch.search(Store.PINGO_DOCE, nome).forEach(product -> {
+			System.out.println(product.getName());
+			System.out.println(product.getCurrentPrice());
+		});
 	}
 
 	public void adicionarProduto(String nome, int id) throws ProductFetchException, NoSuchStoreException {
 		ProductSearch productSearch = new ProductSearch();
-			carrinho.add(productSearch.search(Store.PINGO_DOCE, nome).get(id));
+		carrinho.add(productSearch.search(Store.PINGO_DOCE, nome).get(id));
 	}
 
-	// 5 - METODOS COMPLEMENTARES
+//	public void adicionarProduto(String nome, int id, int quantidade)
+//			throws ProductFetchException, NoSuchStoreException {
+//		ProductSearch productSearch = new ProductSearch();
+//		carrinho.add(productSearch.search(Store.PINGO_DOCE, nome).get(id));
+//	}
+
+	public void removerProduto(int id) {
+		carrinho.remove(id);
+	}
+
+	// METODOS COMPLEMENTARES
 
 }

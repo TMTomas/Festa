@@ -7,9 +7,12 @@ public class Main {
 
 	public static void main(String[] args) throws ProductFetchException, NoSuchStoreException {
 		ComesEBebes teste = new ComesEBebes();
+		teste.adicionarProduto("morango", 0);
 		teste.adicionarProduto("morango", 1);
+		teste.adicionarProduto("morango", 1);
+		teste.adicionarProduto("morango", 2);
+		teste.adicionarProduto("morango", 5);
 		System.out.println(teste.getCarrinho());
-		
 
 	}
 
