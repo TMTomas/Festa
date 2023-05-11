@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import pt.brunojesus.productsearch.api.ProductSearch;
 import pt.brunojesus.productsearch.api.model.Product;
 import pt.brunojesus.productsearch.api.model.Store;
@@ -35,9 +34,6 @@ public class ComesEBebes {
 	public ComesEBebes(ArrayList<Product> carrinho) {
 		super();
 		this.carrinho = carrinho;
-		Comparator<Product> priceComparator = (p1, p2) -> Double.compare(p1.getCurrentPrice(), p2.getCurrentPrice());	 
-	    	List productList = null;
-		Collections.sort(productList, priceComparator);
 	}
 
 	// CONSTRUTOR 3 - copia
