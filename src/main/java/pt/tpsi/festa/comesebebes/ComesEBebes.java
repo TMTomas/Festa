@@ -35,6 +35,9 @@ public class ComesEBebes {
 	public ComesEBebes(ArrayList<Product> carrinho) {
 		super();
 		this.carrinho = carrinho;
+		Comparator<Product> priceComparator = (p1, p2) -> Double.compare(p1.getCurrentPrice(), p2.getCurrentPrice());	 
+	    	List productList = null;
+		Collections.sort(productList, priceComparator);
 	}
 
 	// CONSTRUTOR 3 - copia
