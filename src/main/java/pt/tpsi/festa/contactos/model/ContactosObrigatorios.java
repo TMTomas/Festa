@@ -1,4 +1,4 @@
-package pt.tpsi.festa.contactos;
+package pt.tpsi.festa.contactos.model;
 
 public class ContactosObrigatorios extends ContactosPessoais {
 	// 1 - Atributos
