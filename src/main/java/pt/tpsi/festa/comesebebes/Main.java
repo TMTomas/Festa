@@ -14,6 +14,7 @@ public class Main {
 		teste.adicionarProduto("morango", 2);
 		teste.adicionarProduto("morango", 5);
 		System.out.println(teste.getCarrinho());
+		System.out.println(teste.getCarrinho());
 
 	}
 
