@@ -1,4 +1,4 @@
-package pt.brunojesus.contactslib.model;
+package pt.tpsi.festa.contactos.model;
 
 /**
  * POJO representing a Contact

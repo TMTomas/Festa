@@ -1,6 +1,6 @@
-package pt.tpsi.festa.contactos;
+package pt.tpsi.festa.contactos.model;
 
-public class ContactosEmpresariais extends Contactos {
+public class ContactosEmpresariais extends Convidados {
 	// 1 - Atributos
 
 	// 2 - Construtores

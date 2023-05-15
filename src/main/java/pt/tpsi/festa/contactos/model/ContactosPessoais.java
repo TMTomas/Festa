@@ -1,10 +1,11 @@
-package pt.tpsi.festa.contactos;
+package pt.tpsi.festa.contactos.model;
 
 import java.util.Date;
 
 import pt.brunojesus.contactslib.ContactApi;
+import pt.brunojesus.contactslib.model.Contact;
 
-public class ContactosPessoais extends Contactos {
+public class ContactosPessoais extends Contact {
 	
 	// 1 - Atributos
 	
@@ -18,7 +19,7 @@ public class ContactosPessoais extends Contactos {
 	
 	// CONTRUTOR COM PARAMETROS
 	public ContactosPessoais(String primeiroNome, String ultimoNome, String numero, Date dataNascimento) {
-		super(primeiroNome, ultimoNome, numero);
+		super();
 		this.dataNascimento = dataNascimento;
 	}
 
