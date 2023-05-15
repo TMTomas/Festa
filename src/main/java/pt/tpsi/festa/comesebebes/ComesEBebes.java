@@ -19,7 +19,7 @@ public class ComesEBebes {
 		return carrinho.stream().sorted(Comparator.comparingDouble(Product::getCurrentPrice).reversed())
 				.map(product -> "Item: " + product.getName() + "\n Preço: " + product.getCurrentPrice()
 						+ product.getCurrency() + "\n--------------------------------")
-				.collect(Collectors.joining("\n"));
+				.collect(Collectors.joining("\n")) + "\nPreço total: " + carrinho.stream().mapToDouble(Product :: getCurrentPrice).sum();
 	}
 
 	public void setCarrinho(List<Product> carrinho) {
