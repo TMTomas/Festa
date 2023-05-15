@@ -1,33 +1,32 @@
 package pt.tpsi.festa.contactos.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import pt.brunojesus.contactslib.ContactApi;
 import pt.brunojesus.contactslib.model.Contact;
 
-public class ContactosPessoais extends Contact {
+public class ContactosPessoais extends pt.tpsi.festa.contactos.model.Contact {
 	
 	// 1 - Atributos
+	ArrayList<ContactApi> contactosPessoais;
+	protected Date dataDeNascimento;
 	
-	protected Date dataNascimento;
-	final ContactApi contactAPI = new ContactApi();
 	// 2 - Construtores
 	
-	//CONTRUTOR DEFAULT
+	// CONTRUTOR DEFAULT
 	public ContactosPessoais() {
 	}
 	
 	// CONTRUTOR COM PARAMETROS
-	public ContactosPessoais(String primeiroNome, String ultimoNome, String numero, Date dataNascimento) {
-		super();
-		this.dataNascimento = dataNascimento;
+	public ContactosPessoais(String firstName, String lastName, Date dataDeNascimento) {
+	super();
+	this.dataDeNascimento = dataDeNascimento;
 	}
 
 	
 	// 3 - Getters And Setters
-	public Date getDataNascimento() {
-		return dataNascimento;
-	}
+
 	
 	// 4 - Comportamentos
 	

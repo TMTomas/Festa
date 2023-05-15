@@ -3,7 +3,7 @@ package pt.tpsi.festa.contactos.model;
 /**
  * POJO representing a Contact
  */
-public class ContactAPI {
+public class Contact {
 
     private String firstName;
     private String lastName;
@@ -16,7 +16,7 @@ public class ContactAPI {
         return firstName;
     }
 
-    public ContactAPI setFirstName(String firstName) {
+    public Contact setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
@@ -25,7 +25,7 @@ public class ContactAPI {
         return lastName;
     }
 
-    public ContactAPI setLastName(String lastName) {
+    public Contact setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
@@ -34,7 +34,7 @@ public class ContactAPI {
         return email;
     }
 
-    public ContactAPI setEmail(String email) {
+    public Contact setEmail(String email) {
         this.email = email;
         return this;
     }
@@ -43,7 +43,7 @@ public class ContactAPI {
         return address;
     }
 
-    public ContactAPI setAddress(String address) {
+    public Contact setAddress(String address) {
         this.address = address;
         return this;
     }
@@ -52,7 +52,7 @@ public class ContactAPI {
         return company;
     }
 
-    public ContactAPI setCompany(String company) {
+    public Contact setCompany(String company) {
         this.company = company;
         return this;
     }
@@ -61,7 +61,7 @@ public class ContactAPI {
         return phoneNumber;
     }
 
-    public ContactAPI setPhoneNumber(String phoneNumber) {
+    public Contact setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
