@@ -11,60 +11,61 @@ import pt.brunojesus.productsearch.exception.NoSuchStoreException;
 import pt.brunojesus.productsearch.exception.ProductFetchException;
 
 public class ComesEBebes {
-	// ATRIBUTOS
-	protected List<Product> carrinho = new ArrayList<Product>();
+    // ATRIBUTOS
+    protected List<Product> carrinho = new ArrayList<Product>();
+    protected List<Product> baseDeDados = new ArrayList<Product>();
 
-	// ACESSORES
-	public String getCarrinho() {
-		return carrinho.stream().sorted(Comparator.comparingDouble(Product::getCurrentPrice).reversed())
-				.map(product -> "Item: " + product.getName() + "\n Preço: " + product.getCurrentPrice()
-						+ product.getCurrency() + "\n--------------------------------")
-				.collect(Collectors.joining("\n")) + "\nPreço total: " + carrinho.stream().mapToDouble(Product :: getCurrentPrice).sum();
-	}
+    // ACESSORES
+    public String getCarrinho() {
+        return carrinho.stream().sorted(Comparator.comparingDouble(Product::getCurrentPrice).reversed())
+                .map(product -> "Item: " + product.getName() + "\n Preço: " + product.getCurrentPrice()
+                        + product.getCurrency() + "\n--------------------------------")
+                .collect(Collectors.joining("\n")) + "\nPreço total:" + carrinho.stream().mapToDouble(Product::getCurrentPrice).sum();
+    }
 
-	public void setCarrinho(List<Product> carrinho) {
-		this.carrinho = carrinho;
-	}
+    public void setCarrinho(List<Product> carrinho) {
+        this.carrinho = carrinho;
+    }
 
-	// CONSTRUTOR 1 - default
-	public ComesEBebes() {
-	}
+    public List<Product> getBaseDeDados() {
+        return baseDeDados;
+    }
 
-	// CONSTRUTOR 2 - com parâmetros
-	public ComesEBebes(ArrayList<Product> carrinho) {
-		super();
-		this.carrinho = carrinho;
-	}
+    // COMPORTAMENTOS
+    public String buscarProduto(String nome) throws ProductFetchException, NoSuchStoreException {
+        ProductSearch productSearch = new ProductSearch();
+        List<Product> produtos = productSearch.search(Store.PINGO_DOCE, nome);
 
-	// CONSTRUTOR 3 - copia
-//	public ComesEBebes(ComesEBebes comesEBebes) {
-//		this(comesEBebes.getCarrinho());
-//	}
+        // Adicionar produtos à base de dados
+        baseDeDados.addAll(produtos);
 
-	// COMPORTAMENTOS
-	public void buscarProduto(String nome) throws ProductFetchException, NoSuchStoreException {
-		ProductSearch productSearch = new ProductSearch();
-		productSearch.search(Store.PINGO_DOCE, nome).forEach(product -> {
-			System.out.println(product.getName());
-			System.out.println(product.getCurrentPrice());
-		});
-	}
+        String resultado = "";
+        for (int i = 0; i < 50 && i < produtos.size(); i++) {
+            Product produto = produtos.get(i);
+            resultado += "Produto " + (i + 1) + ":\n";
+            resultado += "Nome: " + produto.getName() + "\n";
+            resultado += "Preço: " + produto.getCurrentPrice() + produto.getCurrency() + "\n";
+            resultado += "--------------------------------\n";
+        }
 
-	public void adicionarProduto(String nome, int id) throws ProductFetchException, NoSuchStoreException {
-		ProductSearch productSearch = new ProductSearch();
-		carrinho.add(productSearch.search(Store.PINGO_DOCE, nome).get(id));
-	}
+        return resultado;
+    }
 
-//	public void adicionarProduto(String nome, int id, int quantidade)
-//			throws ProductFetchException, NoSuchStoreException {
-//		ProductSearch productSearch = new ProductSearch();
-//		carrinho.add(productSearch.search(Store.PINGO_DOCE, nome).get(id));
-//	}
+    public void adicionarProduto(String nome, int numeroProduto) throws ProductFetchException, NoSuchStoreException {
+        ProductSearch productSearch = new ProductSearch();
+        List<Product> produtos = productSearch.search(Store.PINGO_DOCE, nome);
+        if (numeroProduto >= 1 && numeroProduto <= produtos.size()) {
+            carrinho.add(produtos.get(numeroProduto - 1));
+        }
+    }
 
-	public void removerProduto(int id) {
-		carrinho.remove(id);
-	}
+    public void removerProduto(int id) {
+        carrinho.remove(id);
+    }
 
-	// METODOS COMPLEMENTARES
-
+    // METODOS COMPLEMENTARES
+    @Override
+    public String toString() {
+        return "ComesEBebes [carrinho=" + carrinho + "]";
+    }
 }
