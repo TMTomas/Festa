@@ -1,6 +1,5 @@
 package pt.tpsi.festa.contactos.model;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,13 +14,12 @@ public class Convidados extends Contact {
 
 	// Vazio
 	public Convidados() {
-
+		this.convidados = new ArrayList<>();
 	}
 
 	// Default
-	public Convidados(List<String> convidados) {
-
-		this.Convidados = new ArrayList<String>();
+	public Convidados(List<Contact> convidados) {
+		this.convidados = convidados;
 	}
 
 	// Cópia
