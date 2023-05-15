@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ContactosPessoais extends Contactos {
+public class ContactosPessoais extends Contact {
 	
 	// 1 - Atributos
 	

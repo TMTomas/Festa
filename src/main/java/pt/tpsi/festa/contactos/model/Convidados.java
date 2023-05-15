@@ -1,9 +1,10 @@
-package pt.tpsi.festa.contactos;
+package pt.tpsi.festa;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Convidados {
+public class Convidados extends Contact {
 
 	// 1 - Atributos
 	protected List<String> Convidados;
