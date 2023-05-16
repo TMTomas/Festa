@@ -14,8 +14,6 @@ public class Main {
 	 * Método principal que cria uma solicitação de metereologia e imprime a
 	 * temperatura.
 	 *
-	 * @args Os argumentos de linha de comando. Eles são ignorados neste
-	 *             exemplo.
 	 */
 
 	public static void main(String[] args) {
