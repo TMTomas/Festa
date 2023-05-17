@@ -3,6 +3,7 @@ package pt.tpsi.festa.espaco.http;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
+import pt.brunojesus.locationsearch.openstreetmap.model.OpenStreetMapLocation;
 import pt.tpsi.festa.espaco.model.MetereologiaModel;
 import pt.tpsi.festa.execeptions.RequestException;
 
@@ -18,19 +19,21 @@ public class MetereologiaRequest {
 		metereologiaResponseHandler = new MetereologiaResponseHandler();
 	}
 
-	public void createMetrologiaRequest() {
+	public MetereologiaModel createMetrologiaRequest(String latitude, String longitude) {
+		MetereologiaModel result = null;
 		try{
 
-			String url = "https://api.openweathermap.org/data/2.5/weather?lat=" + 39.201197300000004 + "&lon=" + -8.627226474862745 + "&appid=" + token;
+			String url = "https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=" + token;
 			final HttpGet request = new HttpGet(url);
 			request.setHeader("Accept", "application/json");
 			request.setHeader("Content-Type", "application/json");
 
 			try (CloseableHttpClient client = HttpClients.createDefault()) {
-				client.execute(request, metereologiaResponseHandler);
+				result = client.execute(request, metereologiaResponseHandler);
 			}
 		}catch (IOException e){
 			throw new RequestException(e.getMessage());
 		}
+		return result;
 	}
 }

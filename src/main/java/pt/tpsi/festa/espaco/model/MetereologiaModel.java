@@ -1,8 +1,8 @@
 package pt.tpsi.festa.espaco.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,11 +16,14 @@ public class MetereologiaModel {
 	 /**
      * Lista de informações meteorológicas.
      */
-    private ArrayList<Weather> weather;
+    private List<Weather> weather;
+
     /**
      * Objeto que representa a temperatura.
      */
-    private Temperatura temperatura;
+    @JsonProperty("main")
+    private Main Temperatura;
+
 	// 2 - CONSTRUTORES
     /**
      * Construtor padrão da classe MetereologiaModel.
@@ -29,25 +32,7 @@ public class MetereologiaModel {
     }
 
     // 3 - GETS E SETS
-    /**
-     * Obtém a lista de informações meteorológicas.
-     *
-     * @return A lista de informações meteorológicas.
-     */
-    public ArrayList<Weather> getWeather() {
-        return weather;
-    }
-    /**
-     * Obtém o objeto de temperatura.
-     *
-     * @return O objeto de temperatura.
-     */
-    public Temperatura getTemperatura() {
-        return temperatura;
-    }
 
-    // 4 - COMPORTAMENTOS
-
-	// 5 - METODOS COMPLEMENTARES
+    // já setado automaticamente devido a anotação Data
 
 }
