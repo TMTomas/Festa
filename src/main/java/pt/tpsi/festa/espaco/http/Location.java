@@ -77,12 +77,4 @@ public class Location {
     public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
-
-    public List<Location> locations(int size){
-        List<Location> list = new ArrayList<>();
-        for(int i = 0 ; i < size; i++ ){
-            list.add(new Location(getNameLocation(),getWeather(),getTemperature(),getTemperatureMin(),getTemperatureMax()));
-        }
-        return list;
-    }
 }
