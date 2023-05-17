@@ -4,10 +4,6 @@ import java.util.ArrayList;
 
 public interface ContactosInterface {
 	
-	public static void importar(/* API Contactos */) {
-		
-	}
-	
 	public static void listarContactos(ArrayList<API> Contactos) {
 		// lista os contactos
 	}
