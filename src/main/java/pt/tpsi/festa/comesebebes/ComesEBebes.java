@@ -2,7 +2,9 @@ package pt.tpsi.festa.comesebebes;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import pt.brunojesus.productsearch.api.ProductSearch;
 import pt.brunojesus.productsearch.api.model.Product;
@@ -17,10 +19,25 @@ public class ComesEBebes {
 
     // ACESSORES
     public String getCarrinho() {
-        return carrinho.stream().sorted(Comparator.comparingDouble(Product::getCurrentPrice).reversed())
-                .map(product -> "Item: " + product.getName() + "\n Preço: " + product.getCurrentPrice()
-                        + product.getCurrency() + "\n--------------------------------")
-                .collect(Collectors.joining("\n")) + "\nPreço total:" + carrinho.stream().mapToDouble(Product::getCurrentPrice).sum();
+    	Map<String, Long> produtosAgrupados = carrinho.stream()
+    	        .collect(Collectors.groupingBy(Product::getName, Collectors.counting()));
+    	
+    	Map<String, Double> precosPorProduto = carrinho.stream()
+    	        .collect(Collectors.groupingBy(Product::getName, Collectors.summingDouble(Product::getCurrentPrice)));
+    	
+		String produtosOrdenados = produtosAgrupados.entrySet().stream()
+        .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
+        .map(entry -> {
+            String nomeProduto = entry.getKey();
+            long quantidade = entry.getValue();
+            double precoUnitario = precosPorProduto.get(nomeProduto) / quantidade;
+            return "Item: " + nomeProduto + "\n Quantidade: " + quantidade + "\n Preço: " + (Math.round(precoUnitario * 10000.0) / 10000.0)
+                    + "EUR\n--------------------------------";
+        })
+        .collect(Collectors.joining("\n"));
+		
+		return produtosOrdenados + "\nPreço Total: " + (Math.round(carrinho.stream().mapToDouble(Product::getCurrentPrice).sum()* 10000.0) / 10000.0) + "EUR";
+
     }
 
     public void setCarrinho(List<Product> carrinho) {
@@ -56,6 +73,16 @@ public class ComesEBebes {
         List<Product> produtos = productSearch.search(Store.PINGO_DOCE, nome);
         if (numeroProduto >= 1 && numeroProduto <= produtos.size()) {
             carrinho.add(produtos.get(numeroProduto - 1));
+        }
+    }
+    
+    public void adicionarProduto(String nome, int numeroProduto, int quantidade) throws ProductFetchException, NoSuchStoreException {
+        ProductSearch productSearch = new ProductSearch();
+        List<Product> produtos = productSearch.search(Store.PINGO_DOCE, nome);
+        if (numeroProduto >= 1 && numeroProduto <= produtos.size()) {
+        	for (int i = 0; i < quantidade; i++) {
+				carrinho.add(produtos.get(numeroProduto - 1));
+			}
         }
     }
 
