@@ -23,14 +23,15 @@ public class Main {
 
 	public static void main(String[] args) throws LocationSearchException {
 		 // Cria uma instância de MetereologiaRequest
-		MetereologiaRequest request = new MetereologiaRequest();
-		OpenStreetMap openStreetMap = new OpenStreetMap();
+		MetereologiaRequest requestMetreologia = new MetereologiaRequest();;
+		OpenStreetMap requestLocation = new OpenStreetMap();
 
-		List<OpenStreetMapLocation> locations =  openStreetMap.search("CNEMA, Santarem");
+		List<OpenStreetMapLocation> locations =  requestLocation.search("Mcdonalds");
 
-		MetereologiaModel model = request.createMetrologiaRequest(locations.get(0).getLatitute(), locations.get(0).getLongitude());
+		System.out.println("Location: " + locations+"\n");
+		MetereologiaModel model = requestMetreologia.createMetrologiaRequest(locations.get(0).getLatitute(), locations.get(0).getLongitude());
 
-		System.out.println(model.getTemperatura().getTempC());
+		System.out.println("Metreologia "+ model);
 
 		/*
 		locations.forEach(location -> {
