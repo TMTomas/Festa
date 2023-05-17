@@ -26,7 +26,7 @@ public class Main {
 		 // Cria uma instância de MetereologiaRequest
 		RequestMetreologiaAndLocation request = new RequestMetreologiaAndLocation();
 		System.out.println(request.pesquisar("CNEMA, Santarem").get(0).getNameLocation());
-
+		System.out.println(request.selecionar(0));
 
 		/*
 		locations.forEach(location -> {

@@ -77,4 +77,17 @@ public class Location {
     public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "nameLocation='" + nameLocation + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", weather='" + weather + '\'' +
+                ", temperature=" + temperature +
+                ", temperatureMin=" + temperatureMin +
+                ", temperatureMax=" + temperatureMax +
+                '}';
+    }
 }
