@@ -2,26 +2,18 @@ package pt.tpsi.festa.contactos.model;
 
 import java.util.ArrayList;
 
+import pt.brunojesus.contactslib.model.Contact;
+
 public interface ContactosInterface {
 	
-	public static void importar(/* API Contactos */) {
-		
-	}
+	public void importar(/* API Contactos */);
 	
-	public static void listarContactos(ArrayList<API> Contactos) {
-		// lista os contactos
-	}
+	public void listarContactos(ArrayList<Contact> Contactos);
 	
-	public static void listarConvidados(ArrayList<Convidados> Convidados){
-		// lista e adiciona a um novo arraylist os contactos convidados
-	}
-	public static void convidar(int index) {
-		// convida apartir indice do arraylist
-	}
+	public void listarConvidados(ArrayList<Contact> Convidados);
 	
-	public static void desconvidar(int index) {
-		// desconvida apartir indice do arraylist
-
-	}
+	public void convidar(int index);
+	
+	public void desconvidar(int index);
 	
 }
