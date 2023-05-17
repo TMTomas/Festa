@@ -34,5 +34,9 @@ public class MetereologiaModel {
     // 3 - GETS E SETS
 
     // já setado automaticamente devido a anotação Data
+    
+    // 4 - comportamentos
+    
+    // 5 - metodos complementares
 
 }

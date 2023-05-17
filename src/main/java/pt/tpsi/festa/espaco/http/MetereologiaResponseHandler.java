@@ -13,14 +13,20 @@ import org.apache.hc.core5.http.io.HttpClientResponseHandler;
 import pt.tpsi.festa.espaco.model.MetereologiaModel;
 
 public class MetereologiaResponseHandler implements HttpClientResponseHandler<MetereologiaModel> {
+	
+	// 1 - atributos
 	private final ObjectMapper objectMapper;
 
+	// 2 - construtores 
 	public MetereologiaResponseHandler() {
 		this.objectMapper = new ObjectMapper()
 				.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false)
 				.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
-
+	
+	// 3 - gets e sets
+	
+	// 4 - comportamentos
 	@Override
 	public MetereologiaModel handleResponse(ClassicHttpResponse response) throws IOException {
 		if(response.getCode() < 200 || response.getCode() > 299){
@@ -31,4 +37,6 @@ public class MetereologiaResponseHandler implements HttpClientResponseHandler<Me
 			});
 		}
 	}
+	
+	// 5 - metodos complementares
 }

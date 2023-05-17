@@ -4,13 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Location {
-    private String nameLocation;
+   
+	// 1 - atributos
+	private String nameLocation;
     private String latitude;
     private String longitude;
     private String weather;
     private double temperature;
     private double temperatureMin;
     private double temperatureMax;
+    
+    // 2 - construtores 
+	
+    public Location() {
+	}
 
     public Location(String nameLocation, String latitude, String longitude, String weather, double temperature, double temperatureMin, double temperatureMax) {
         this.nameLocation = nameLocation;
@@ -22,7 +29,8 @@ public class Location {
         this.temperatureMax = temperatureMax;
     }
 
-    public String getNameLocation() {
+    // 3 - gets e sets
+	public String getNameLocation() {
         return nameLocation;
     }
 
@@ -77,7 +85,10 @@ public class Location {
     public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
-
+    
+    // 4 - comportamentos
+    
+    // 5 - metodos complementares
     @Override
     public String toString() {
         return "Location{" +

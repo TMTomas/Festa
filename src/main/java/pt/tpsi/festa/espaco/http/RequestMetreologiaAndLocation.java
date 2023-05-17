@@ -11,17 +11,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RequestMetreologiaAndLocation implements EspacoInterface {
-    MetereologiaRequest requestMetreologia;
+    
+	// 1 - atributos
+	MetereologiaRequest requestMetreologia;
     OpenStreetMap requestLocation;
     List<Location> locationList;
 
     Location location;
+    
+    // 2 - construtores
+    
     public RequestMetreologiaAndLocation() {
         requestMetreologia = new MetereologiaRequest();
         requestLocation = new OpenStreetMap();
         locationList = new ArrayList<>();
     }
-
+    
+    // 3 - gets e sets
+    
+    // 4 - comportamentos
     @Override
     public Location selecionar(int index) {
         return locationList.get(index);
@@ -44,4 +52,6 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
         }
         return locationList;
     }
+    
+    // 5- metodos complementares
 }

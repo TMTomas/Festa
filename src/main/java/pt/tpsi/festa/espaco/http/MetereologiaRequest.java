@@ -12,13 +12,18 @@ import java.net.http.HttpResponse;
 import java.util.List;
 
 public class MetereologiaRequest {
+	
+	// 1 - atributos
 	private final String token = "0bc9afaa68eeaa9997d66aa2404b4b5b";
 	private final MetereologiaResponseHandler metereologiaResponseHandler;
 
+	// 2 - construtores
 	public MetereologiaRequest() {
 		metereologiaResponseHandler = new MetereologiaResponseHandler();
 	}
-
+	// 3 - gets e sets
+	
+	// 4 - comportamentos
 	public MetereologiaModel createMetrologiaRequest(String latitude, String longitude) {
 		MetereologiaModel result = null;
 		try{
@@ -36,4 +41,6 @@ public class MetereologiaRequest {
 		}
 		return result;
 	}
+	// 5 - metodos complementares
+	
 }
