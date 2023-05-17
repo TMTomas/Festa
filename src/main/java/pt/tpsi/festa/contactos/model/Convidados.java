@@ -12,12 +12,12 @@ public class Convidados {
 
 	// Construtores
 
-	// Vazio
+	// CONTRUTOR DEFAULT
 	public Convidados() {
 		this.convidados = new ArrayList<>();
 	}
 
-	// Default
+	// CONTRUTOR COM PARAMETROS
 	public Convidados(List<Contact> convidados) {
 		this.convidados = convidados;
 	}
@@ -35,17 +35,21 @@ public class Convidados {
 
 	// Comportamentos
 
-	public void convidar(Contact convidado) {
-		convidados.add(convidado);
-	}
-
-	public void remover(Contact convidado) {
-		convidados.remove(convidado);
-	}
-
-	public List<Contact> listar() {
-		return convidados;
-	}
+	// public void convidar(Contact convidado) {
+	// convidados.add(convidado);
+	// }
+	//
+	// public void remover(Contact convidado) {
+	// convidados.remove(convidado);
+	// }
+	//
+	// public List<Contact> listar() {
+	// return convidados;
+	// }
+	//
+	// public boolean verificarConvidado(Contact contato) {
+	// return convidados.contains(contato);
+	// }
 
 	// Métodos Complementares
 
