@@ -1,4 +1,4 @@
-package pt.tpsi.festa.espaco.http;
+package pt.tpsi.festa.espaco.model;
 
 import java.util.ArrayList;
 import java.util.List;
