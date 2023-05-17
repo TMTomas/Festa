@@ -38,16 +38,9 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
 
         for(int i = 0 ; i < locations.size(); i++){
             MetereologiaModel model = requestMetreologia.createMetrologiaRequest(locations.get(i).getLatitute(), locations.get(i).getLongitude());
-            location.setNameLocation(locations.get(i).getDisplayName());
-            location.setWeather(model.getWeather().get(i).getMain() + " "+ model.getWeather().get(i).getDescription());
-            location.setTemperature(model.getTemperatura().getTempC());
-            location.setTemperatureMin(model.getTemperatura().getMinTempC());
-            location.setTemperatureMax(model.getTemperatura().getMaxTempC());
-            location.setLatitude(locations.get(i).getLatitute());
-            location.setLongitude(locations.get(i).getLongitude());
-
-            locationList.add(new Location(location.getNameLocation(),location.getLatitude(),location.getLongitude(), location.getWeather(),
-                    location.getTemperature(), location.getTemperatureMin(),location.getTemperatureMax()));
+            locationList.add(new Location(locations.get(i).getDisplayName(),locations.get(i).getLatitute(),
+                    locations.get(i).getLongitude(), model.getWeather().get(i).getMain() + " "+ model.getWeather().get(i).getDescription(),
+                    model.getTemperatura().getTempC(), model.getTemperatura().getMinTempC(),model.getTemperatura().getMaxTempC()));
         }
         return locationList;
     }

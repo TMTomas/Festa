@@ -4,6 +4,7 @@ import pt.brunojesus.locationsearch.api.OpenStreetMap;
 import pt.brunojesus.locationsearch.exception.LocationSearchException;
 import pt.brunojesus.locationsearch.openstreetmap.model.OpenStreetMapLocation;
 import pt.tpsi.festa.espaco.http.MetereologiaRequest;
+import pt.tpsi.festa.espaco.http.RequestMetreologiaAndLocation;
 import pt.tpsi.festa.espaco.model.MetereologiaModel;
 
 import java.util.List;
@@ -23,15 +24,9 @@ public class Main {
 
 	public static void main(String[] args) throws LocationSearchException {
 		 // Cria uma instância de MetereologiaRequest
-		MetereologiaRequest requestMetreologia = new MetereologiaRequest();;
-		OpenStreetMap requestLocation = new OpenStreetMap();
+		RequestMetreologiaAndLocation request = new RequestMetreologiaAndLocation();
+		System.out.println(request.pesquisar("CNEMA, Santarem").get(0).getNameLocation());
 
-		List<OpenStreetMapLocation> locations =  requestLocation.search("Mcdonalds");
-
-		System.out.println("Location: " + locations+"\n");
-		MetereologiaModel model = requestMetreologia.createMetrologiaRequest(locations.get(0).getLatitute(), locations.get(0).getLongitude());
-
-		System.out.println("Metreologia "+ model);
 
 		/*
 		locations.forEach(location -> {
