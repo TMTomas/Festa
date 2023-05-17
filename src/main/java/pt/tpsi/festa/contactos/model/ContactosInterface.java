@@ -2,6 +2,8 @@ package pt.tpsi.festa.contactos.model;
 
 import java.util.ArrayList;
 
+import pt.brunojesus.contactslib.model.Contact;
+
 public interface ContactosInterface {
 	
 	public void listarContactos(ArrayList<Contactos> Contactos);
@@ -15,5 +17,6 @@ public interface ContactosInterface {
 	
 	public void desconvidar(int index);
 		// desconvida apartir indice do arraylist
+
 	
 }
