@@ -3,9 +3,7 @@ package pt.tpsi.festa.contactos.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import pt.brunojesus.contactslib.model.Contact;
-
-public class Convidados {
+public class Convidados extends Contact implements ContactInterface{
 
 	// Atributos
 	protected List<Contact> convidados;

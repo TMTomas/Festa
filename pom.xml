@@ -27,12 +27,15 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.12.0</version>
 		</dependency>
+		<!-- 
 		<dependency>
 			<groupId>pt.brunojesus</groupId>
 			<artifactId>contacts-lib</artifactId>
 			<version>1.0</version>
 		</dependency>
+		-->
 	</dependencies>
+	<!-- 
 	<repositories>
         <repository>
             <id>mvn-brunojesus</id>
@@ -40,4 +43,5 @@
             <url>https://mvn.brunojesus.pt/releases</url>
         </repository>
     </repositories>
+    		-->
 </project>
