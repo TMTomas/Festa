@@ -14,7 +14,7 @@ public class Convidados {
 
 	// CONTRUTOR DEFAULT
 	public Convidados() {
-		this.convidados = new ArrayList<>();
+		this.convidados = new ArrayList<Contact>();
 	}
 
 	// CONTRUTOR COM PARAMETROS
@@ -24,7 +24,7 @@ public class Convidados {
 
 	// Cópia
 	public Convidados(Convidados convidados) {
-		this.convidados = new ArrayList<>(convidados.getConvidados());
+		this.convidados = new ArrayList<Contact>(convidados.getConvidados());
 	}
 
 	// Getters And Setters
