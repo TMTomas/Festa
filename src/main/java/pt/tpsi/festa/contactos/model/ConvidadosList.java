@@ -3,7 +3,7 @@ package pt.tpsi.festa.contactos.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Convidados extends Contact implements ContactInterface{
+public class ConvidadosList extends Contact implements ContactInterface{
 
 	// Atributos
 	protected List<Contact> convidados;
@@ -11,23 +11,23 @@ public class Convidados extends Contact implements ContactInterface{
 	// Construtores
 
 	// CONTRUTOR DEFAULT
-	public Convidados() {
+	public ConvidadosList() {
 		this.convidados = new ArrayList<Contact>();
 	}
 
 	// CONTRUTOR COM PARAMETROS
-	public Convidados(List<Contact> convidados) {
+	public ConvidadosList(List<Contact> convidados) {
 		this.convidados = convidados;
 	}
 
 	// Cópia
-	public Convidados(Convidados convidados) {
+	public ConvidadosList(ConvidadosList convidados) {
 		this.convidados = new ArrayList<Contact>(convidados.getConvidados());
 	}
 
 	// Getters And Setters
 
-	public List<Contact> getConvidados() {
+	public List<Contact> getConvidadosList() {
 		return convidados;
 	}
 
