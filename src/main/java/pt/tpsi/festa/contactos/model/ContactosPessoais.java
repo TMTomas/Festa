@@ -1,15 +1,12 @@
 package pt.tpsi.festa.contactos.model;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.yaml.snakeyaml.constructor.CustomClassLoaderConstructor;
-
+import pt.brunojesus.contactslib.ContactApi;
 import pt.brunojesus.contactslib.model.Contact;
-
+import pt.tpsi.festa.contactos.exceptions.DataNascimentoNaoAceiteException;
 
 /**
  * 
@@ -17,7 +14,7 @@ import pt.brunojesus.contactslib.model.Contact;
  * @author Francisco Simões
  * 
  */
-public class ContactosPessoais extends Contact{
+	public class ContactosPessoais extends Contact implements ContactosInterface{
 	
 	// 1 - Atributos
 	protected List<Contact> contactosPessoais;
@@ -30,18 +27,15 @@ public class ContactosPessoais extends Contact{
 	}
 
 	// CONTRUTOR COM PARAMETROS
-
-	public ContactosPessoais(Date dataDeNascimento, List<ContactosPessoais> contactosPessoais) {
+	public ContactosPessoais(Date dataDeNascimento, List<Contact> contactosPessoais) throws DataNascimentoNaoAceiteException {
+	if (dataDeNascimento != null) {
+		throw new DataNascimentoNaoAceiteException("Data de nascimento not accepted for ContactosPessoais");
+	}
 	this.dataDeNascimento = dataDeNascimento;
 	this.contactosPessoais = new ArrayList<Contact>();
 	}
 
-	public ContactosPessoais(String firstName, String lastName, Date dataDeNascimento) {
-		super();
-		this.dataDeNascimento = dataDeNascimento;
-
-	}
-
+	
 	// 3 - Getters And Setters
 	public List<Contact> getContactosPessoais() {
 		return contactosPessoais;
@@ -59,15 +53,9 @@ public class ContactosPessoais extends Contact{
 	public void setDataDeNascimento(Date dataDeNascimento) {
 		this.dataDeNascimento = dataDeNascimento;
 	}
-	
-	// 4 - Comportamentos
-	
-//	public void saveToFile(String filename) throws IOException, FileNotFoundException {}
-//	
-//	public void loadToFile(String filename) throws IOException, FileNotFoundException {}
 
 	// 4 - Comportamentos
-
+	
 
 	// 5 - Métodos Complementares
 
