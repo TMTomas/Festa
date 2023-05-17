@@ -34,9 +34,11 @@ public class RequestMetreologiaAndLocation {
             location.setTemperature(model.getTemperatura().getTempC());
             location.setTemperatureMin(model.getTemperatura().getMinTempC());
             location.setTemperatureMax(model.getTemperatura().getMaxTempC());
+            location.setLatitude(locations.get(i).getLatitute());
+            location.setLongitude(locations.get(i).getLongitude());
 
-            locationList.add(new Location(location.getNameLocation(), location.getWeather(), location.getTemperature(),
-                    location.getTemperatureMin(),location.getTemperatureMax()));
+            locationList.add(new Location(location.getNameLocation(),location.getLatitude(),location.getLongitude(), location.getWeather(),
+                    location.getTemperature(), location.getTemperatureMin(),location.getTemperatureMax()));
         }
         return locationList;
     }

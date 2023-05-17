@@ -5,13 +5,17 @@ import java.util.List;
 
 public class Location {
     private String nameLocation;
+    private String latitude;
+    private String longitude;
     private String weather;
     private double temperature;
     private double temperatureMin;
     private double temperatureMax;
 
-    public Location(String nameLocation, String weather, double temperature, double temperatureMin, double temperatureMax) {
+    public Location(String nameLocation, String latitude, String longitude, String weather, double temperature, double temperatureMin, double temperatureMax) {
         this.nameLocation = nameLocation;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.weather = weather;
         this.temperature = temperature;
         this.temperatureMin = temperatureMin;
@@ -56,6 +60,22 @@ public class Location {
 
     public void setTemperatureMax(double temperatureMax) {
         this.temperatureMax = temperatureMax;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public List<Location> locations(int size){
