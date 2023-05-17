@@ -2,11 +2,8 @@ package pt.tpsi.festa.espaco;
 
 public interface EspacoInterface {
 
-	public static void selecionar(int index) {
+	public void selecionar(int index);
 		
-	}
 	
-	public static void consultar(/* mapper=?????????????? */) {
-		
-	}	
+	public void consultar(String local);	
 }
