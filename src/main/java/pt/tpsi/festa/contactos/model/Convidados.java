@@ -1,55 +1,52 @@
 package pt.tpsi.festa.contactos.model;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 import pt.brunojesus.contactslib.model.Contact;
 
-public class Convidados extends Contact {
+public class Convidados {
 
-	// 1 - Atributos
-	protected List<String> Convidados;
+	// Atributos
+	protected List<Contact> convidados;
 
-	// 2 - Construtores
+	// Construtores
 
 	// Vazio
 	public Convidados() {
-
+		this.convidados = new ArrayList<>();
 	}
 
 	// Default
-	public Convidados(List<String> convidados) {
-
-		this.Convidados = new ArrayList<String>();
+	public Convidados(List<Contact> convidados) {
+		this.convidados = convidados;
 	}
 
 	// Cópia
-	public Convidados(Convidados contacto) {
-
-		this.Convidados = new ArrayList<String>(contacto.getConvidados());
+	public Convidados(Convidados convidados) {
+		this.convidados = new ArrayList<>(convidados.getConvidados());
 	}
 
-	// 3 - Getters And Setters
+	// Getters And Setters
 
-	public List<String> getConvidados() {
-		return Convidados;
+	public List<Contact> getConvidados() {
+		return convidados;
 	}
 
-	// 4 - Comportamentos
+	// Comportamentos
 
-	public void convidar(String convidado) {
-		Convidados.add(convidado);
+	public void convidar(Contact convidado) {
+		convidados.add(convidado);
 	}
 
-	public void remover(String convidado) {
-		Convidados.remove(convidado);
+	public void remover(Contact convidado) {
+		convidados.remove(convidado);
 	}
 
-	public List<String> listar() {
-		return Convidados;
+	public List<Contact> listar() {
+		return convidados;
 	}
 
-	// 5 - Métodos Complementares
+	// Métodos Complementares
 
 }

@@ -10,6 +10,7 @@ import org.yaml.snakeyaml.constructor.CustomClassLoaderConstructor;
 
 import pt.brunojesus.contactslib.model.Contact;
 
+
 /**
  * 
  * 
@@ -21,23 +22,31 @@ public class ContactosPessoais extends Contact{
 	// 1 - Atributos
 	protected List<Contact> contactosPessoais;
 	protected Date dataDeNascimento;
-	
+
 	// 2 - Construtores
-	
+
 	// CONTRUTOR DEFAULT
 	public ContactosPessoais() {
 	}
-	
+
 	// CONTRUTOR COM PARAMETROS
+
 	public ContactosPessoais(Date dataDeNascimento, List<ContactosPessoais> contactosPessoais) {
 	this.dataDeNascimento = dataDeNascimento;
 	this.contactosPessoais = new ArrayList<Contact>();
+	}
+
+	public ContactosPessoais(String firstName, String lastName, Date dataDeNascimento) {
+		super();
+		this.dataDeNascimento = dataDeNascimento;
+
 	}
 
 	// 3 - Getters And Setters
 	public List<Contact> getContactosPessoais() {
 		return contactosPessoais;
 	}
+
 
 	public void setContactosPessoais(List<Contact> contactosPessoais) {
 		this.contactosPessoais = contactosPessoais;
@@ -57,6 +66,9 @@ public class ContactosPessoais extends Contact{
 //	
 //	public void loadToFile(String filename) throws IOException, FileNotFoundException {}
 
+	// 4 - Comportamentos
+
+
 	// 5 - Métodos Complementares
-	
+
 }
