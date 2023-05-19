@@ -51,7 +51,7 @@ public class ConvidadosList extends Contact implements ContactInterface {
 	@Override
 	public void convidar(int index) {
 		if (index >= 0 && index < convidados.size()) {
-			Contact contato = convidados.get(index);
+			convidados.get(index);
 		} else {
 			throw new IndexOutOfBoundsException("Invalid index.");
 		}
@@ -60,7 +60,7 @@ public class ConvidadosList extends Contact implements ContactInterface {
 	@Override
 	public void desconvidar(int index) {
 		if (index >= 0 && index < convidados.size()) {
-			Contact contato = convidados.remove(index);
+			convidados.remove(index);
 		} else {
 			throw new IndexOutOfBoundsException("Invalid index.");
 		}
