@@ -3,10 +3,12 @@ package pt.tpsi.festa.contactos.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import pt.brunojesus.contactslib.model.*;
+
 public class ConvidadosList implements ContactInterface {
 
 	// Atributos
-	protected List<Contact> convidados;
+	protected ArrayList<Contact> convidados;
 
 	// Construtores
 
@@ -16,7 +18,7 @@ public class ConvidadosList implements ContactInterface {
 	}
 
 	// CONTRUTOR COM PARAMETROS
-	public ConvidadosList(List<Contact> convidados) {
+	public ConvidadosList(ArrayList<Contact> convidados) {
 		this.convidados = convidados;
 	}
 
@@ -27,7 +29,7 @@ public class ConvidadosList implements ContactInterface {
 
 	// Getters And Setters
 
-	public List<Contact> getConvidadosList() {
+	public ArrayList<Contact> getConvidadosList() {
 		return convidados;
 	}
 
@@ -40,9 +42,8 @@ public class ConvidadosList implements ContactInterface {
 		}
 	}
 
-	@Override
 	public void listarConvidados(ArrayList<Convidados> convidados) {
-		for (ConvidadosList convidado : convidados) {
+		for (Convidados convidado : convidados) {
 			return (convidado.getFirstName() + " " + convidado.getLastName());
 		}
 	}
