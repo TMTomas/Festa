@@ -68,8 +68,8 @@ public class ConvidadosList extends Contact implements ContactInterface {
 		} else {
 			throw new IndexOutOfBoundsException("Índice inválido.");
 		}
-
 		// Métodos Complementares
 
 	}
+
 }
