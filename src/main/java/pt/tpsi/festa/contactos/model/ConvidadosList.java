@@ -1,11 +1,9 @@
 package pt.tpsi.festa.contactos.model;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import pt.brunojesus.contactslib.model.*;
 
-public class ConvidadosList implements ContactInterface {
+public class ConvidadosList extends Contact implements ContactInterface {
 
 	// Atributos
 	protected ArrayList<Contact> convidados;
@@ -24,7 +22,7 @@ public class ConvidadosList implements ContactInterface {
 
 	// Cópia
 	public ConvidadosList(ConvidadosList convidados) {
-		this.convidados = new ArrayList<Contact>(convidados.getConvidados());
+		this.convidados = new ArrayList<Contact>(convidados.getConvidadosList());
 	}
 
 	// Getters And Setters
@@ -36,48 +34,42 @@ public class ConvidadosList implements ContactInterface {
 	// Comportamentos
 
 	@Override
-	public void listarContactos(ArrayList<Contact> contactos) {
+	public ArrayList<String> listarContactos(ArrayList<Contact> contactos) {
+		ArrayList<String> listaContactos = new ArrayList<>();
 		for (Contact contato : contactos) {
-			return (contato.getFirstName() + " " + contato.getLastName());
+			String nomeCompleto = contato.getFirstName() + " " + contato.getLastName();
+			listaContactos.add(nomeCompleto);
 		}
-	}
-
-	public void listarConvidados(ArrayList<Convidados> convidados) {
-		for (Convidados convidado : convidados) {
-			return (convidado.getFirstName() + " " + convidado.getLastName());
-		}
+		return listaContactos;
 	}
 
 	@Override
+	public ArrayList<String> listarConvidados(ArrayList<ConvidadosList> convidados) {
+		ArrayList<String> listaConvidados = new ArrayList<>();
+		for (ConvidadosList convidado : convidados) {
+			String nomeCompleto = convidado.getFirstName() + " " + convidado.getLastName();
+			listaConvidados.add(nomeCompleto);
+		}
+		return listaConvidados;
+	}
+
 	public void convidar(int index) {
-		Contact contato = getConvidados().add(index);
-		// Lógica para convidar o contato
-		// ...
+		if (index >= 0 && index < convidados.size()) {
+			convidados.get(index);
+		} else {
+			throw new IndexOutOfBoundsException("Índice inválido. Não foi possível enviar o convite.");
+		}
 	}
 
 	@Override
 	public void desconvidar(int index) {
-		Contact contato = getConvidados().remove(index);
-		// Lógica para desconvidar o contato
-		// ...
+		if (index >= 0 && index < convidados.size()) {
+			convidados.remove(index);
+		} else {
+			throw new IndexOutOfBoundsException("Índice inválido.");
+		}
+
+		// Métodos Complementares
+
 	}
-
-	// public void convidar(Contact convidado) {
-	// convidados.add(convidado);
-	// }
-	//
-	// public void remover(Contact convidado) {
-	// convidados.remove(convidado);
-	// }
-	//
-	// public List<Contact> listar() {
-	// return convidados;
-	// }
-	//
-	// public boolean verificarConvidado(Contact contato) {
-	// return convidados.contains(contato);
-	// }
-
-	// Métodos Complementares
-
 }
