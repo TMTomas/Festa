@@ -56,6 +56,7 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
                     locations.get(i).getLongitude(), model.getWeather().get(i).getMain() + " "+ model.getWeather().get(i).getDescription(),
                     model.getTemperatura().getTempC(), model.getTemperatura().getMinTempC(),model.getTemperatura().getMaxTempC()));
         }
+        
         return locationList;
     }
     

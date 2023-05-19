@@ -1,14 +1,16 @@
 package pt.tpsi.festa.espaco.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 /**
  * Classe que representa um modelo de dados para informações meteorológicas.
  */
-
 @Data
 public class MetereologiaModel {
 
@@ -16,6 +18,7 @@ public class MetereologiaModel {
 	 /**
      * Lista de informações meteorológicas.
      */
+	
     private List<Weather> weather;
 
     /**
