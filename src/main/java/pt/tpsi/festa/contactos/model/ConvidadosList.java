@@ -1,10 +1,8 @@
 package pt.tpsi.festa.contactos.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import pt.brunojesus.contactslib.model.Contact;
-import pt.brunojesus.contactslib.ContactApi;
 
 public class ConvidadosList extends Contact implements ContactInterface {
 
