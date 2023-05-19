@@ -28,21 +28,6 @@ public class Main {
 		System.out.println(request.pesquisar("CNEMA, Santarem").get(0).getNameLocation());
 		System.out.println(request.selecionar(0));
 
-		/*
-		locations.forEach(location -> {
-			System.out.println("Latitude: " + location.getLatitute());
-			System.out.println("Longitude: " + location.getLongitude());
-			// Cria uma solicitação de metereologia
-			MetereologiaModel model = request.createMetrologiaRequest( location.getLatitute(),location.getLongitude());
-
-			System.out.println(model);
-		});
-
-		 */
-
-
-
-
 	}
 
 }

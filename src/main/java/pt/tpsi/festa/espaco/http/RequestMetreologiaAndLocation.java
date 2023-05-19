@@ -35,6 +35,12 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
         return locationList.get(index);
     }
 
+    /**
+     * this metodo is used to make, the Metrology request that will give the temperature
+     * from the respective place that will be search and the
+     * @param local this is the local that will be search
+     * @return List this is will return a list with all necessary information
+     */
     @Override
     public List<Location> pesquisar(String local) {
         List<OpenStreetMapLocation> locations = null;
