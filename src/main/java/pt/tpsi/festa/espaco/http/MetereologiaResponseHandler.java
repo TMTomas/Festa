@@ -2,13 +2,11 @@ package pt.tpsi.festa.espaco.http;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.hc.core5.http.ClassicHttpResponse;
-import org.apache.hc.core5.http.HttpException;
 import org.apache.hc.core5.http.io.HttpClientResponseHandler;
 import pt.tpsi.festa.espaco.model.MetereologiaModel;
 

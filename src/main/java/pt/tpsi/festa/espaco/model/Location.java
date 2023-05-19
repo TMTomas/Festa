@@ -1,8 +1,5 @@
 package pt.tpsi.festa.espaco.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Location {
    
 	// 1 - atributos

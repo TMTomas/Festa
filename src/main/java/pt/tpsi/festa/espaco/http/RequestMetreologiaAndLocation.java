@@ -6,6 +6,7 @@ import pt.brunojesus.locationsearch.openstreetmap.model.OpenStreetMapLocation;
 import pt.tpsi.festa.espaco.EspacoInterface;
 import pt.tpsi.festa.espaco.model.Location;
 import pt.tpsi.festa.espaco.model.MetereologiaModel;
+import pt.tpsi.festa.execeptions.RequestException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +33,21 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
     // 4 - comportamentos
     @Override
     public Location selecionar(int index) {
+    	if (locationList == null || index > locationList.size() || locationList.isEmpty()) {
+			if (index > locationList.size()) {
+				throw new RequestException("index invalida");
+			}
+			throw new RequestException("a lista não existe");	
+		}
         return locationList.get(index);
     }
+    
+    //MIGUEL VAI IMPLEMENTAR
+//    public Location selecionarNome(String name) {
+//    	for (int i = 0; i < locationList.size(); i++) {
+//			
+//		}
+//    }
 
     /**
      * this metodo is used to make, the Metrology request that will give the temperature
@@ -47,7 +61,7 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
         try {
             locations = requestLocation.search(local);
         } catch (LocationSearchException e) {
-            throw new RuntimeException(e.getMessage());
+            throw new RequestException(e.getMessage());
         }
 
         for(int i = 0 ; i < locations.size(); i++){
