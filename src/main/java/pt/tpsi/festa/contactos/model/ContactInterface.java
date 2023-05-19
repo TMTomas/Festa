@@ -1,21 +1,23 @@
 package pt.tpsi.festa.contactos.model;
 
-import java.util.ArrayList;
+import pt.brunojesus.contactslib.model.Contact;
 
-import pt.brunojesus.contactslib.model.*;
+import java.util.ArrayList;
 
 public interface ContactInterface {
 
-	// lista os contactos
-	public void listarContactos(ArrayList<Contact> Contactos);
+	// Lista os contactos
+	void listarContactos(ArrayList<Contact> contactos);
 
-	// lista e adiciona a um novo arraylist os contactos convidados
-	public void listarConvidados(ArrayList<Convidados> Convidados);
+	// Lista e adiciona a um novo ArrayList os contactos convidados
+	void listarConvidados(ArrayList<ConvidadosList> convidados);
 
-	// convida apartir indice do arraylist
-	public void convidar(int index);
+	// Convida a partir do índice do ArrayList
+	void convidar(int index);
 
-	// desconvida apartir indice do arraylist
-	public void desconvidar(int index);
+	// Desconvida a partir do índice do ArrayList
+	void desconvidar(int index);
 
+	// Verifica se o contacto está convidado
+	boolean verificarConvidado(Contact contato);
 }
