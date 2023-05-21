@@ -27,6 +27,7 @@ public class Location {
     }
 
     // 3 - gets e sets
+    
 	public String getNameLocation() {
         return nameLocation;
     }

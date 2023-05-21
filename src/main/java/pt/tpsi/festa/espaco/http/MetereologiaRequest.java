@@ -11,16 +11,32 @@ import java.io.IOException;
 public class MetereologiaRequest {
 	
 	// 1 - atributos
+	/**
+	 * Atributo do tipo string, que guarda o token que da a acesso a api utilizada na classe
+	 */
 	private final String token = "0bc9afaa68eeaa9997d66aa2404b4b5b";
+	/**
+	 * Atributo do tipo MetereologiaResponseHandler, que instancia a classe
+	 */
 	private final MetereologiaResponseHandler metereologiaResponseHandler;
 
 	// 2 - construtores
+	/**
+	 * Construtor do objeto que faz o request a metereologia
+	 */
 	public MetereologiaRequest() {
 		metereologiaResponseHandler = new MetereologiaResponseHandler();
 	}
 	// 3 - gets e sets
 	
 	// 4 - comportamentos
+	/**
+	 * Este metodo serve para fazer um request, atraves de uma API de metereologia, da cidade escolhida
+	 * o nome da cidade é traduzido em Latitude e Longitude
+	 * @param latitude da cidade
+	 * @param longitude da cidade 
+	 * @return retorno o resultado do pedido, com varios atributos 
+	 */
 	public MetereologiaModel createMetrologiaRequest(String latitude, String longitude) {
 		MetereologiaModel result = null;
 		try{
