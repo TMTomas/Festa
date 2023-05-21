@@ -97,5 +97,5 @@ public class Location {
                 ", temperatureMin=" + temperatureMin +
                 ", temperatureMax=" + temperatureMax +
                 '}';
-    }
+   }
 }

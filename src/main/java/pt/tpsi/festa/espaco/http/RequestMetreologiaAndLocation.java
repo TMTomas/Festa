@@ -42,13 +42,15 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
         return locationList.get(index);
     }
     
-    //MIGUEL VAI IMPLEMENTAR
-//    public Location selecionarNome(String name) {
-//    	for (int i = 0; i < locationList.size(); i++) {
-//			
-//		}
-//    }
-
+	public Location selecionarPorNome(String name) {
+    	for (int i = 0; i < locationList.size(); i++) {
+			if (locationList.get(i).getNameLocation().contains(name)) {
+				return locationList.get(i);
+			}
+		}
+    	throw new RequestException("index invalida");
+    }
+	
     /**
      * this metodo is used to make, the Metrology request that will give the temperature
      * from the respective place that will be search and the
