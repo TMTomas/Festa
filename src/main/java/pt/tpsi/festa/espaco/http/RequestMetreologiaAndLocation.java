@@ -14,14 +14,28 @@ import java.util.List;
 public class RequestMetreologiaAndLocation implements EspacoInterface {
     
 	// 1 - atributos
+	/**
+	 * Um atributo do tipo MetereologiaRequest, que instancia a classe
+	 */
 	MetereologiaRequest requestMetreologia;
+	/**
+	 * Um atributo do tipo OpenStreetMap, que instancia a classe
+	 */
     OpenStreetMap requestLocation;
+    /**
+	 * Um atributo do tipo list, lista criada para guardar os nomes das localizações
+	 */
     List<Location> locationList;
-
+    /**
+	 * Um atributo do tipo Location, que instancia a classe
+	 */
     Location location;
     
     // 2 - construtores
-    
+    /**
+     * Construtor da clase RequestMetereologiaAndLocation e fazer 
+     * seus requests atraves delas e guardar a reposta do que foi pedido
+     */
     public RequestMetreologiaAndLocation() {
         requestMetreologia = new MetereologiaRequest();
         requestLocation = new OpenStreetMap();
@@ -31,6 +45,12 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
     // 3 - gets e sets
     
     // 4 - comportamentos
+    /**
+     * Metódo utilizado para selecionar um local de interese do utilizador
+     * @param int o Int serve para receber um index
+     * @return retorna o correspondente ao index
+     * @throws caso o index seja maior que a lista ou a lista não existir ele está la para informar ao utilizador
+     */
     @Override
     public Location selecionar(int index) {
     	if (locationList == null || index > locationList.size() || locationList.isEmpty()) {
@@ -41,14 +61,21 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
 		}
         return locationList.get(index);
     }
-    
+    /**
+     * Este metódo serve para selecionar um nome, o utilizador preenche com um nome
+     * o metodo pescorre toda a lista a procura de um nome que de match e o retorna
+     * @param name O nome para pesquisar e selecionar na lista
+     * @return o nome que foi dito como parametro
+     * caso não seja encontrato
+     * @throws informar o erro que ocorreu
+     */
 	public Location selecionarPorNome(String name) {
     	for (int i = 0; i < locationList.size(); i++) {
 			if (locationList.get(i).getNameLocation().contains(name)) {
 				return locationList.get(i);
 			}
 		}
-    	throw new RequestException("index invalida");
+    	throw new RequestException("nome não encontrado");
     }
 	
     /**
