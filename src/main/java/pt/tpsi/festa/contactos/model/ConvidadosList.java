@@ -1,7 +1,8 @@
 package pt.tpsi.festa.contactos.model;
 
 import java.util.ArrayList;
-import pt.brunojesus.contactslib.model.*;
+
+import pt.brunojesus.contactslib.model.Contact;
 
 public class ConvidadosList extends Contact implements ContactInterface {
 
@@ -32,15 +33,10 @@ public class ConvidadosList extends Contact implements ContactInterface {
 	}
 
 	// Comportamentos
-
 	@Override
-	public ArrayList<String> listarContactos(ArrayList<Contact> contactos) {
-		ArrayList<String> listaContactos = new ArrayList<>();
-		for (Contact contato : contactos) {
-			String nomeCompleto = contato.getFirstName() + " " + contato.getLastName();
-			listaContactos.add(nomeCompleto);
-		}
-		return listaContactos;
+	public void listarContactos() {
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
@@ -68,7 +64,9 @@ public class ConvidadosList extends Contact implements ContactInterface {
 		} else {
 			throw new IndexOutOfBoundsException("Índice inválido.");
 		}
-		// Métodos Complementares
+
+		
+	// Métodos Complementares
 
 	}
 

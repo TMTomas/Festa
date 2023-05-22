@@ -1,14 +1,11 @@
 package pt.tpsi.festa.contactos.model;
 
-import pt.brunojesus.contactslib.model.Contact;
-
 import java.util.ArrayList;
 
 public interface ContactInterface {
 
-
 	// lista os contactos
-	public ArrayList<String> listarContactos(ArrayList<Contact> Contactos);
+	public void listarContactos();
 
 	// Lista os contactos
 	public ArrayList<String> listarConvidados(ArrayList<ConvidadosList> contactos);
