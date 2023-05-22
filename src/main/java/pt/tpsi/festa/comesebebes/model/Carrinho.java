@@ -16,7 +16,28 @@ public class Carrinho {
 	protected List<Product> carrinho = new ArrayList<Product>();
 
 	// Acessores
-	public String getCarrinho() {
+	public List<Product> getCarrinho() {
+		return carrinho;
+	}
+
+	// Construtor 1 - default
+	public Carrinho() {
+
+	}
+
+	// Construtor 1 - com parametros
+	public Carrinho(List<Product> carrinho) {
+		super();
+		this.carrinho = carrinho;
+	}
+
+	// Construtor 3 - cópia
+	public Carrinho(Carrinho carrinho) {
+		this(carrinho.getCarrinho());
+	}
+
+	// Comportamentos
+	public String consultar() throws ProductFetchException, NoSuchStoreException {
 		Map<String, Long> produtosAgrupados = carrinho.stream()
 				.collect(Collectors.groupingBy(Product::getName, Collectors.counting()));
 
@@ -35,27 +56,7 @@ public class Carrinho {
 		return produtosOrdenados + "\nPreço Total: "
 				+ (Math.round(carrinho.stream().mapToDouble(Product::getCurrentPrice).sum() * 10000.0) / 10000.0)
 				+ "EUR";
-	}
 
-	// Construtor 1 - default
-	public Carrinho() {
-
-	}
-
-	// Construtor 1 - com parametros
-	public Carrinho(List<Product> carrinho) {
-		super();
-		this.carrinho = carrinho;
-	}
-
-	// Construtor 3 - cópia
-//    public Carrinho(Carrinho carrinho) {
-//		this(carrinho.getCarrinho());
-//	}    
-
-	// Comportamentos
-	public void adicionarProduto(Product produto) {
-		carrinho.add(produto);
 	}
 
 	public void adicionar(String nome, int numeroProduto, int quantidade)
@@ -69,7 +70,22 @@ public class Carrinho {
 		}
 	}
 
-	public void remover(int index) {
+	public void alterar(String nome, int numeroProduto, int quantidade)
+			throws NoSuchStoreException, ProductFetchException {
+		ProductSearch productSearch = new ProductSearch();
+		List<Product> produto = productSearch.search(Store.PINGO_DOCE, nome);
+		Map<String, Long> produtosAgrupados = carrinho.stream()
+				.collect(Collectors.groupingBy(Product::getName, Collectors.counting()));
+		long quantidadeAtual = produtosAgrupados.getOrDefault(produto.get(numeroProduto - 1).getName(), 0l);
+
+		if (quantidadeAtual < quantidade) {
+			adicionar(nome, numeroProduto, (int) (quantidade - quantidadeAtual));
+		} else {
+			// COMPLETAR
+		}
+	}
+
+	public void remover(Produto ) //Criar classe produto{
 		carrinho.remove(index);
 	}
 

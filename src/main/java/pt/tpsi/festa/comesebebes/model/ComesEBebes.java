@@ -9,8 +9,8 @@ public class ComesEBebes implements CeBInterface {
 	private ListaDeProdutos listaDeProdutos;
 
 	// ACESSORES
-	public String getCarrinho() {
-		return carrinho.getCarrinho();
+	public Carrinho getCarrinho() {
+		return carrinho;
 	}
 
 	public ListaDeProdutos getListaDeProdutos() {
