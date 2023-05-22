@@ -1,18 +1,14 @@
 package pt.tpsi.festa.espaco;
 
-import pt.tpsi.festa.espaco.model.Location;
-import pt.tpsi.festa.espaco.model.LocationLessDetails;
+import pt.tpsi.festa.espaco.model.LocationPlus;
+import pt.tpsi.festa.espaco.model.LocationPlus;
 
 import java.util.List;
 
 public interface EspacoInterface {
 
-	Location selecionar(int index);
-
-	LocationLessDetails selecionarLess(int index);
-		
+	LocationPlus selecionar(int index);
 	
-	List<Location> pesquisar(String local);
+	List<LocationPlus> pesquisar(String local);
 
-	List<LocationLessDetails> pesquisarLessDetails(String serachExpression);
 }

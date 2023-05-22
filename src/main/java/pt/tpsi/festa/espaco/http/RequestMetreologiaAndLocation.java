@@ -5,7 +5,8 @@ import pt.brunojesus.locationsearch.exception.LocationSearchException;
 import pt.brunojesus.locationsearch.openstreetmap.model.OpenStreetMapLocation;
 import pt.tpsi.festa.espaco.EspacoInterface;
 import pt.tpsi.festa.espaco.model.Location;
-import pt.tpsi.festa.espaco.model.LocationLessDetails;
+import pt.tpsi.festa.espaco.model.LocationPlus;
+import pt.tpsi.festa.espaco.model.LocationPlus;
 import pt.tpsi.festa.espaco.model.MetereologiaModel;
 import pt.tpsi.festa.execeptions.RequestException;
 
@@ -26,17 +27,17 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
     /**
 	 * Um atributo do tipo list, lista criada para guardar os nomes das localizações
 	 */
-    List<Location> locationList;
+    List<LocationPlus> locationList;
     /**
-	 * Um atributo do tipo Location, que instancia a classe
+	 * Um atributo do tipo LocationPlus, que instancia a classe
 	 */
-    Location location;
+    LocationPlus locationPlus;
 
     List<OpenStreetMapLocation> locations = null;
 
     MetereologiaModel model;
 
-    List<LocationLessDetails> lessDetailsList = null;
+    List<Location> lessDetailsList = null;
     // 2 - construtores
     /**
      * Construtor da clase RequestMetereologiaAndLocation e fazer 
@@ -59,7 +60,7 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
      * @throws RequestException o index seja maior que a lista ou a lista não existir ele está la para informar ao utilizador
      */
     @Override
-    public Location selecionar(int index) {
+    public LocationPlus selecionar(int index) {
     	if (locationList == null || index > locationList.size() || locationList.isEmpty()) {
 			if (index > locationList.size()) {
 				throw new RequestException("index invalida");
@@ -69,16 +70,6 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
         return locationList.get(index);
     }
 
-    @Override
-    public LocationLessDetails selecionarLess(int index) {
-        if (lessDetailsList == null || index > lessDetailsList.size() || lessDetailsList.isEmpty()) {
-            if (index > lessDetailsList.size()) {
-                throw new RequestException("index invalida");
-            }
-            throw new RequestException("a lista não existe");
-        }
-        return lessDetailsList.get(index);
-    }
 
     /**
      * Este metódo serve para selecionar um nome, o utilizador preenche com um nome
@@ -88,7 +79,7 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
      * caso não seja encontrato
      * @throws RequestException informar o erro que ocorreu
      */
-	public Location selecionarPorNome(String name) {
+	public LocationPlus selecionarPorNome(String name) {
     	for (int i = 0; i < locationList.size(); i++) {
 			if (locationList.get(i).getNameLocation().contains(name)) {
 				return locationList.get(i);
@@ -104,7 +95,7 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
      * @return List this is will return a list with all necessary information
      */
     @Override
-    public List<Location> pesquisar(String local) {
+    public List<LocationPlus> pesquisar(String local) {
         try {
             locations = requestLocation.search(local);
         } catch (LocationSearchException e) {
@@ -113,28 +104,12 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
 
         for(int i = 0 ; i < locations.size(); i++){
             model = requestMetreologia.createMetrologiaRequest(locations.get(i).getLatitute(), locations.get(i).getLongitude());
-            locationList.add(new Location(locations.get(i).getDisplayName(),locations.get(i).getLatitute(),
+            locationList.add(new LocationPlus(locations.get(i).getDisplayName(),locations.get(i).getLatitute(),
                     locations.get(i).getLongitude(), model.getWeather().get(i).getMain() + " "+ model.getWeather().get(i).getDescription(),
                     model.getTemperatura().getTempC(), model.getTemperatura().getMinTempC(),model.getTemperatura().getMaxTempC(), locations.get(i).getType(),
                     locations.get(i).getIcon()));
         }
         return locationList;
-    }
-
-    @Override
-    public List<LocationLessDetails> pesquisarLessDetails(String searchExpression) {
-        try {
-            locations = requestLocation.search(searchExpression);
-        } catch (LocationSearchException e) {
-            throw new RequestException(e.getMessage());
-        }
-
-        for(int i = 0 ; i < locations.size(); i++){
-            model = requestMetreologia.createMetrologiaRequest(locations.get(i).getLatitute(), locations.get(i).getLongitude());
-            lessDetailsList.add(new LocationLessDetails(locations.get(i).getDisplayName(),locations.get(i).getLatitute(),
-                    locations.get(i).getLongitude(), model.getWeather().get(i).getMain() + " "+ model.getWeather().get(i).getDescription()));
-        }
-        return lessDetailsList;
     }
 
 
