@@ -47,9 +47,9 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
     // 4 - comportamentos
     /**
      * Metódo utilizado para selecionar um local de interese do utilizador
-     * @param int o Int serve para receber um index
+     * @param index o Int serve para receber um index
      * @return retorna o correspondente ao index
-     * @throws caso o index seja maior que a lista ou a lista não existir ele está la para informar ao utilizador
+     * @throws RequestException o index seja maior que a lista ou a lista não existir ele está la para informar ao utilizador
      */
     @Override
     public Location selecionar(int index) {
@@ -67,7 +67,7 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
      * @param name O nome para pesquisar e selecionar na lista
      * @return o nome que foi dito como parametro
      * caso não seja encontrato
-     * @throws informar o erro que ocorreu
+     * @throws RequestException informar o erro que ocorreu
      */
 	public Location selecionarPorNome(String name) {
     	for (int i = 0; i < locationList.size(); i++) {
