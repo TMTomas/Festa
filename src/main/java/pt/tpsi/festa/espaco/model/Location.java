@@ -32,56 +32,28 @@ public class Location {
         return nameLocation;
     }
 
-    public void setNameLocation(String nameLocation) {
-        this.nameLocation = nameLocation;
-    }
-
     public String getWeather() {
         return weather;
-    }
-
-    public void setWeather(String weather) {
-        this.weather = weather;
     }
 
     public double getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(double temperature) {
-        this.temperature = temperature;
-    }
-
     public double getTemperatureMin() {
         return temperatureMin;
-    }
-
-    public void setTemperatureMin(double temperatureMin) {
-        this.temperatureMin = temperatureMin;
     }
 
     public double getTemperatureMax() {
         return temperatureMax;
     }
 
-    public void setTemperatureMax(double temperatureMax) {
-        this.temperatureMax = temperatureMax;
-    }
-
     public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
     public String getLongitude() {
         return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
     }
     
     // 4 - comportamentos
