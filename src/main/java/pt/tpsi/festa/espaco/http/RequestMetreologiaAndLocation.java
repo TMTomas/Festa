@@ -5,6 +5,7 @@ import pt.brunojesus.locationsearch.exception.LocationSearchException;
 import pt.brunojesus.locationsearch.openstreetmap.model.OpenStreetMapLocation;
 import pt.tpsi.festa.espaco.EspacoInterface;
 import pt.tpsi.festa.espaco.model.Location;
+import pt.tpsi.festa.espaco.model.LocationLessDetails;
 import pt.tpsi.festa.espaco.model.MetereologiaModel;
 import pt.tpsi.festa.execeptions.RequestException;
 
@@ -30,7 +31,12 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
 	 * Um atributo do tipo Location, que instancia a classe
 	 */
     Location location;
-    
+
+    List<OpenStreetMapLocation> locations = null;
+
+    MetereologiaModel model;
+
+    List<LocationLessDetails> lessDetailsList = null;
     // 2 - construtores
     /**
      * Construtor da clase RequestMetereologiaAndLocation e fazer 
@@ -40,6 +46,7 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
         requestMetreologia = new MetereologiaRequest();
         requestLocation = new OpenStreetMap();
         locationList = new ArrayList<>();
+        lessDetailsList = new ArrayList<>();
     }
     
     // 3 - gets e sets
@@ -61,6 +68,18 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
 		}
         return locationList.get(index);
     }
+
+    @Override
+    public LocationLessDetails selecionarLess(int index) {
+        if (lessDetailsList == null || index > lessDetailsList.size() || lessDetailsList.isEmpty()) {
+            if (index > lessDetailsList.size()) {
+                throw new RequestException("index invalida");
+            }
+            throw new RequestException("a lista não existe");
+        }
+        return lessDetailsList.get(index);
+    }
+
     /**
      * Este metódo serve para selecionar um nome, o utilizador preenche com um nome
      * o metodo pescorre toda a lista a procura de um nome que de match e o retorna
@@ -86,7 +105,6 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
      */
     @Override
     public List<Location> pesquisar(String local) {
-        List<OpenStreetMapLocation> locations = null;
         try {
             locations = requestLocation.search(local);
         } catch (LocationSearchException e) {
@@ -94,14 +112,31 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
         }
 
         for(int i = 0 ; i < locations.size(); i++){
-            MetereologiaModel model = requestMetreologia.createMetrologiaRequest(locations.get(i).getLatitute(), locations.get(i).getLongitude());
+            model = requestMetreologia.createMetrologiaRequest(locations.get(i).getLatitute(), locations.get(i).getLongitude());
             locationList.add(new Location(locations.get(i).getDisplayName(),locations.get(i).getLatitute(),
                     locations.get(i).getLongitude(), model.getWeather().get(i).getMain() + " "+ model.getWeather().get(i).getDescription(),
-                    model.getTemperatura().getTempC(), model.getTemperatura().getMinTempC(),model.getTemperatura().getMaxTempC()));
+                    model.getTemperatura().getTempC(), model.getTemperatura().getMinTempC(),model.getTemperatura().getMaxTempC(), locations.get(i).getType(),
+                    locations.get(i).getIcon()));
         }
-        
         return locationList;
     }
-    
+
+    @Override
+    public List<LocationLessDetails> pesquisarLessDetails(String searchExpression) {
+        try {
+            locations = requestLocation.search(searchExpression);
+        } catch (LocationSearchException e) {
+            throw new RequestException(e.getMessage());
+        }
+
+        for(int i = 0 ; i < locations.size(); i++){
+            model = requestMetreologia.createMetrologiaRequest(locations.get(i).getLatitute(), locations.get(i).getLongitude());
+            lessDetailsList.add(new LocationLessDetails(locations.get(i).getDisplayName(),locations.get(i).getLatitute(),
+                    locations.get(i).getLongitude(), model.getWeather().get(i).getMain() + " "+ model.getWeather().get(i).getDescription()));
+        }
+        return lessDetailsList;
+    }
+
+
     // 5- metodos complementares
 }

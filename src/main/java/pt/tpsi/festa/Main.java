@@ -25,9 +25,13 @@ public class Main {
 	public static void main(String[] args) throws LocationSearchException {
 		 // Cria uma instância de MetereologiaRequest
 		RequestMetreologiaAndLocation request = new RequestMetreologiaAndLocation();
+		//Pesquisa com quase todos os Detalhes
 		System.out.println(request.pesquisar("CNEMA, Santarem").get(0).getNameLocation());
 		System.out.println(request.selecionar(0));
 
+		//Pesquisa so com os detalhes basicos
+		System.out.println(request.pesquisarLessDetails("CNEMA, Santarem").get(0).getNameLocation());
+		System.out.println(request.selecionarLess(0));
 	}
 
 }
