@@ -1,14 +1,9 @@
-package pt.tpsi.festa.contactos;
+package pt.tpsi.festa.contactos.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
-import java.util.ArrayList;
-
-import pt.brunojesus.contactslib.model.Contact;
-=======
 import pt.brunojesus.contactslib.model.*;
->>>>>>> 9f1a02d9a9174b36d65b134243bdf833e24cd1db
 
 public class ConvidadosList extends Contact implements ContactInterface {
 
@@ -19,7 +14,7 @@ public class ConvidadosList extends Contact implements ContactInterface {
 
 	// CONTRUTOR DEFAULT
 	public ConvidadosList() {
-		this.lista = new List<Contact>();
+		this.lista = new ArrayList<Contact>();
 	}
 
 	// CONTRUTOR COM PARAMETROS
@@ -29,7 +24,7 @@ public class ConvidadosList extends Contact implements ContactInterface {
 
 	// Cópia
 	public ConvidadosList(ConvidadosList lista) {
-		this.lista = new List<Contact>(lista.getConvidadosList());
+		this.lista = new ArrayList<Contact>(lista.getConvidadosList());
 	}
 
 	// Getters And Setters
@@ -39,33 +34,17 @@ public class ConvidadosList extends Contact implements ContactInterface {
 	}
 
 	// Comportamentos
-	@Override
-<<<<<<< HEAD
-	public void listarContactos() {
-		// TODO Auto-generated method stub
 
-=======
-	public List<String> listarContactos(List<Contact> contactos) {
-		List<String> listaContactos = new List<>();
+	@Override
+	public List<String> listar(List<Contact> contactos) {
+		List<String> listaContactos = new ArrayList<>();
 		for (Contact contato : contactos) {
 			String nomeCompleto = contato.getFirstName() + " " + contato.getLastName();
 			listaContactos.add(nomeCompleto);
 		}
 		return listaContactos;
->>>>>>> 9f1a02d9a9174b36d65b134243bdf833e24cd1db
 	}
 
-	@Override
-	public List<String> listarConvidados(List<ConvidadosList> lista) {
-		List<String> listaConvidados = new List<>();
-		for (ConvidadosList lista : lista) {
-			String nomeCompleto = lista.getFirstName() + " " + lista.getLastName();
-			listaConvidados.add(nomeCompleto);
-		}
-		return listaConvidados;
-	}
-
-	@Override
 	public void convidar(int index) {
 		if (index >= 0 && index < lista.size()) {
 			lista.get(index);
@@ -74,16 +53,13 @@ public class ConvidadosList extends Contact implements ContactInterface {
 		}
 	}
 
-	@Override
 	public void desconvidar(int index) {
 		if (index >= 0 && index < lista.size()) {
 			lista.remove(index);
 		} else {
 			throw new IndexOutOfBoundsException("Índice inválido.");
 		}
-
-		
-	// Métodos Complementares
+		// Métodos Complementares
 
 	}
 
