@@ -10,7 +10,8 @@ public interface CeBInterface {
 	public void adicionar(String nome, int numeroProduto, int quantidade)
 			throws NoSuchStoreException, ProductFetchException;
 
-	public void alterar(int quantidade);
+	public void alterar(String nome, int numeroProduto, int quantidade)
+			throws NoSuchStoreException, ProductFetchException;
 
 	public void remover(int index);
 }

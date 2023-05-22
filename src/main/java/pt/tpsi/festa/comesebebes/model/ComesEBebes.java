@@ -44,9 +44,9 @@ public class ComesEBebes implements CeBInterface {
 	}
 
 	@Override
-	public void alterar(int quantidade) {
-		// TODO Auto-generated method stub
-
+	public void alterar(String nome, int numeroProduto, int quantidade)
+			throws NoSuchStoreException, ProductFetchException {
+		carrinho.alterar(nome, numeroProduto, quantidade);
 	}
 
 	@Override

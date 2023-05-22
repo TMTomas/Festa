@@ -85,7 +85,7 @@ public class Carrinho {
 		}
 	}
 
-	public void remover(Produto ) //Criar classe produto{
+	public void remover(int index) {
 		carrinho.remove(index);
 	}
 
