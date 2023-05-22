@@ -1,24 +1,13 @@
-package pt.tpsi.festa.contactos;
+package pt.tpsi.festa.contactos.model;
 
-<<<<<<< HEAD
-=======
 import pt.brunojesus.contactslib.model.Contact;
 
-
->>>>>>> 9f1a02d9a9174b36d65b134243bdf833e24cd1db
-import java.util.ArrayList;
+import java.util.List;
 
 public interface ContactInterface {
 
 	// lista os contactos
-<<<<<<< HEAD
-	public void listarContactos();
-=======
-	public List<String> listarContactos(List<Contact> Contactos);
->>>>>>> 9f1a02d9a9174b36d65b134243bdf833e24cd1db
-
-	// Lista os contactos
-	public List<String> listarConvidados(List<ConvidadosList> contactos);
+	List<String> listar(List<Contact> contactos);
 
 	// Convida a partir do índice do ArrayList
 	public void convidar(int index);
