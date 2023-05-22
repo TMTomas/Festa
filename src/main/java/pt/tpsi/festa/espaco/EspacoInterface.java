@@ -1,7 +1,6 @@
 package pt.tpsi.festa.espaco;
 
 import pt.tpsi.festa.espaco.model.LocationPlus;
-import pt.tpsi.festa.espaco.model.LocationPlus;
 
 import java.util.List;
 

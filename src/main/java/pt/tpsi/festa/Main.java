@@ -1,13 +1,7 @@
 package pt.tpsi.festa;
 
-import pt.brunojesus.locationsearch.api.OpenStreetMap;
 import pt.brunojesus.locationsearch.exception.LocationSearchException;
-import pt.brunojesus.locationsearch.openstreetmap.model.OpenStreetMapLocation;
-import pt.tpsi.festa.espaco.http.MetereologiaRequest;
 import pt.tpsi.festa.espaco.http.RequestMetreologiaAndLocation;
-import pt.tpsi.festa.espaco.model.MetereologiaModel;
-
-import java.util.List;
 
 /**
  * Classe principal que demonstra o uso da classe MetereologiaRequest e

@@ -6,7 +6,6 @@ import pt.brunojesus.locationsearch.openstreetmap.model.OpenStreetMapLocation;
 import pt.tpsi.festa.espaco.EspacoInterface;
 import pt.tpsi.festa.espaco.model.Location;
 import pt.tpsi.festa.espaco.model.LocationPlus;
-import pt.tpsi.festa.espaco.model.LocationPlus;
 import pt.tpsi.festa.espaco.model.MetereologiaModel;
 import pt.tpsi.festa.execeptions.RequestException;
 
