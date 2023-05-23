@@ -8,6 +8,7 @@ import pt.tpsi.festa.espaco.model.Location;
 import pt.tpsi.festa.espaco.model.LocationPlus;
 import pt.tpsi.festa.espaco.model.MetereologiaModel;
 import pt.tpsi.festa.execeptions.RequestException;
+import pt.tpsi.festa.execeptions.LocationListException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,9 +66,9 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
     public Location selecionar(int index) {
     	if (locationList == null || index > locationList.size() || locationList.isEmpty()) {
 			if (index > locationList.size()) {
-				throw new RequestException("index invalida");
+				throw new LocationListException("index invalida");
 			}
-			throw new RequestException("a lista não existe");	
+			throw new LocationListException("a lista não existe");
 		}
         return locationList.get(index);
     }
@@ -87,7 +88,7 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
 				return locationList.get(i);
 			}
 		}
-    	throw new RequestException("nome não encontrado");
+    	throw new LocationListException("nome não encontrado");
     }
 	
     /**
