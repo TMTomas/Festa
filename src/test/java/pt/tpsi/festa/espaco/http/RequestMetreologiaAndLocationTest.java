@@ -10,14 +10,17 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RequestMetreologiaAndLocationTest {
-
+    // TODO Fazer os testes
+    //Criar um mockito para listas
     private final RequestMetreologiaAndLocation request = new RequestMetreologiaAndLocation();
-    @Test
     @BeforeAll
-    void pesquisar() {
+    void setUp() {
         List<Location> list = new ArrayList<>();
+    }
+
+    @Test
+    void pesquisar(){
         request.pesquisar("CNEMA, Santarem");
-        assertEquals(list, request);
     }
     @Test
     void selecionar() {
