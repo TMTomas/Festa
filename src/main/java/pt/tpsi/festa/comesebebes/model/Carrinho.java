@@ -1,9 +1,8 @@
 package pt.tpsi.festa.comesebebes.model;
 
-import java.util.Map;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
-import pt.brunojesus.productsearch.exception.NoSuchStoreException;
-import pt.brunojesus.productsearch.exception.ProductFetchException;
 
 public class Carrinho {
 	// ATRIBUTOS
@@ -30,52 +29,67 @@ public class Carrinho {
 	}
 
 	// COMPORTAMENTOS
-	public String consultar() throws ProductFetchException, NoSuchStoreException {
-		Map<String, Long> produtosAgrupados = carrinho.getLista().stream()
-				.collect(Collectors.groupingBy(Produto::getNome, Collectors.counting()));
+	public String consultar() {
+		List<Produto> lista = carrinho.getLista();
 
-		Map<String, Double> precosPorProduto = carrinho.getLista().stream()
-				.collect(Collectors.groupingBy(Produto::getNome, Collectors.summingDouble(Produto::getPreco)));
+		String produtosOrdenados = lista.stream().map(produto -> {
+			String nomeProduto = produto.getNome();
+			String marca = produto.getMarca();
+			double precoUnitario = produto.getPreco();
+			int quantidade = produto.getQuantidade();
+			return "Item: " + nomeProduto + "\n Marca: " + marca + "\n Preço Unitário: "
+					+ (Math.round(precoUnitario * 10000.0) / 10000.0) + "EUR" + "\n Quantidade: " + quantidade
+					+ "\n--------------------------------";
+		}).collect(Collectors.joining("\n"));
 
-		String produtosOrdenados = produtosAgrupados.entrySet().stream()
-				.sorted(Map.Entry.<String, Long>comparingByValue().reversed()).map(entry -> {
-					String nomeProduto = entry.getKey();
-					long quantidade = entry.getValue();
-					double precoUnitario = precosPorProduto.get(nomeProduto) / quantidade;
-					return "Item: " + nomeProduto + "\n Quantidade: " + quantidade + "\n Preço: "
-							+ (Math.round(precoUnitario * 10000.0) / 10000.0) + "EUR\n--------------------------------";
-				}).collect(Collectors.joining("\n"));
+		double precoTotal = lista.stream().mapToDouble(produto -> produto.getPreco() * produto.getQuantidade()).sum();
 
-		return produtosOrdenados + "\nPreço Total: "
-				+ (Math.round(carrinho.getLista().stream().mapToDouble(Produto::getPreco).sum() * 10000.0) / 10000.0)
-				+ "EUR";
+		return produtosOrdenados + "\nPreço Total: " + (Math.round(precoTotal * 10000.0) / 10000.0) + "EUR";
 	}
 
-	public void adicionar(String nome, int numeroProduto, int quantidade)
-			throws NoSuchStoreException, ProductFetchException {
-		if (numeroProduto >= 0 && numeroProduto <= carrinho.getProdutos(nome).size()) {
-			for (int i = 0; i < quantidade; i++) {
-				carrinho.getLista().add(carrinho.getProdutos(nome).get(numeroProduto));
+	public void adicionar(String nome, int indiceProduto, int quantidade) {
+		List<Produto> lista = carrinho.getLista();
+
+		if (indiceProduto >= 0 && indiceProduto < carrinho.getApiProdutos().buscarProdutos(nome).size()) {
+			List<Produto> produtos = carrinho.getApiProdutos().buscarProdutos(nome);
+			Produto produtoSelecionado = produtos.get(indiceProduto);
+
+			Optional<Produto> produtoExistente = lista.stream()
+					.filter(produto -> produto.getNome().equals(produtoSelecionado.getNome())).findFirst();
+
+			produtoExistente.ifPresentOrElse(produto -> produto.setQuantidade(produto.getQuantidade() + quantidade),
+					() -> {
+						Produto novoProduto = new Produto(produtoSelecionado);
+						novoProduto.setQuantidade(quantidade);
+						lista.add(novoProduto);
+					});
+		}
+	}
+
+	public void alterar(int indiceNoCarrinho, int quantidade) {
+		List<Produto> lista = carrinho.getLista();
+
+		if (indiceNoCarrinho >= 0 && indiceNoCarrinho < lista.size()) {
+			Produto produto = lista.get(indiceNoCarrinho);
+			produto.setQuantidade(quantidade);
+			if (quantidade <= 0) {
+				lista.remove(produto);
 			}
 		}
 	}
 
-	public void alterar(String nome, int numeroProduto, int quantidade)
-			throws NoSuchStoreException, ProductFetchException {
-		Map<String, Long> produtosAgrupados = carrinho.getLista().stream()
-				.collect(Collectors.groupingBy(Produto::getNome, Collectors.counting()));
-		long quantidadeAtual = produtosAgrupados.getOrDefault(carrinho.getProdutos(nome).get(numeroProduto).getNome(),
-				0L);
-
-		if (quantidadeAtual < quantidade) {
-			adicionar(nome, numeroProduto, (int) (quantidade - quantidadeAtual));
-		} else {
-			// COMPLETAR
-		}
-	}
-
 	public void remover(int index) {
-		carrinho.getLista().remove(index);
+		List<Produto> lista = carrinho.getLista();
+
+		if (index >= 0 && index < lista.size()) {
+			Produto produto = lista.get(index);
+
+			if (produto.getQuantidade() > 1) {
+				produto.setQuantidade(produto.getQuantidade() - 1);
+			} else {
+				lista.remove(index);
+			}
+		}
 	}
 
 	// MÉTODOS COMPLEMENTARES
@@ -83,5 +97,4 @@ public class Carrinho {
 	public String toString() {
 		return "Carrinho [carrinho=" + carrinho + "]";
 	}
-
 }

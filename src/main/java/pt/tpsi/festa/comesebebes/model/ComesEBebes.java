@@ -1,8 +1,5 @@
 package pt.tpsi.festa.comesebebes.model;
 
-import pt.brunojesus.productsearch.exception.NoSuchStoreException;
-import pt.brunojesus.productsearch.exception.ProductFetchException;
-
 public class ComesEBebes implements CeBInterface {
 	// ATRIBUTOS
 	private Carrinho carrinho;
@@ -18,7 +15,7 @@ public class ComesEBebes implements CeBInterface {
 	}
 
 	// CONSTRUTOR 1 - default
-	public ComesEBebes() throws NoSuchStoreException, ProductFetchException {
+	public ComesEBebes() {
 		this.carrinho = new Carrinho();
 		this.listaDeProdutos = new ListaDeProdutos();
 	}
@@ -31,22 +28,20 @@ public class ComesEBebes implements CeBInterface {
 
 	// COMPORTAMENTOS
 	@Override
-	public String consultar(String produto) throws ProductFetchException, NoSuchStoreException {
+	public String consultar(String produto) {
 		return listaDeProdutos.consultar(produto);
 
 	}
 
 	@Override
-	public void adicionar(String nome, int numeroProduto, int quantidade)
-			throws NoSuchStoreException, ProductFetchException {
-		carrinho.adicionar(nome, numeroProduto, quantidade);
+	public void adicionar(String nome, int indiceProduto, int quantidade) {
+		carrinho.adicionar(nome, indiceProduto, quantidade);
 
 	}
 
 	@Override
-	public void alterar(String nome, int numeroProduto, int quantidade)
-			throws NoSuchStoreException, ProductFetchException {
-		carrinho.alterar(nome, numeroProduto, quantidade);
+	public void alterar(int indiceNoCarrinho, int quantidade) {
+		carrinho.alterar(indiceNoCarrinho, quantidade);
 	}
 
 	@Override

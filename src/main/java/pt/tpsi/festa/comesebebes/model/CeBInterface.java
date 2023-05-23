@@ -1,17 +1,12 @@
 package pt.tpsi.festa.comesebebes.model;
 
-import pt.brunojesus.productsearch.exception.NoSuchStoreException;
-import pt.brunojesus.productsearch.exception.ProductFetchException;
-
 public interface CeBInterface {
 
-	public String consultar(String produto) throws ProductFetchException, NoSuchStoreException;
+	public String consultar(String produto);
 
-	public void adicionar(String nome, int numeroProduto, int quantidade)
-			throws NoSuchStoreException, ProductFetchException;
+	public void adicionar(String nome, int indiceProduto, int quantidade);
 
-	public void alterar(String nome, int numeroProduto, int quantidade)
-			throws NoSuchStoreException, ProductFetchException;
+	public void alterar(int indiceNoCarrinho, int quantidade);
 
 	public void remover(int index);
 }
