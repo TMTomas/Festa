@@ -26,7 +26,7 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
     /**
 	 * Um atributo do tipo list, lista criada para guardar os nomes das localizações
 	 */
-    List<LocationPlus> locationList;
+    List<Location> locationList;
     /**
 	 * Um atributo do tipo LocationPlus, que instancia a classe
 	 */
@@ -35,8 +35,6 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
     List<OpenStreetMapLocation> locations = null;
 
     MetereologiaModel model;
-
-    List<Location> lessDetailsList = null;
     // 2 - construtores
     /**
      * Construtor da clase RequestMetereologiaAndLocation e fazer 
@@ -46,20 +44,25 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
         requestMetreologia = new MetereologiaRequest();
         requestLocation = new OpenStreetMap();
         locationList = new ArrayList<>();
-        lessDetailsList = new ArrayList<>();
     }
     
     // 3 - gets e sets
-    
+
+
+    public List<Location> getLocationList() {
+        return locationList;
+    }
+
     // 4 - comportamentos
     /**
      * Metódo utilizado para selecionar um local de interese do utilizador
+     *
      * @param index o Int serve para receber um index
      * @return retorna o correspondente ao index
      * @throws RequestException o index seja maior que a lista ou a lista não existir ele está la para informar ao utilizador
      */
     @Override
-    public LocationPlus selecionar(int index) {
+    public Location selecionar(int index) {
     	if (locationList == null || index > locationList.size() || locationList.isEmpty()) {
 			if (index > locationList.size()) {
 				throw new RequestException("index invalida");
@@ -78,7 +81,7 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
      * caso não seja encontrato
      * @throws RequestException informar o erro que ocorreu
      */
-	public LocationPlus selecionarPorNome(String name) {
+	public Location selecionarPorNome(String name) {
     	for (int i = 0; i < locationList.size(); i++) {
 			if (locationList.get(i).getNameLocation().contains(name)) {
 				return locationList.get(i);
@@ -94,7 +97,7 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
      * @return List this is will return a list with all necessary information
      */
     @Override
-    public List<LocationPlus> pesquisar(String local) {
+    public List<Location> pesquisar(String local) {
         try {
             locations = requestLocation.search(local);
         } catch (LocationSearchException e) {
@@ -107,6 +110,8 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
                     locations.get(i).getLongitude(), model.getWeather().get(i).getMain() + " "+ model.getWeather().get(i).getDescription(),
                     model.getTemperatura().getTempC(), model.getTemperatura().getMinTempC(),model.getTemperatura().getMaxTempC(), locations.get(i).getType(),
                     locations.get(i).getIcon()));
+            locationList.add(new Location(locations.get(i).getDisplayName(),locations.get(i).getLatitute(),
+                    locations.get(i).getLongitude(), model.getWeather().get(i).getMain() + " "+ model.getWeather().get(i).getDescription()));
         }
         return locationList;
     }
