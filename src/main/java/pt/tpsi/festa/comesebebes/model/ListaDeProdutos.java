@@ -10,84 +10,70 @@ import pt.brunojesus.productsearch.exception.ProductFetchException;
 
 public class ListaDeProdutos {
 	// ATRIBUTOS
-	protected ArrayList<Product> baseDeDados;
-	protected int atual;
+	protected List<Produto> lista;
 
 	// ACESSORES
-	public ArrayList<Product> getBaseDeDados() {
-		return baseDeDados;
+	public List<Produto> getLista() {
+		return lista;
 	}
 
-	public int getAtual() {
-		return atual;
+	public List<Produto> getLista(String nomeProduto) throws NoSuchStoreException, ProductFetchException {
+		lista.addAll(getProdutos(nomeProduto));
+		return lista;
 	}
 
 	// CONSTRUTOR 1 - default
 	public ListaDeProdutos() {
-		baseDeDados = new ArrayList<>();
+		lista = new ArrayList<>();
 	}
 
 	// CONSTRUTOR 2 - com parâmetros
-	public ListaDeProdutos(ArrayList<Product> baseDeDados, int atual) {
+	public ListaDeProdutos(List<Produto> lista) {
 		super();
-		this.baseDeDados = baseDeDados;
-		this.atual = atual;
+		this.lista = lista;
+	}
+
+	// CONSTRUTOR 3 - cópia
+	public ListaDeProdutos(ListaDeProdutos lista) {
+		this(lista.getLista());
 	}
 
 	// COMPORTAMENTOS
 	public String consultar(String nome) throws ProductFetchException, NoSuchStoreException {
-		ProductSearch productSearch = new ProductSearch();
-		List<Product> produtos = productSearch.search(Store.PINGO_DOCE, nome);
-
-		baseDeDados.addAll(produtos);
+		lista.addAll(getProdutos(nome));
 
 		String resultado = "";
-		for (int i = 0; i < 50 && i < produtos.size(); i++) {
-			Product produto = produtos.get(i);
-			resultado += "Produto " + (i + 1) + ":\n";
-			resultado += "Nome: " + produto.getName() + "\n";
-			resultado += "Preço: " + produto.getCurrentPrice() + produto.getCurrency() + "\n";
+		for (int i = 0; i < getProdutos(nome).size(); i++) {
+			Produto produto = getProdutos(nome).get(i);
+			resultado += "Índice " + (i) + ":\n";
+			resultado += "Nome: " + produto.getNome() + "\n";
+			resultado += "Preço: " + produto.getPreco() + "EUR" + "\n";
+			resultado += "Preço: " + produto.getMarca() + "\n";
 			resultado += "--------------------------------\n";
 		}
 
 		return resultado;
 	}
 
-	public void recuar() {
-		if (atual > 0) {
-			atual--;
+	public Produto pesquisarProduto(int index) {
+		return lista.get(index);
+	}
+
+	protected List<Produto> getProdutos(String nome) throws NoSuchStoreException, ProductFetchException {
+		// Converter objetos da classe Product da API para objetos da classe Produto
+		ProductSearch productSearch = new ProductSearch();
+		List<Product> apiProdutos = productSearch.search(Store.PINGO_DOCE, nome);
+		List<Produto> produtos = new ArrayList<>();
+		for (Product apiProduto : apiProdutos) {
+			Produto produto = new Produto(apiProduto.getName(), apiProduto.getCurrentPrice(), apiProduto.getBrand());
+			produtos.add(produto);
 		}
-	}
-
-	public void avancar() {
-		if (atual < baseDeDados.size() - 1) {
-			atual++;
-		}
-	}
-
-	public void fim() {
-		atual = baseDeDados.size() - 1;
-	}
-
-	public void inicio() {
-		atual = 0;
-	}
-
-	public Product pesquisarChave(String nome, int numero) {
-		this.atual = numero;
-		return baseDeDados.get(numero);
-
-	}
-
-	public int pesquisarChave(Product produto) {
-		this.atual = baseDeDados.indexOf(produto);
-		return baseDeDados.indexOf(produto);
-
+		return produtos;
 	}
 
 	// MÉTODOS COMPLEMENTARES
 	@Override
 	public String toString() {
-		return "ListaDeProdutos [baseDeDados=" + baseDeDados + "]";
+		return "ListaDeProdutos [lista=" + lista + "]";
 	}
 }

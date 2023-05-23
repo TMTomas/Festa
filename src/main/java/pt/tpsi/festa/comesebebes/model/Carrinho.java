@@ -1,48 +1,41 @@
 package pt.tpsi.festa.comesebebes.model;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import pt.brunojesus.productsearch.api.ProductSearch;
-import pt.brunojesus.productsearch.api.model.Product;
-import pt.brunojesus.productsearch.api.model.Store;
 import pt.brunojesus.productsearch.exception.NoSuchStoreException;
 import pt.brunojesus.productsearch.exception.ProductFetchException;
 
 public class Carrinho {
-	// Atributos
-	protected List<Product> carrinho = new ArrayList<Product>();
+	// ATRIBUTOS
+	protected ListaDeProdutos carrinho = new ListaDeProdutos();
 
-	// Acessores
-	public List<Product> getCarrinho() {
+	// ACESSORES
+	public ListaDeProdutos getCarrinho() {
 		return carrinho;
 	}
 
-	// Construtor 1 - default
+	// CONSTRUTOR 1 - default
 	public Carrinho() {
 
 	}
 
-	// Construtor 1 - com parametros
-	public Carrinho(List<Product> carrinho) {
-		super();
+	// CONSTRUTOR 2 - com parametros
+	public Carrinho(ListaDeProdutos carrinho) {
 		this.carrinho = carrinho;
 	}
 
-	// Construtor 3 - cópia
+	// CONSTRUTOR 3 - cópia
 	public Carrinho(Carrinho carrinho) {
 		this(carrinho.getCarrinho());
 	}
 
-	// Comportamentos
+	// COMPORTAMENTOS
 	public String consultar() throws ProductFetchException, NoSuchStoreException {
-		Map<String, Long> produtosAgrupados = carrinho.stream()
-				.collect(Collectors.groupingBy(Product::getName, Collectors.counting()));
+		Map<String, Long> produtosAgrupados = carrinho.getLista().stream()
+				.collect(Collectors.groupingBy(Produto::getNome, Collectors.counting()));
 
-		Map<String, Double> precosPorProduto = carrinho.stream()
-				.collect(Collectors.groupingBy(Product::getName, Collectors.summingDouble(Product::getCurrentPrice)));
+		Map<String, Double> precosPorProduto = carrinho.getLista().stream()
+				.collect(Collectors.groupingBy(Produto::getNome, Collectors.summingDouble(Produto::getPreco)));
 
 		String produtosOrdenados = produtosAgrupados.entrySet().stream()
 				.sorted(Map.Entry.<String, Long>comparingByValue().reversed()).map(entry -> {
@@ -54,29 +47,25 @@ public class Carrinho {
 				}).collect(Collectors.joining("\n"));
 
 		return produtosOrdenados + "\nPreço Total: "
-				+ (Math.round(carrinho.stream().mapToDouble(Product::getCurrentPrice).sum() * 10000.0) / 10000.0)
+				+ (Math.round(carrinho.getLista().stream().mapToDouble(Produto::getPreco).sum() * 10000.0) / 10000.0)
 				+ "EUR";
-
 	}
 
 	public void adicionar(String nome, int numeroProduto, int quantidade)
 			throws NoSuchStoreException, ProductFetchException {
-		ProductSearch productSearch = new ProductSearch();
-		List<Product> produtos = productSearch.search(Store.PINGO_DOCE, nome);
-		if (numeroProduto >= 1 && numeroProduto <= produtos.size()) {
+		if (numeroProduto >= 0 && numeroProduto <= carrinho.getProdutos(nome).size()) {
 			for (int i = 0; i < quantidade; i++) {
-				carrinho.add(produtos.get(numeroProduto - 1));
+				carrinho.getLista().add(carrinho.getProdutos(nome).get(numeroProduto));
 			}
 		}
 	}
 
 	public void alterar(String nome, int numeroProduto, int quantidade)
 			throws NoSuchStoreException, ProductFetchException {
-		ProductSearch productSearch = new ProductSearch();
-		List<Product> produto = productSearch.search(Store.PINGO_DOCE, nome);
-		Map<String, Long> produtosAgrupados = carrinho.stream()
-				.collect(Collectors.groupingBy(Product::getName, Collectors.counting()));
-		long quantidadeAtual = produtosAgrupados.getOrDefault(produto.get(numeroProduto - 1).getName(), 0l);
+		Map<String, Long> produtosAgrupados = carrinho.getLista().stream()
+				.collect(Collectors.groupingBy(Produto::getNome, Collectors.counting()));
+		long quantidadeAtual = produtosAgrupados.getOrDefault(carrinho.getProdutos(nome).get(numeroProduto).getNome(),
+				0L);
 
 		if (quantidadeAtual < quantidade) {
 			adicionar(nome, numeroProduto, (int) (quantidade - quantidadeAtual));
@@ -86,10 +75,10 @@ public class Carrinho {
 	}
 
 	public void remover(int index) {
-		carrinho.remove(index);
+		carrinho.getLista().remove(index);
 	}
 
-	// Métodos Complementares
+	// MÉTODOS COMPLEMENTARES
 	@Override
 	public String toString() {
 		return "Carrinho [carrinho=" + carrinho + "]";
