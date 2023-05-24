@@ -10,7 +10,7 @@ public interface ContactInterface {
 	List<String> listar(List<Contact> contactos);
 
 	// Convida a partir do índice do ArrayList
-	public void convidar(int index, List<Contact> contacts);
+	public void convidar(int index, List<Contact> contactos);
 
 	// Desconvida a partir do índice do ArrayList
 	public void desconvidar(int index);
