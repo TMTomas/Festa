@@ -16,7 +16,7 @@ public class Main {
 		final ContactApi contactApi = new ContactApi();
 
 		long start = System.currentTimeMillis();
-		List<Contact> l1 = contactApi.generateContacts(10);
+		List<Contact> l1 = contactApi.generateContacts(4);
 		long finish = System.currentTimeMillis();
 		long timeElapsed = finish - start;
 

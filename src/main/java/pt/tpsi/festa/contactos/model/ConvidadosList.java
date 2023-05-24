@@ -40,7 +40,7 @@ public class ConvidadosList extends Contact implements ContactInterface {
 		List<String> listaContactos = new ArrayList<>();
 		for (Contact contato : contactos) {
 			String nomeCompleto = contato.getFirstName() + " " + contato.getLastName();
-			listaContactos.add(nomeCompleto);
+			listaContactos.add(nomeCompleto + " - Telemovel: " + contato.getPhoneNumber());
 		}
 		return listaContactos;
 	}
@@ -50,7 +50,7 @@ public class ConvidadosList extends Contact implements ContactInterface {
 		List<String> listaContactos = new ArrayList<>();
 		for (Contact contato : lista) {
 			String nomeCompleto = contato.getFirstName() + " " + contato.getLastName();
-			listaContactos.add(nomeCompleto);
+			listaContactos.add(nomeCompleto + " - Telemovel: " + contato.getPhoneNumber());
 		}
 		return listaContactos;
 	}
