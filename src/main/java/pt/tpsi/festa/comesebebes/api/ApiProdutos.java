@@ -7,28 +7,44 @@ import pt.brunojesus.productsearch.api.model.Product;
 import pt.brunojesus.productsearch.api.model.Store;
 import pt.brunojesus.productsearch.exception.NoSuchStoreException;
 import pt.brunojesus.productsearch.exception.ProductFetchException;
+import pt.tpsi.festa.comesebebes.model.Carrinho;
+import pt.tpsi.festa.comesebebes.model.ListaDeProdutos;
 import pt.tpsi.festa.comesebebes.model.Produto;
 
+/**
+ * API utilizada no projeto que busca produtos.
+ * 
+ * @see <a href="https://mercadao.pt/store/pingo-doce">Loja</a>
+ * @see ListaDeProdutos
+ * @see Carrinho
+ */
 public class ApiProdutos {
-    private ProductSearch productSearch;
+	private ProductSearch productSearch;
 
-    public ApiProdutos() {
-        productSearch = new ProductSearch();
-    }
+	public ApiProdutos() {
+		productSearch = new ProductSearch();
+	}
 
-    public List<Produto> buscarProdutos(String nome) {
-        List<Produto> produtos = new ArrayList<>();
-        try {
-            List<Product> apiProdutos = productSearch.search(Store.PINGO_DOCE, nome);
-            for (Product apiProduto : apiProdutos) {
-                Produto produto = new Produto(apiProduto.getName(), apiProduto.getCurrentPrice(), apiProduto.getBrand(), 0);
-                produtos.add(produto);
-            }
-        } catch (NoSuchStoreException | ProductFetchException e) {
-            // Trate a exceção aqui (exemplo: log, mensagem de erro, etc.)
-            e.printStackTrace();
-        } 
-        return produtos;
-    }
+	/**
+	 * Busca produtos utilizando a API e os converte para a classe {@link Produto}.
+	 * 
+	 * @param nome o nome do produto a ser buscado.
+	 * @return a lista de produtos convertidos para a classe Produto.
+	 * @throws NoSuchStoreException  caso a loja especificada não exista.
+	 * @throws ProductFetchException caso ocorra um erro ao buscar os produtos.
+	 */
+	public List<Produto> buscarProdutos(String nome) {
+		List<Produto> produtos = new ArrayList<>();
+		try {
+			List<Product> apiProdutos = productSearch.search(Store.PINGO_DOCE, nome);
+			for (Product apiProduto : apiProdutos) {
+				Produto produto = new Produto(apiProduto.getName(), apiProduto.getCurrentPrice(), apiProduto.getBrand(),
+						0);
+				produtos.add(produto);
+			}
+		} catch (NoSuchStoreException | ProductFetchException e) {
+			e.printStackTrace();
+		}
+		return produtos;
+	}
 }
-

@@ -4,43 +4,82 @@ import java.util.ArrayList;
 import java.util.List;
 import pt.tpsi.festa.comesebebes.api.ApiProdutos;
 
+/**
+ * Representa uma lista de produtos. Essa classe possui uma lista de produtos e
+ * uma API para buscar produtos
+ * 
+ * @see ApiProdutos
+ * @see Carrinho
+ */
 public class ListaDeProdutos {
 	// ATRIBUTOS
-	protected List<Produto> lista;
-	protected ApiProdutos apiProdutos;
+	protected List<Produto> lista = new ArrayList<>();
+	protected ApiProdutos apiProdutos = new ApiProdutos();
 
 	// ACESSORES
+
+	/**
+	 * Obtém a lista de produtos disponiveis através da API.
+	 *
+	 * @return a lista de produtos.
+	 */
 	public List<Produto> getLista() {
 		return lista;
 	}
 
+	/**
+	 * Obtém a lista de produtos através do nome.
+	 *
+	 * @param nome o nome dos produtos a serem buscados.
+	 * @return a lista de produtos filtrada pelo nome.
+	 */
 	public List<Produto> getLista(String nome) {
 		lista.addAll(apiProdutos.buscarProdutos(nome));
 		return lista;
 	}
 
+	/**
+	 * Getter para a API de produtos.
+	 *
+	 * @return A API de produtos.
+	 */
 	public ApiProdutos getApiProdutos() {
 		return apiProdutos;
 	}
 
-	// CONSTRUTOR 1 - default
+	/**
+	 * Construtor padrão da ListaDeProdutos
+	 */
 	public ListaDeProdutos() {
-		lista = new ArrayList<>();
-		apiProdutos = new ApiProdutos();
+
 	}
 
-	// CONSTRUTOR 2 - com parâmetros
+	/**
+	 * Construtor da ListaDeProdutos com uma lista pré-existente.
+	 * 
+	 * @param lista a lista de produtos pré-existente
+	 */
 	public ListaDeProdutos(List<Produto> lista) {
 		this.lista = lista;
-		apiProdutos = new ApiProdutos();
 	}
 
-	// CONSTRUTOR 3 - cópia
+	/**
+	 * Construtor de cópia da ListaDeProdutos.
+	 *
+	 * @param lista a lista de produtos a ser copiada.
+	 */
 	public ListaDeProdutos(ListaDeProdutos lista) {
 		this(lista.getLista());
 	}
 
 	// COMPORTAMENTOS
+
+	/**
+	 * Consulta a lista de produtos com base em um nome.
+	 *
+	 * @param nome o nome dos produtos a serem consultados.
+	 * @return uma string que contém informações dos produtos consultados.
+	 */
 	public String consultar(String nome) {
 		List<Produto> produtos = apiProdutos.buscarProdutos(nome);
 		lista.addAll(produtos);
@@ -58,11 +97,13 @@ public class ListaDeProdutos {
 		return resultado;
 	}
 
-	public Produto pesquisarProduto(int index) {
-		return lista.get(index);
-	}
-
 	// MÉTODOS COMPLEMENTARES
+
+	/**
+	 * Retorna uma representação em String da ListaDeProdutos.
+	 *
+	 * @return uma string representando a ListaDeProdutos.
+	 */
 	@Override
 	public String toString() {
 		return "ListaDeProdutos [lista=" + lista + "]";
