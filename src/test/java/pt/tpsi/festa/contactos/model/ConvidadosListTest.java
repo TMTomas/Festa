@@ -18,9 +18,9 @@ class ConvidadosListTest {
 	@BeforeEach
 	void setUp() {
 		contacts = new ArrayList<>();
-		contacts.add(new Contact().setFirstName("Rui").setLastName("Martins").setPhoneNumber("941992313"));
-		contacts.add(new Contact().setFirstName("Ana").setLastName("Patricio").setPhoneNumber("966612123"));
-		contacts.add(new Contact().setFirstName("Alice").setLastName("Marques").setPhoneNumber("911322443"));
+		contacts.add(new Contact().setFirstName("Rui").setLastName("Martins").setPhoneNumber("911111111"));
+		contacts.add(new Contact().setFirstName("Ana").setLastName("Patricio").setPhoneNumber("922222222"));
+		contacts.add(new Contact().setFirstName("Alice").setLastName("Marques").setPhoneNumber("933333333"));
 
 		convidadosList = new ConvidadosList(contacts);
 	}
@@ -29,53 +29,45 @@ class ConvidadosListTest {
 	void listarTodosContactos() {
 		List<String> listaContactos = convidadosList.listar(contacts);
 		assertEquals(3, listaContactos.size());
-		assertTrue(listaContactos.contains("Rui Martins - Telemovel: 941992313"));
-		assertTrue(listaContactos.contains("Ana Patricio - Telemovel: 966612123"));
-		assertTrue(listaContactos.contains("Alice Marques - Telemovel: 911322443"));
+		assertTrue(listaContactos.contains("Rui Martins - Telemovel: 911111111"));
+		assertTrue(listaContactos.contains("Ana Patricio - Telemovel: 922222222"));
+		assertTrue(listaContactos.contains("Alice Marques - Telemovel: 933333333"));
 	}
 
 	@Test
 	void listarConvidados() {
 		List<String> listaContactos = convidadosList.listar();
 		assertEquals(3, listaContactos.size());
-		assertTrue(listaContactos.contains("Rui Martins - Telemovel: 941992313"));
-		assertTrue(listaContactos.contains("Ana Patricio - Telemovel: 966612123"));
-		assertTrue(listaContactos.contains("Alice Marques - Telemovel: 911322443"));
+		assertTrue(listaContactos.contains("Rui Martins - Telemovel: 911111111 - Observação: null"));
+		assertTrue(listaContactos.contains("Ana Patricio - Telemovel: 922222222 - Observação: null"));
+		assertTrue(listaContactos.contains("Alice Marques - Telemovel: 933333333 - Observação: null"));
 	}
 
 	@Test
 	void convidar() {
 		List<Contact> newContacts = new ArrayList<>();
-		newContacts.add(new Contact().setFirstName("Hugo").setLastName("Oliveira").setPhoneNumber("933222111"));
-		newContacts.add(new Contact().setFirstName("Sara").setLastName("Lima").setPhoneNumber("922223344"));
+		newContacts.add(new Contact().setFirstName("Hugo").setLastName("Oliveira").setPhoneNumber("944444444"));
+		newContacts.add(new Contact().setFirstName("Sara").setLastName("Lima").setPhoneNumber("955555555"));
 
-		convidadosList.convidar(0, newContacts);
-		convidadosList.convidar(1, newContacts);
+		convidadosList.convidar(0, newContacts, "alcoolico");
+		convidadosList.convidar(1, newContacts, "dancarino");
 
 		List<String> listaContactos = convidadosList.listar();
 		assertEquals(5, listaContactos.size());
-		assertTrue(listaContactos.contains("Rui Martins - Telemovel: 941992313"));
-		assertTrue(listaContactos.contains("Ana Patricio - Telemovel: 966612123"));
-		assertTrue(listaContactos.contains("Alice Marques - Telemovel: 911322443"));
-		assertTrue(listaContactos.contains("Hugo Oliveira - Telemovel: 933222111"));
-		assertTrue(listaContactos.contains("Sara Lima - Telemovel: 922223344"));
+		assertTrue(listaContactos.contains("Rui Martins - Telemovel: 911111111 - Observação: null"));
+		assertTrue(listaContactos.contains("Ana Patricio - Telemovel: 922222222 - Observação: null"));
+		assertTrue(listaContactos.contains("Alice Marques - Telemovel: 933333333 - Observação: null"));
+		assertTrue(listaContactos.contains("Hugo Oliveira - Telemovel: 944444444 - Observação: alcoolico"));
+		assertTrue(listaContactos.contains("Sara Lima - Telemovel: 955555555 - Observação: dancarino"));
 	}
 
 	@Test
 	void convidarIndexInvalido() {
 		List<Contact> newContacts = new ArrayList<>();
-		newContacts.add(new Contact().setFirstName("Hugo").setLastName("Oliveira").setPhoneNumber("933222111"));
-		newContacts.add(new Contact().setFirstName("Sara").setLastName("Lima").setPhoneNumber("922223344"));
+		newContacts.add(new Contact().setFirstName("Hugo").setLastName("Oliveira"));
+		newContacts.add(new Contact().setFirstName("Sara").setLastName("Lima"));
 
-		assertThrows(IndexOutOfBoundsException.class, () -> convidadosList.convidar(5, newContacts));
-	}
-
-	@Test
-	void convidarJaEstaNaLista() {
-		List<Contact> newContacts = new ArrayList<>();
-		newContacts.add(new Contact().setFirstName("Rui").setLastName("Martins").setPhoneNumber("941992313"));
-
-		assertThrows(IllegalArgumentException.class, () -> convidadosList.convidar(0, newContacts));
+		assertThrows(IndexOutOfBoundsException.class, () -> convidadosList.convidar(5, newContacts, "teste1"));
 	}
 
 	@Test
@@ -84,9 +76,9 @@ class ConvidadosListTest {
 
 		List<String> listaContactos = convidadosList.listar();
 		assertEquals(2, listaContactos.size());
-		assertTrue(listaContactos.contains("Rui Martins - Telemovel: 941992313"));
-		assertFalse(listaContactos.contains("Ana Patricio - Telemovel: 966612123"));
-		assertTrue(listaContactos.contains("Alice Marques - Telemovel: 911322443"));
+		assertTrue(listaContactos.contains("Rui Martins - Telemovel: 911111111 - Observação: null"));
+		assertFalse(listaContactos.contains("Ana Patricio - Telemovel: 922222222 - Observação: null"));
+		assertTrue(listaContactos.contains("Alice Marques - Telemovel: 933333333 - Observação: null"));
 	}
 
 	@Test
@@ -99,5 +91,4 @@ class ConvidadosListTest {
 		String expected = "ConvidadosList [lista=" + contacts + "]";
 		assertEquals(expected, convidadosList.toString());
 	}
-
 }

@@ -22,8 +22,8 @@ public class Main {
 
 		ConvidadosList listaConvidados = new ConvidadosList();
 
-		listaConvidados.convidar(0, l1);
-		listaConvidados.convidar(1, l1);
+		listaConvidados.convidar(0, l1, "nao gosta de vodka");
+		listaConvidados.convidar(1, l1, "nao bebe alcool");
 
 		System.out.println("LISTA COMPLETA DE CONTACTOS:");
 		System.out.println(listaConvidados.listar(l1));

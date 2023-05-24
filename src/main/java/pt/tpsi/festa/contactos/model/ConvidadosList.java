@@ -1,97 +1,70 @@
 package pt.tpsi.festa.contactos.model;
 
+import pt.brunojesus.contactslib.model.Contact;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import pt.brunojesus.contactslib.model.*;
+public class ConvidadosList {
+	private List<Contact> lista;
+	private ObservacoesContacto observacoes;
 
-public class ConvidadosList extends Contact implements ContactInterface {
-
-	// Atributos
-	protected List<Contact> lista;
-
-	// Construtores
-
-	// CONTRUTOR DEFAULT
 	public ConvidadosList() {
-		this.lista = new ArrayList<Contact>();
+		this.lista = new ArrayList<>();
+		this.observacoes = new ObservacoesContacto();
 	}
-
-	// CONTRUTOR COM PARAMETROS
 
 	public ConvidadosList(List<Contact> lista) {
-		super();
 		this.lista = lista;
-
+		this.observacoes = new ObservacoesContacto();
 	}
 
-	// Getters And Setters
-
-	public List<Contact> getConvidadosList() {
-		return lista;
-	}
-
-	// Comportamentos
-
-	// Listar que lista a lista toda dos contactos gerados com nome e ultimo nome
-
-	@Override
-	public List<String> listar(List<Contact> contactos) {
-		List<String> listaContactos = new ArrayList<>();
-		for (Contact contato : contactos) {
-			String nomeCompleto = contato.getFirstName() + " " + contato.getLastName();
-			listaContactos.add(nomeCompleto + " - Telemovel: " + contato.getPhoneNumber());
-		}
-		return listaContactos;
-	}
-
-	// Listar que lista apenas os nomes guardados que foram convidados
-	public List<String> listar() {
-		List<String> listaContactos = new ArrayList<>();
-		for (Contact contato : lista) {
-			String nomeCompleto = contato.getFirstName() + " " + contato.getLastName();
-			listaContactos.add(nomeCompleto + " - Telemovel: " + contato.getPhoneNumber());
-		}
-		return listaContactos;
-	}
-
-	public void convidar(int index, List<Contact> contacts) {
+	public void convidar(int index, List<Contact> contacts, String observacao) {
 		if (index >= 0 && index < contacts.size()) {
 			Contact contact = contacts.get(index);
-			String nomeCompleto = contact.getFirstName() + " " + contact.getLastName();
-			if (!contemNome(nomeCompleto)) {
+			if (!lista.contains(contact)) {
 				lista.add(contact);
+				observacoes.adicionarObservacao(contact, observacao);
 			} else {
-				throw new IllegalArgumentException("O contato já está na lista de convidados.");
+				throw new IllegalArgumentException("O contacto já está na lista de convidados.");
 			}
 		} else {
 			throw new IndexOutOfBoundsException("Índice inválido. Não foi possível enviar o convite.");
 		}
 	}
 
-	public boolean contemNome(String nomeCompleto) {
-		for (Contact contato : lista) {
-			String nomeContato = contato.getFirstName() + " " + contato.getLastName();
-			if (nomeCompleto.equals(nomeContato)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
 	public void desconvidar(int index) {
 		if (index >= 0 && index < lista.size()) {
+			Contact contact = lista.get(index);
 			lista.remove(index);
+			observacoes.removerObservacao(contact);
 		} else {
 			throw new IndexOutOfBoundsException("Índice inválido.");
 		}
 	}
 
-	// Métodos Complementares
+	public List<String> listar(List<Contact> contactos) {
+		List<String> listaContactos = new ArrayList<>();
+		for (Contact contacto : contactos) {
+			String nomeCompleto = contacto.getFirstName() + " " + contacto.getLastName();
+			listaContactos.add(nomeCompleto + " - Telemovel: " + contacto.getPhoneNumber());
+		}
+		return listaContactos;
+	}
+
+	public List<String> listar() {
+		List<String> listaContactos = new ArrayList<>();
+		for (Contact contacto : lista) {
+			String nomeCompleto = contacto.getFirstName() + " " + contacto.getLastName();
+			String observacao = observacoes.getObservacao(contacto);
+			listaContactos
+					.add(nomeCompleto + " - Telemovel: " + contacto.getPhoneNumber() + " - Observação: " + observacao);
+		}
+		return listaContactos;
+	}
 
 	@Override
 	public String toString() {
 		return "ConvidadosList [lista=" + lista + "]";
 	}
-
 }
