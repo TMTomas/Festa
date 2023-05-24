@@ -69,7 +69,7 @@ public class ConvidadosList extends Contact implements ContactInterface {
 		}
 	}
 
-	private boolean contemNome(String nomeCompleto) {
+	public boolean contemNome(String nomeCompleto) {
 		for (Contact contato : lista) {
 			String nomeContato = contato.getFirstName() + " " + contato.getLastName();
 			if (nomeCompleto.equals(nomeContato)) {

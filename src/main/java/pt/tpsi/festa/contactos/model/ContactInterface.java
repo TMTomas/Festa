@@ -15,4 +15,6 @@ public interface ContactInterface {
 	// Desconvida a partir do índice do ArrayList
 	public void desconvidar(int index);
 
+	public boolean contemNome(String nomeCompleto);
+
 }
