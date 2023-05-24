@@ -58,7 +58,8 @@ public class ConvidadosList extends Contact implements ContactInterface {
 	public void convidar(int index, List<Contact> contacts) {
 		if (index >= 0 && index < contacts.size()) {
 			Contact contact = contacts.get(index);
-			if (!lista.contains(contact)) {
+			String nomeCompleto = contact.getFirstName() + " " + contact.getLastName();
+			if (!contemNome(nomeCompleto)) {
 				lista.add(contact);
 			} else {
 				throw new IllegalArgumentException("O contato já está na lista de convidados.");
@@ -66,6 +67,16 @@ public class ConvidadosList extends Contact implements ContactInterface {
 		} else {
 			throw new IndexOutOfBoundsException("Índice inválido. Não foi possível enviar o convite.");
 		}
+	}
+
+	private boolean contemNome(String nomeCompleto) {
+		for (Contact contato : lista) {
+			String nomeContato = contato.getFirstName() + " " + contato.getLastName();
+			if (nomeCompleto.equals(nomeContato)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public void desconvidar(int index) {
