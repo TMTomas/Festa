@@ -27,8 +27,12 @@
 			<version>5.3.1</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>pt.brunojesus</groupId>
+			<artifactId>report-lib</artifactId>
+			<version>1.0</version>
+		</dependency>
 	</dependencies>
-	
 	<repositories>
 		<repository>
 			<id>mvn-brunojesus</id>
