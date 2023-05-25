@@ -20,12 +20,20 @@ import pt.tpsi.festa.comesebebes.model.Produto2;
  * @see Carrinho
  */
 public class ApiProdutos {
-	private ProductSearch productSearch;
+	// ATRIBUTOS
+	protected ProductSearch productSearch;
 
+	// ACESSORES
+	public ProductSearch getProductSearch() {
+		return productSearch;
+	}
+	// CONSTRUTOR
 	public ApiProdutos() {
 		productSearch = new ProductSearch();
 	}
 
+	// COMPORTAMENTOS
+	
 	/**
 	 * Busca produtos utilizando a API e os converte para a classe {@link Produto}.
 	 * 
@@ -39,13 +47,19 @@ public class ApiProdutos {
 		try {
 			List<Product> apiProdutos = productSearch.search(Store.PINGO_DOCE, nome);
 			for (Product apiProduto : apiProdutos) {
-				Produto produto = new Produto2(apiProduto.getName(), apiProduto.getCurrentPrice(), apiProduto.getBrand(),
-						0, apiProduto.getUrl(), apiProduto.getImage(), apiProduto.isAvailable());
-				produtos.add((Produto2)produto);
+				Produto produto = new Produto2(apiProduto.getName(), apiProduto.getCurrentPrice(),
+						apiProduto.getBrand(), 0, apiProduto.getUrl(), apiProduto.getImage(), apiProduto.isAvailable());
+				produtos.add((Produto2) produto);
 			}
 		} catch (NoSuchStoreException | ProductFetchException e) {
 			e.printStackTrace();
 		}
 		return produtos;
+	}
+
+	// MÉTODOS COMPLEMENTARES
+	@Override
+	public String toString() {
+		return "ApiProdutos [productSearch=" + productSearch + "]";
 	}
 }

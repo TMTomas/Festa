@@ -80,8 +80,10 @@ public class Carrinho {
 					+ atributosExtras + "\n--------------------------------\n";
 		}).collect(Collectors.joining("\n"));
 
-		double precoTotal = (Math.round(listaDeCompras.stream().mapToDouble(produto -> produto.getPreco() * produto.getQuantidade())
-				.sum() * 10000.0) / 10000.0);
+		double precoTotal = (Math.round(
+				listaDeCompras.stream().mapToDouble(produto -> produto.getPreco() * produto.getQuantidade()).sum()
+						* 10000.0)
+				/ 10000.0);
 
 		return produtosOrdenados + "\nPreço Total: " + precoTotal + "EUR";
 	}
@@ -92,8 +94,8 @@ public class Carrinho {
 	 * @param nome          o nome do produto
 	 * @param indiceProduto o índice do produto na lista de produtos da API
 	 * @param quantidade    a quantidade a ser adicionada ao carrinho
-	 * @param isProduto2    define se a classe do produto é Produto2(mais detalhado)
-	 *                      ou Produto
+	 * @param isProduto2    define se deve se adicionar um produto da classe
+	 *                      Produto2 (mais detalhado) ou Produto
 	 */
 	public void adicionar(String nome, int indiceProduto, int quantidade, boolean isProduto2) {
 
