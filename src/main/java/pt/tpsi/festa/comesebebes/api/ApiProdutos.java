@@ -27,13 +27,14 @@ public class ApiProdutos {
 	public ProductSearch getProductSearch() {
 		return productSearch;
 	}
+
 	// CONSTRUTOR
 	public ApiProdutos() {
 		productSearch = new ProductSearch();
 	}
 
 	// COMPORTAMENTOS
-	
+
 	/**
 	 * Busca produtos utilizando a API e os converte para a classe {@link Produto}.
 	 * 

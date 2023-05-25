@@ -104,7 +104,8 @@ public class Carrinho {
 			Produto produtoSelecionado = produtos.get(indiceProduto);
 
 			Optional<Produto> produtoExistente = listaDeCompras.stream()
-					.filter(produto -> produto.getNome().equals(produtoSelecionado.getNome()) && isProduto2)
+					.filter(produto -> produto.getNome().equals(produtoSelecionado.getNome()) &&
+					        (produto instanceof Produto2) == isProduto2)
 					.findFirst();
 
 			produtoExistente.ifPresentOrElse(produto -> produto.setQuantidade(produto.getQuantidade() + quantidade),
