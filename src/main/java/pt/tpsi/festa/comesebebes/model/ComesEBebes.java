@@ -34,8 +34,8 @@ public class ComesEBebes implements CeBInterface {
 	}
 
 	@Override
-	public void adicionar(String nome, int indiceProduto, int quantidade) {
-		carrinho.adicionar(nome, indiceProduto, quantidade);
+	public void adicionar(String nome, int indiceProduto, int quantidade, boolean isProduto2) {
+		carrinho.adicionar(nome, indiceProduto, quantidade, isProduto2);
 
 	}
 

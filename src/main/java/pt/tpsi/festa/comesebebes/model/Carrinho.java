@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import pt.tpsi.festa.comesebebes.api.ApiProdutos;
+
 /**
  * Classe que representa um carrinho de compras que possui produtos
  * 
@@ -11,17 +13,18 @@ import java.util.stream.Collectors;
  */
 public class Carrinho {
 	// ATRIBUTOS
-	protected ListaDeProdutos carrinho = new ListaDeProdutos();
+	protected List<Produto> listaDeCompras = new ListaDeProdutos().getLista();
+	protected ApiProdutos apiProdutos = new ApiProdutos();
 
 	// ACESSORES
 
 	/**
-	 * Obtém o carrinho de compras.
+	 * Obtém a lista de compras.
 	 *
-	 * @return O carrinho de compras.
+	 * @return A lista de compras.
 	 */
-	public ListaDeProdutos getCarrinho() {
-		return carrinho;
+	public List<Produto> getListaDeCompras() {
+		return listaDeCompras;
 	}
 
 	/**
@@ -36,8 +39,8 @@ public class Carrinho {
 	 *
 	 * @param carrinho a lista de produtos a ser atribuída ao carrinho
 	 */
-	public Carrinho(ListaDeProdutos carrinho) {
-		this.carrinho = carrinho;
+	public Carrinho(List<Produto> listaDeCompras) {
+		this.listaDeCompras = listaDeCompras;
 	}
 
 	/**
@@ -46,7 +49,7 @@ public class Carrinho {
 	 * @param carrinho o carrinho de compras a ser copiado
 	 */
 	public Carrinho(Carrinho carrinho) {
-		this(carrinho.getCarrinho());
+		this(carrinho.getListaDeCompras());
 	}
 
 	// COMPORTAMENTOS
@@ -58,21 +61,29 @@ public class Carrinho {
 	 *         total
 	 */
 	public String consultar() {
-		List<Produto> lista = carrinho.getLista();
-
-		String produtosOrdenados = lista.stream().map(produto -> {
+		String produtosOrdenados = listaDeCompras.stream().map(produto -> {
 			String nomeProduto = produto.getNome();
 			String marca = produto.getMarca();
 			double precoUnitario = produto.getPreco();
 			int quantidade = produto.getQuantidade();
+			String atributosExtras = "";
+
+			if (produto instanceof Produto2) {
+				Produto2 produto2 = (Produto2) produto;
+				String url = produto2.getUrl();
+				String imagem = produto2.getImagem();
+				atributosExtras = "\n Url: " + url + "\n Imagem: " + imagem;
+			}
+
 			return "Item: " + nomeProduto + "\n Marca: " + marca + "\n Preço Unitário: "
 					+ (Math.round(precoUnitario * 10000.0) / 10000.0) + "EUR" + "\n Quantidade: " + quantidade
-					+ "\n--------------------------------";
+					+ atributosExtras + "\n--------------------------------\n";
 		}).collect(Collectors.joining("\n"));
 
-		double precoTotal = lista.stream().mapToDouble(produto -> produto.getPreco() * produto.getQuantidade()).sum();
+		double precoTotal = (Math.round(listaDeCompras.stream().mapToDouble(produto -> produto.getPreco() * produto.getQuantidade())
+				.sum() * 10000.0) / 10000.0);
 
-		return produtosOrdenados + "\nPreço Total: " + (Math.round(precoTotal * 10000.0) / 10000.0) + "EUR";
+		return produtosOrdenados + "\nPreço Total: " + precoTotal + "EUR";
 	}
 
 	/**
@@ -81,22 +92,29 @@ public class Carrinho {
 	 * @param nome          o nome do produto
 	 * @param indiceProduto o índice do produto na lista de produtos da API
 	 * @param quantidade    a quantidade a ser adicionada ao carrinho
+	 * @param isProduto2    define se a classe do produto é Produto2(mais detalhado)
+	 *                      ou Produto
 	 */
-	public void adicionar(String nome, int indiceProduto, int quantidade) {
-		List<Produto> lista = carrinho.getLista();
+	public void adicionar(String nome, int indiceProduto, int quantidade, boolean isProduto2) {
 
-		if (indiceProduto >= 0 && indiceProduto < carrinho.getApiProdutos().buscarProdutos(nome).size()) {
-			List<Produto> produtos = carrinho.getApiProdutos().buscarProdutos(nome);
+		if (indiceProduto >= 0 && indiceProduto < apiProdutos.buscarProdutos(nome).size()) {
+			List<Produto> produtos = apiProdutos.buscarProdutos(nome);
 			Produto produtoSelecionado = produtos.get(indiceProduto);
 
-			Optional<Produto> produtoExistente = lista.stream()
-					.filter(produto -> produto.getNome().equals(produtoSelecionado.getNome())).findFirst();
+			Optional<Produto> produtoExistente = listaDeCompras.stream()
+					.filter(produto -> produto.getNome().equals(produtoSelecionado.getNome()) && isProduto2)
+					.findFirst();
 
 			produtoExistente.ifPresentOrElse(produto -> produto.setQuantidade(produto.getQuantidade() + quantidade),
 					() -> {
-						Produto novoProduto = new Produto(produtoSelecionado);
+						Produto novoProduto;
+						if (isProduto2) {
+							novoProduto = new Produto2((Produto2) produtoSelecionado);
+						} else {
+							novoProduto = new Produto(produtoSelecionado);
+						}
 						novoProduto.setQuantidade(quantidade);
-						lista.add(novoProduto);
+						listaDeCompras.add(novoProduto);
 					});
 		}
 	}
@@ -108,13 +126,11 @@ public class Carrinho {
 	 * @param quantidade       a nova quantidade do produto
 	 */
 	public void alterar(int indiceNoCarrinho, int quantidade) {
-		List<Produto> lista = carrinho.getLista();
-
-		if (indiceNoCarrinho >= 0 && indiceNoCarrinho < lista.size()) {
-			Produto produto = lista.get(indiceNoCarrinho);
+		if (indiceNoCarrinho >= 0 && indiceNoCarrinho < listaDeCompras.size()) {
+			Produto produto = listaDeCompras.get(indiceNoCarrinho);
 			produto.setQuantidade(quantidade);
 			if (quantidade <= 0) {
-				lista.remove(produto);
+				listaDeCompras.remove(produto);
 			}
 		}
 	}
@@ -126,15 +142,13 @@ public class Carrinho {
 	 * @param index o índice do produto no carrinho
 	 */
 	public void remover(int index) {
-		List<Produto> lista = carrinho.getLista();
-
-		if (index >= 0 && index < lista.size()) {
-			Produto produto = lista.get(index);
+		if (index >= 0 && index < listaDeCompras.size()) {
+			Produto produto = listaDeCompras.get(index);
 
 			if (produto.getQuantidade() > 1) {
 				produto.setQuantidade(produto.getQuantidade() - 1);
 			} else {
-				lista.remove(index);
+				listaDeCompras.remove(index);
 			}
 		}
 	}
@@ -148,6 +162,6 @@ public class Carrinho {
 	 */
 	@Override
 	public String toString() {
-		return "Carrinho [carrinho=" + carrinho + "]";
+		return "Carrinho [carrinho=" + listaDeCompras + "]";
 	}
 }

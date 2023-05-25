@@ -28,17 +28,6 @@ public class ListaDeProdutos {
 	}
 
 	/**
-	 * Obtém a lista de produtos através do nome.
-	 *
-	 * @param nome o nome dos produtos a serem buscados.
-	 * @return a lista de produtos filtrada pelo nome.
-	 */
-	public List<Produto> getLista(String nome) {
-		lista.addAll(apiProdutos.buscarProdutos(nome));
-		return lista;
-	}
-
-	/**
 	 * Getter para a API de produtos.
 	 *
 	 * @return A API de produtos.
@@ -82,7 +71,6 @@ public class ListaDeProdutos {
 	 */
 	public String consultar(String nome) {
 		List<Produto> produtos = apiProdutos.buscarProdutos(nome);
-		lista.addAll(produtos);
 
 		String resultado = "";
 		for (int i = 0; i < produtos.size(); i++) {

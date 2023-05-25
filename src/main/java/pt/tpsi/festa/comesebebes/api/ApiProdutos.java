@@ -10,6 +10,7 @@ import pt.brunojesus.productsearch.exception.ProductFetchException;
 import pt.tpsi.festa.comesebebes.model.Carrinho;
 import pt.tpsi.festa.comesebebes.model.ListaDeProdutos;
 import pt.tpsi.festa.comesebebes.model.Produto;
+import pt.tpsi.festa.comesebebes.model.Produto2;
 
 /**
  * API utilizada no projeto que busca produtos.
@@ -38,9 +39,9 @@ public class ApiProdutos {
 		try {
 			List<Product> apiProdutos = productSearch.search(Store.PINGO_DOCE, nome);
 			for (Product apiProduto : apiProdutos) {
-				Produto produto = new Produto(apiProduto.getName(), apiProduto.getCurrentPrice(), apiProduto.getBrand(),
-						0);
-				produtos.add(produto);
+				Produto produto = new Produto2(apiProduto.getName(), apiProduto.getCurrentPrice(), apiProduto.getBrand(),
+						0, apiProduto.getUrl(), apiProduto.getImage(), apiProduto.isAvailable());
+				produtos.add((Produto2)produto);
 			}
 		} catch (NoSuchStoreException | ProductFetchException e) {
 			e.printStackTrace();
