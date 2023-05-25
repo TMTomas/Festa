@@ -55,5 +55,13 @@ public class MetereologiaRequest {
 		return result;
 	}
 	// 5 - metodos complementares
+	/**
+	 * metódo que faz uma apresentação de maneira textual
+	 */
+	@Override
+	public String toString() {
+		return "MetereologiaRequest [token=" + token + ", metereologiaResponseHandler=" + metereologiaResponseHandler
+				+ "]";
+	}
 	
 }

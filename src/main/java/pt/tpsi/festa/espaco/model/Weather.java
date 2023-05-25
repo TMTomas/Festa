@@ -7,8 +7,12 @@ import lombok.Data;
  */
 @Data
 public class Weather {
-    private int id;
+    
+	// 1 - atributos
+	private int id;
     private String main;
     private String description;
     private String icon;
+    
+    // gets e sets são tratados pela anotação Data 
 }
