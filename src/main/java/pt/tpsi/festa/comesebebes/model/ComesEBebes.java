@@ -3,8 +3,8 @@ package pt.tpsi.festa.comesebebes.model;
 /**
  * Classe que lida com os Comes e Bebes da festa.
  * 
- * @author Kuuhaku
- *
+ * @author André, Danilo, Duarte e Rodrigo
+ * @version 1.0.0
  */
 public class ComesEBebes implements CeBInterface {
 	// ATRIBUTOS

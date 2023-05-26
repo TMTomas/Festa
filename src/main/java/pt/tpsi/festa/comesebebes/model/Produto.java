@@ -5,6 +5,8 @@ import pt.tpsi.festa.comesebebes.api.ApiProdutos;
 /**
  * Classe que representa o produto de uma loja.
  * 
+ * @author André, Danilo, Duarte e Rodrigo
+ * @version 1.0.0
  * @see ApiProdutos
  */
 public class Produto {

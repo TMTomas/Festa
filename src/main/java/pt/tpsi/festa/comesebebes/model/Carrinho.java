@@ -9,6 +9,8 @@ import pt.tpsi.festa.comesebebes.api.ApiProdutos;
 /**
  * Classe que representa um carrinho de compras que possui produtos
  * 
+ * @author André, Danilo, Duarte e Rodrigo
+ * @version 1.0.0
  * @see ListaDeProdutos
  */
 public class Carrinho {

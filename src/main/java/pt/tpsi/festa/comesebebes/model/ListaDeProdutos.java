@@ -8,6 +8,8 @@ import pt.tpsi.festa.comesebebes.api.ApiProdutos;
  * Representa uma lista de produtos. Essa classe possui uma lista de produtos e
  * uma API para buscar produtos
  * 
+ * @author André, Danilo, Duarte e Rodrigo
+ * @version 1.0.0
  * @see ApiProdutos
  * @see Carrinho
  * 

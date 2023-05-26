@@ -4,10 +4,20 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Classe de teste para a classe ComesEBebes.
+ * 
+ * @author André, Danilo, Duarte e Rodrigo
+ * @version 1.0.0
+ */
 public class ComesEBebesTest {
 
 	private ComesEBebes comesEBebes;
 
+	/**
+	 * Configuração inicial
+	 * 
+	 */
 	@BeforeEach
 	public void setUp() {
 		Carrinho carrinho = new Carrinho();
@@ -15,6 +25,10 @@ public class ComesEBebesTest {
 		comesEBebes = new ComesEBebes(carrinho, listaDeProdutos);
 	}
 
+	/**
+	 * Teste do método adicionar
+	 * 
+	 */
 	@Test
 	public void testAdicionar() {
 		String nome = "Produto1";
@@ -28,6 +42,10 @@ public class ComesEBebesTest {
 		assertEquals(2, comesEBebes.getCarrinho().getListaDeCompras().get(0).getQuantidade());
 	}
 
+	/**
+	 * Teste do método alterar
+	 * 
+	 */
 	@Test
 	public void testAlterar() {
 		Carrinho carrinho = comesEBebes.getCarrinho();
@@ -42,6 +60,10 @@ public class ComesEBebesTest {
 		assertEquals(quantidade, carrinho.getListaDeCompras().get(0).getQuantidade());
 	}
 
+	/**
+	 * Teste do método remover
+	 * 
+	 */
 	@Test
 	public void testRemover() {
 		Carrinho carrinho = comesEBebes.getCarrinho();

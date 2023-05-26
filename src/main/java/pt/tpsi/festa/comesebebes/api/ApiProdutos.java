@@ -15,6 +15,8 @@ import pt.tpsi.festa.comesebebes.model.Produto2;
 /**
  * API utilizada no projeto que busca produtos.
  * 
+ * @author André, Danilo, Duarte e Rodrigo
+ * @version 1.0.0
  * @see <a href="https://mercadao.pt/store/pingo-doce">Loja</a>
  * @see ListaDeProdutos
  * @see Carrinho
