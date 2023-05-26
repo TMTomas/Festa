@@ -10,11 +10,9 @@ public interface ContactInterface {
 	List<String> listar(List<Contact> contactos);
 
 	// Convida a partir do índice do ArrayList
-	public void convidar(int index, List<Contact> contactos);
+	public void convidar(int index, List<Contact> contacts, String observacao);
 
 	// Desconvida a partir do índice do ArrayList
 	public void desconvidar(int index);
-
-	public boolean contemNome(String nomeCompleto);
 
 }
