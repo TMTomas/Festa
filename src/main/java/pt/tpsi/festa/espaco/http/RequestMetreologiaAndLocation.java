@@ -1,5 +1,8 @@
 package pt.tpsi.festa.espaco.http;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pt.brunojesus.locationsearch.api.OpenStreetMap;
 import pt.brunojesus.locationsearch.exception.LocationSearchException;
 import pt.brunojesus.locationsearch.openstreetmap.model.OpenStreetMapLocation;
@@ -7,11 +10,8 @@ import pt.tpsi.festa.espaco.EspacoInterface;
 import pt.tpsi.festa.espaco.model.Location;
 import pt.tpsi.festa.espaco.model.LocationPlus;
 import pt.tpsi.festa.espaco.model.MetereologiaModel;
-import pt.tpsi.festa.execeptions.RequestException;
 import pt.tpsi.festa.execeptions.LocationListException;
-
-import java.util.ArrayList;
-import java.util.List;
+import pt.tpsi.festa.execeptions.RequestException;
 
 public class RequestMetreologiaAndLocation implements EspacoInterface {
     

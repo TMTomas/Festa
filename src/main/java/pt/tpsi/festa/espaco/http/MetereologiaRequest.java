@@ -27,8 +27,7 @@ public class MetereologiaRequest {
 	public MetereologiaRequest() {
 		metereologiaResponseHandler = new MetereologiaResponseHandler();
 	}
-	// 3 - gets e sets
-	
+	// 3 - gets e set
 	// 4 - comportamentos
 	/**
 	 * Este metodo serve para fazer um request, atraves de uma API de metereologia, da cidade escolhida

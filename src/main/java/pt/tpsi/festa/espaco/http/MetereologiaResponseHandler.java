@@ -14,8 +14,11 @@ public class MetereologiaResponseHandler implements HttpClientResponseHandler<Me
 	
 	// 1 - atributos
 	private final ObjectMapper objectMapper;
-
-	// 2 - construtores 
+	
+	// 2 - construtores
+	/**
+	 * Construtor para a classe MeterologiaResponseHandler
+	 */
 	public MetereologiaResponseHandler() {
 		this.objectMapper = new ObjectMapper()
 				.configure(DeserializationFeature.FAIL_ON_IGNORED_PROPERTIES, false)
@@ -25,6 +28,13 @@ public class MetereologiaResponseHandler implements HttpClientResponseHandler<Me
 	// 3 - gets e sets
 	
 	// 4 - comportamentos
+	/**
+	 * Metódo que vai verificar o codigo de resposta,
+	 * se for bem sucedido e irá ler o conteudo para classe MetereologiaModel
+	 * Caso falhe irá retornar null
+	 * @param response O response é a resposta do request
+	 * @return o objetoMapper lido e para a classe MetereoogiaModel
+	 */
 	@Override
 	public MetereologiaModel handleResponse(ClassicHttpResponse response) throws IOException {
 		if(response.getCode() < 200 || response.getCode() > 299){
