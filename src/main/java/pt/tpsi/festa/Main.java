@@ -26,11 +26,11 @@ public class Main {
 		listaConvidados.convidar(1, l1, "nao bebe alcool");
 
 		System.out.println("LISTA COMPLETA DE CONTACTOS:");
-		System.out.println(listaConvidados.listar(l1));
+		System.out.println(listaConvidados.listarContactos(l1));
 		System.out.println();
 
 		System.out.println("LISTA DOS CONVIDADOS:");
-		System.out.println(listaConvidados.listar());
+		System.out.println(listaConvidados.listarConvidados());
 		System.out.println();
 
 		System.out.printf("Generating %s contacts to invite took %sms\n", l1.size(), timeElapsed);
