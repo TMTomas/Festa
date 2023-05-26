@@ -15,14 +15,17 @@ public class Main {
 		comes.adicionar("morango", 2, 2, false); // adiciona o mesmo morango que o anterior, porem com menos
 		// detalhes, portanto, é um objeto diferente.
 
-//		comes.alterar(1, 6); // altera a quantidade do produto de indice 1 do CARRINHO (morango do produto1)
+		System.out.println(comes.getCarrinho().getListaDeCompras().get(0));
 
-//		comes.remover(0); // diminui em 1 a quantidade do morango no atributo
-		// quantidade.
+		comes.alterar(1, 8); // altera a quantidade do produto de indice 1 do CARRINHO (morango do produto1)
+		comes.alterar(1, 4);
+		comes.remover(0); // diminui em 1 a quantidade do morango no atributo
+		// quantidades
 		// caso remova até a quantidade ser 0, o produto deixará de existir no Array
 		// do carrinho
 
-		System.out.println(comes.getCarrinho().getListaDeCompras()); // consulta os produtos do CARRINHO
+		System.out.println(comes.getCarrinho().consultar()); // consulta os produtos do CARRINHO
+
 
 	}
 

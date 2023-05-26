@@ -10,6 +10,7 @@ import pt.tpsi.festa.comesebebes.api.ApiProdutos;
  * 
  * @see ApiProdutos
  * @see Carrinho
+ * 
  */
 public class ListaDeProdutos {
 	// ATRIBUTOS
