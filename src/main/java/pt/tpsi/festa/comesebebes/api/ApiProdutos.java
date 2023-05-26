@@ -51,7 +51,7 @@ public class ApiProdutos {
 			for (Product apiProduto : apiProdutos) {
 				Produto produto = new Produto2(apiProduto.getName(), apiProduto.getCurrentPrice(),
 						apiProduto.getBrand(), 0, apiProduto.getUrl(), apiProduto.getImage(), apiProduto.isAvailable());
-				produtos.add((Produto2) produto);
+				produtos.add(produto);
 			}
 		} catch (NoSuchStoreException | ProductFetchException e) {
 			e.printStackTrace();

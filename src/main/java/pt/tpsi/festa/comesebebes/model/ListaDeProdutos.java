@@ -70,16 +70,25 @@ public class ListaDeProdutos {
 	 * @param nome o nome dos produtos a serem consultados.
 	 * @return uma string que contém informações dos produtos consultados.
 	 */
-	public String consultar(String nome) {
+	public String consultar(String nome, boolean isProduto2) {
 		List<Produto> produtos = apiProdutos.buscarProdutos(nome);
-
+		String atributosExtras = "";
 		String resultado = "";
 		for (int i = 0; i < produtos.size(); i++) {
 			Produto produto = produtos.get(i);
+
+			if (produto instanceof Produto2 && isProduto2) {
+				Produto2 produto2 = (Produto2) produto;
+				String url = produto2.getUrl();
+				String imagem = produto2.getImagem();
+				atributosExtras = " Url: " + url + "\n Imagem: " + imagem + "\n";
+			}
+
 			resultado += "Índice " + (i) + ":\n";
-			resultado += "Nome: " + produto.getNome() + "\n";
-			resultado += "Preço: " + produto.getPreco() + "EUR" + "\n";
-			resultado += "Preço: " + produto.getMarca() + "\n";
+			resultado += " Nome: " + produto.getNome() + "\n";
+			resultado += " Preço: " + produto.getPreco() + "EUR" + "\n";
+			resultado += " Marca: " + produto.getMarca() + "\n";
+			resultado += atributosExtras;
 			resultado += "--------------------------------\n";
 		}
 

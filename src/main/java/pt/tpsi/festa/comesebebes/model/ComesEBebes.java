@@ -60,8 +60,19 @@ public class ComesEBebes implements CeBInterface {
 	 * @param nome o nome dos produtos a serem consultados.
 	 * @return uma string que contém informações dos produtos consultados.
 	 */
-	public String consultar(String produto) {
-		return listaDeProdutos.consultar(produto);
+	public String consultar(String produto, boolean isProduto2) {
+		return listaDeProdutos.consultar(produto, isProduto2);
+
+	}
+
+	/**
+	 * Consulta os produtos no carrinho e retorna uma representação em string.
+	 *
+	 * @return uma string contendo os produtos no carrinho, seus atributos e o preço
+	 *         total
+	 */
+	public String consultarCarrinho() {
+		return carrinho.consultar();
 
 	}
 
