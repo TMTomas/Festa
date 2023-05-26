@@ -1,5 +1,9 @@
 /**
  * Classe de testes para a classe ConvidadosList.
+
+ * @author Diogo Carvalho, Francisco Simões, Tomás Monteiro
+ * @version 1.0.0
+ * @since 26-05-2023
  */
 package pt.tpsi.festa.contactos.model;
 
@@ -20,10 +24,6 @@ class ConvidadosListTest {
 
 	/**
 	 * Configuração inicial para os testes.
-	 * 
-	 * @author Diogo Carvalho, Francisco Simões, Tomás Monteiro
-	 * @version 1.0.0
-	 * @since 26-05-2023
 	 */
 	@BeforeEach
 	void setUp() {
