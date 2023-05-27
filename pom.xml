@@ -47,6 +47,7 @@
 			<version>1.18.26</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
 			<groupId>pt.brunojesus</groupId>
 			<artifactId>report-lib</artifactId>
 			<version>1.0</version>
