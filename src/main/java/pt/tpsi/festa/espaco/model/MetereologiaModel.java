@@ -32,8 +32,15 @@ public class MetereologiaModel {
     public MetereologiaModel() {
     }
 
+	public MetereologiaModel(List<Weather> weather, Main temperatura) {
+		super();
+		this.weather = weather;
+		Temperatura = temperatura;
+	}
 	
-
+	public MetereologiaModel(MetereologiaModel metereologiaModel) {
+		this(metereologiaModel.getWeather(), metereologiaModel.getTemperatura());
+	}
     // 3 - GETS E SETS
 
     // já setado automaticamente devido a anotação Data
@@ -48,4 +55,6 @@ public class MetereologiaModel {
 	public String toString() {
 		return "MetereologiaModel [weather=" + weather + ", Temperatura=" + Temperatura + "]";
 	}
+
+	
 }

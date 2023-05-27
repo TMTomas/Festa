@@ -117,6 +117,17 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
         return locationList;
     }
 
+	
+
 
     // 5- metodos complementares
+    /**
+     * Passa a classe para uma forma textual
+     */
+    @Override
+	public String toString() {
+		return "RequestMetreologiaAndLocation [requestMetreologia=" + requestMetreologia + ", requestLocation="
+				+ requestLocation + ", locationList=" + locationList + ", locationPlus=" + locationPlus + ", locations="
+				+ locations + ", model=" + model + "]";
+	}
 }

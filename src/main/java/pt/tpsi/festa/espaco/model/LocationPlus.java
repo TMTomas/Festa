@@ -46,7 +46,14 @@ public class LocationPlus extends Location{
 		this.type = type;
 		this.icon = icon;
 	}
-
+    /**
+     * Construtor clone da classe, que recebe um objeto do mesmo tipo
+     * @param locationPlus
+     */
+    public LocationPlus(LocationPlus locationPlus) {
+    	this(locationPlus.getNameLocation(), locationPlus.getLatitude(), locationPlus.getLongitude(),
+    			locationPlus.getWeather(), locationPlus.getTemperature(), locationPlus.getTemperatureMin(), locationPlus.getTemperatureMax(), locationPlus.getType(), locationPlus.getIcon());
+    }
     // 3 - gets e sets
     // a anotação Data serve para os gets e sets desta classe
     // 4 - comportamentos

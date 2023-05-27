@@ -45,6 +45,15 @@ public class MetereologiaResponseHandler implements HttpClientResponseHandler<Me
 			});
 		}
 	}
+
+	
 	
 	// 5 - metodos complementares
+	/**
+	 * Transforma a classe para uma forma textual
+	 */
+	@Override
+	public String toString() {
+		return "MetereologiaResponseHandler [objectMapper=" + objectMapper + "]";
+	}
 }

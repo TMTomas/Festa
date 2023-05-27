@@ -37,7 +37,13 @@ public class Location {
         this.longitude = longitude;
         this.weather = weather;
     }
-
+    /**
+     * Construtor clone da classe que tem como paramentro um objeto da mesma classe
+     * @param location
+     */
+    public Location(Location location) {
+    	this(location.getNameLocation(), location.getLatitude(), location.getLongitude(), location.getWeather());
+    }
 	
     
     // 3 - gets e sets

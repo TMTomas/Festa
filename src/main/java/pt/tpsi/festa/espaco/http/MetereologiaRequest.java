@@ -22,12 +22,16 @@ public class MetereologiaRequest {
 
 	// 2 - construtores
 	/**
-	 * Construtor do objeto que faz o request a metereologia
+	 * Construtores do objeto que faz o request a metereologia
 	 */
 	public MetereologiaRequest() {
 		metereologiaResponseHandler = new MetereologiaResponseHandler();
 	}
 	// 3 - gets e set
+	
+	public MetereologiaResponseHandler getMetereologiaResponseHandler() {
+		return metereologiaResponseHandler;
+	}
 	// 4 - comportamentos
 	/**
 	 * Este metodo serve para fazer um request, atraves de uma API de metereologia, da cidade escolhida
@@ -53,6 +57,7 @@ public class MetereologiaRequest {
 		}
 		return result;
 	}
+	
 	// 5 - metodos complementares
 	/**
 	 * metódo que faz uma apresentação de maneira textual
