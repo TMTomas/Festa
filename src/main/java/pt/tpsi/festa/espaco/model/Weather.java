@@ -6,7 +6,7 @@ import lombok.Data;
  * Representa informações sobre as condições climáticas.
  */
 @Data
-public abstract class Weather {
+public class Weather {
 
 	// 1 - atributos
 	private int id;
