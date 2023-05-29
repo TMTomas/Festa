@@ -33,7 +33,7 @@ public class Produto {
 	 * @return o preço do produto
 	 */
 	public Double getPreco() {
-		return preco;
+		return (Math.round(preco * 10.0) / 10.0);
 	}
 
 	/**

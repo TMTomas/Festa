@@ -1,9 +1,13 @@
 package pt.tpsi.festa.comesebebes.model;
 
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import pt.brunojesus.report.productlist.model.Product;
 import pt.tpsi.festa.comesebebes.api.ApiProdutos;
 
 /**
