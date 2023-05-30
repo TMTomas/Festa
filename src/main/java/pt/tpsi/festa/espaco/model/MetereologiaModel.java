@@ -31,11 +31,11 @@ public class MetereologiaModel {
      * Construtor padrão da classe MetereologiaModel.
      */
     public MetereologiaModel() {
+		weather = new ArrayList<>();
     }
 
 	public MetereologiaModel(List<Weather> weather, Main temperatura) {
 		super();
-		weather = new ArrayList<>();
 		this.weather = weather;
 		Temperatura = temperatura;
 	}
