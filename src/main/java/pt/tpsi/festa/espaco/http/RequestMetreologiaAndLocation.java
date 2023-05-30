@@ -20,22 +20,22 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
 	/**
 	 * Um atributo do tipo MetereologiaRequest, que instancia a classe
 	 */
-	MetereologiaRequest requestMetreologia;
+	private MetereologiaRequest requestMetreologia;
 	/**
 	 * Um atributo do tipo OpenStreetMap, que instancia a classe
 	 */
-    OpenStreetMap requestLocation;
+    private OpenStreetMap requestLocation;
     /**
 	 * Um atributo do tipo list, lista criada para guardar os nomes das localizações
 	 */
-    List<Location> locationList;
-    List<LocationPlus> locationListPlus;
+    private List<Location> locationList;
+    private List<LocationPlus> locationListPlus;
     /**
 	 * Um atributo do tipo LocationPlus, que instancia a classe
 	 */
-    List<OpenStreetMapLocation> locations = null;
+    private List<OpenStreetMapLocation> locations = null;
 
-    MetereologiaModel model;
+    private MetereologiaModel model;
     // 2 - construtores
     /**
      * Construtor da clase RequestMetereologiaAndLocation e fazer 
