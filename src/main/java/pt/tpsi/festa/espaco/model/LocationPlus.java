@@ -55,8 +55,29 @@ public class LocationPlus extends Location{
     			locationPlus.getWeather(), locationPlus.getTemperature(), locationPlus.getTemperatureMin(), locationPlus.getTemperatureMax(), locationPlus.getType(), locationPlus.getIcon());
     }
     // 3 - gets e sets
-    // a anotação Data serve para os gets e sets desta classe
-    // 4 - comportamentos
+
+	public double getTemperature() {
+		return temperature;
+	}
+
+	public double getTemperatureMin() {
+		return temperatureMin;
+	}
+
+	public double getTemperatureMax() {
+		return temperatureMax;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+
+	// 4 - comportamentos
     
     // 5 - metodos complementares
     /**

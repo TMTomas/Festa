@@ -47,8 +47,24 @@ public class Location {
 	
     
     // 3 - gets e sets
-    // a anotação Data ja serve para ter os gets e sets da classe
-    
+
+    public String getNameLocation() {
+        return nameLocation;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public String getWeather() {
+        return weather;
+    }
+
+
     // 4 - comportamentos
     
     // 5 - metodos complementares

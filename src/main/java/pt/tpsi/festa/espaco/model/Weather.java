@@ -14,7 +14,23 @@ public class Weather {
 	private String description;
 	private String icon;
 
-	// gets e sets são tratados pela anotação Data
+	// gets e sets
+
+	public int getId() {
+		return id;
+	}
+
+	public String getMain() {
+		return main;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
 
 	// 5 - metódos complementares
 	/**

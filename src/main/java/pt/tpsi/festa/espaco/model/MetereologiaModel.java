@@ -43,9 +43,19 @@ public class MetereologiaModel {
 	}
     // 3 - GETS E SETS
 
-    // já setado automaticamente devido a anotação Data
-    
-    // 4 - comportamentos
+	public List<Weather> getWeather() {
+		return weather;
+	}
+
+	public void setWeather(List<Weather> weather) {
+		this.weather = weather;
+	}
+
+	public Main getTemperatura() {
+		return Temperatura;
+	}
+
+	// 4 - comportamentos
     
     // 5 - metodos complementares
     /**
