@@ -12,6 +12,7 @@ import pt.brunojesus.report.common.ReportViewer;
 import pt.brunojesus.report.productlist.model.Product;
 import pt.brunojesus.report.productlist.model.ProductReportData;
 import pt.tpsi.festa.comesebebes.model.ComesEBebes;
+import pt.tpsi.festa.espaco.http.RequestMetreologiaAndLocation;
 
 public class ProductReport {
 
@@ -19,7 +20,7 @@ public class ProductReport {
 
 	protected ComesEBebes comesEBebes;
 	private List<Product> list; 
-
+	
 	// ACESSORES
 
 	public ComesEBebes getComesEBebes() {
@@ -41,23 +42,23 @@ public class ProductReport {
 	// CONSTRUTORES
 
 	public ProductReport() {
-		comesEBebes = new ComesEBebes();
+		comesEBebes	 = new ComesEBebes();
 		list = new ArrayList<>();
 	}
-
+		
 	public ProductReport(ComesEBebes comesEBebes, List<Product> list) {
 		super();
-		this.comesEBebes = comesEBebes;
-		this.list = list;
+		this.comesEBebes = new ComesEBebes();
+		this.list = new ArrayList<>();
 	}
-	
+
 	public ProductReport(ProductReport productReport) {
 		this(productReport.getComesEBebes(), productReport.getList());
 	}
-	
+
 	// COMPORTAMENTOS
 
-	public List<Product> finalizarCompra() {
+	public List<Product> compilarCarrinho() {
 
 		for (int i = 0; i < comesEBebes.getCarrinho().getListaDeCompras().size(); i++) {
 			list.add(new Product().setId(String.valueOf(i))
@@ -69,8 +70,8 @@ public class ProductReport {
 		
 	}
 	
-	public void createPDF() {
-		ReportData productReportData = new ProductReportData().setName("Software Engineering Party").setDate(new Date()).setAddress("ESGTS\nIPSantarem").setCurrency("€").setProducts(finalizarCompra());
+	public void createPDF(String nomeFesta, String address, String date) {
+		ReportData productReportData = new ProductReportData().setName(nomeFesta).setDate(new Date(date)).setAddress("ESGTS\nIPSantarem").setCurrency("€").setProducts(compilarCarrinho());
 		final ReportCompiler compiler = new ReportCompiler();
 		Report productReport = compiler.apply(productReportData);
 		final ReportViewer viewer = new ReportViewer();
