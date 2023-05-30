@@ -1,8 +1,13 @@
 package pt.tpsi.festa;
 
+import pt.brunojesus.locationsearch.api.OpenStreetMap;
 import pt.brunojesus.locationsearch.exception.LocationSearchException;
+import pt.brunojesus.locationsearch.openstreetmap.model.OpenStreetMapLocation;
 import pt.tpsi.festa.espaco.http.RequestMetreologiaAndLocation;
+import pt.tpsi.festa.espaco.model.Location;
 import pt.tpsi.festa.espaco.model.LocationPlus;
+
+import java.util.List;
 
 /**
  * Classe principal que demonstra o uso da classe MetereologiaRequest e
@@ -21,8 +26,15 @@ public class Main {
 		 // Cria uma instância de MetereologiaRequest
 		RequestMetreologiaAndLocation request = new RequestMetreologiaAndLocation();
 		//Pesquisa com quase todos os Detalhes
-		System.out.println(((LocationPlus)(request.pesquisar("CNEMA, Santarem").get(0))).getTemperatureMax());
-		System.out.println(request.selecionar(0));
+		request.pesquisar("Santarem");
+		/*
+		OpenStreetMap requestLocation = new OpenStreetMap();
+		List<OpenStreetMapLocation> locations = null;
+		locations = requestLocation.search("Santarem");
+
+		System.out.println(locations + "\n"+ locations.size());
+
+		 */
 	}
 
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,6 +35,7 @@ public class MetereologiaModel {
 
 	public MetereologiaModel(List<Weather> weather, Main temperatura) {
 		super();
+		weather = new ArrayList<>();
 		this.weather = weather;
 		Temperatura = temperatura;
 	}

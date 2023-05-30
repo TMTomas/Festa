@@ -62,12 +62,23 @@ public class LocationPlus extends Location{
     /**
      * Metódo que representa a classe de forma escrita 
      */
-    @Override
-    public String toString() {
-        return "LocationPlus{" +
-                ", temperature=" + temperature +
-                ", temperatureMin=" + temperatureMin +
-                ", temperatureMax=" + temperatureMax +
-                '}';
-   }
+
+	//    private String nameLocation;
+	//    private String latitude;
+	//    private String longitude;
+	//    private String weather;
+	@Override
+	public String toString() {
+		return "LocationPlus{" +
+				"name='"+getNameLocation()+'\'' +
+				" latitude='"+getLatitude()+'\'' +
+				" longitude='"+getLongitude()+'\'' +
+				" weather='"+getWeather()+'\'' +
+				" temperature='" + temperature +'\'' +
+				" temperatureMin='" + temperatureMin +'\'' +
+				" temperatureMax='" + temperatureMax +'\'' +
+				" type='" + type + '\'' +
+				" icon='" + icon + '\'' +
+				'}';
+	}
 }
