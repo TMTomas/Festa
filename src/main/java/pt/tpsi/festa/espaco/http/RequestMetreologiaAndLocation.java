@@ -68,14 +68,14 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
      * @throws RequestException o index seja maior que a lista ou a lista não existir ele está la para informar ao utilizador
      */
     @Override
-    public Location selecionar(int index) {
+    public LocationPlus selecionar(int index) {
     	if (locationList == null || index > locationList.size() || locationList.isEmpty()) {
 			if (index > locationList.size()) {
 				throw new LocationListException("index invalida");
 			}
 			throw new LocationListException("a lista não existe");
 		}
-        return locationList.get(index);
+        return locationListPlus.get(index);
     }
 
 
@@ -87,10 +87,10 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
      * caso não seja encontrato
      * @throws RequestException informar o erro que ocorreu
      */
-	public Location selecionarPorNome(String name) {
+	public LocationPlus selecionar(String name) {
     	for (int i = 0; i < locationList.size(); i++) {
-			if (locationList.get(i).getNameLocation().contains(name)) {
-				return locationList.get(i);
+			if (locationList.get(i).getNameLocation().toLowerCase().contains(name)) {
+				return locationListPlus.get(i);
 			}
 		}
     	throw new LocationListException("nome não encontrado");
