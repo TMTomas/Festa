@@ -46,6 +46,7 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
         requestLocation = new OpenStreetMap();
         locationList = new ArrayList<>();
         locationListPlus = new ArrayList<>();
+        model = new MetereologiaModel();
     }
     
     // 3 - gets e sets
