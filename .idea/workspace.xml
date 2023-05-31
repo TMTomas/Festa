@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d77898b2-fd52-46f4-b34a-d5ddd3580ea8" name="Changes" comment="pom fixed">
+    <list default="true" id="d77898b2-fd52-46f4-b34a-d5ddd3580ea8" name="Changes" comment="Make atributes private">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/reports/ProductReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/reports/ProductReport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/reports/GuestReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/reports/GuestReport.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Espaço" />
+        <entry key="$PROJECT_DIR$" value="Espaço2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -154,8 +154,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.RequestMetreologiaAndLocationTest.selecionarPorNome" />
         <item itemvalue="JUnit.RequestMetreologiaAndLocationTest.pesquisar" />
         <item itemvalue="JUnit.RequestMetreologiaAndLocationTest.selecionarPorNome" />
+        <item itemvalue="JUnit.RequestMetreologiaAndLocationTest.pesquisar" />
       </list>
     </recent_temporary>
   </component>
@@ -301,7 +303,28 @@
       <option name="project" value="LOCAL" />
       <updated>1685210853629</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Change Metreologia model instaciação">
+      <created>1685484037827</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1685484037827</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Solve problems in espaço">
+      <created>1685490693015</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1685490693015</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Make atributes private">
+      <created>1685490847642</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1685490847642</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -324,19 +347,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="origin/Espaço" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -363,7 +374,10 @@
     <MESSAGE value="Add a new exception" />
     <MESSAGE value="finalize Junit Tests" />
     <MESSAGE value="pom fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="pom fixed" />
+    <MESSAGE value="Change Metreologia model instaciação" />
+    <MESSAGE value="Solve problems in espaço" />
+    <MESSAGE value="Make atributes private" />
+    <option name="LAST_COMMIT_MESSAGE" value="Make atributes private" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

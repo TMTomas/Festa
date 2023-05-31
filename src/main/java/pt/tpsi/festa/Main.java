@@ -1,8 +1,17 @@
 package pt.tpsi.festa;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import pt.tpsi.festa.contactos.model.ConvidadosList;
+import pt.brunojesus.contactslib.model.Contact;
+import pt.brunojesus.report.guestlist.model.Guest;
+import pt.tpsi.festa.comesebebes.model.ComesEBebes;
+import pt.tpsi.festa.contactos.model.ConvidadosList;
+import pt.tpsi.festa.espaco.http.RequestMetreologiaAndLocation;
+import pt.tpsi.festa.reports.ProductReport;
+
 
 public class Main {
 
@@ -35,5 +44,5 @@ public class Main {
 			System.out.println(convidado);
 		}
 	}
-
 }
+

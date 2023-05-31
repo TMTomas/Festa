@@ -2,6 +2,7 @@ package pt.tpsi.festa.espaco.http;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import pt.brunojesus.locationsearch.api.OpenStreetMap;
 import pt.brunojesus.locationsearch.exception.LocationSearchException;
@@ -19,23 +20,22 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
 	/**
 	 * Um atributo do tipo MetereologiaRequest, que instancia a classe
 	 */
-	MetereologiaRequest requestMetreologia;
+	private MetereologiaRequest requestMetreologia;
 	/**
 	 * Um atributo do tipo OpenStreetMap, que instancia a classe
 	 */
-    OpenStreetMap requestLocation;
+    private OpenStreetMap requestLocation;
     /**
 	 * Um atributo do tipo list, lista criada para guardar os nomes das localizações
 	 */
-    List<Location> locationList;
+    private List<Location> locationList;
+    private List<LocationPlus> locationListPlus;
     /**
 	 * Um atributo do tipo LocationPlus, que instancia a classe
 	 */
-    LocationPlus locationPlus;
+    private List<OpenStreetMapLocation> locations = null;
 
-    List<OpenStreetMapLocation> locations = null;
-
-    MetereologiaModel model;
+    private MetereologiaModel model;
     // 2 - construtores
     /**
      * Construtor da clase RequestMetereologiaAndLocation e fazer 
@@ -45,15 +45,20 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
         requestMetreologia = new MetereologiaRequest();
         requestLocation = new OpenStreetMap();
         locationList = new ArrayList<>();
+        locationListPlus = new ArrayList<>();
+        model = new MetereologiaModel();
     }
     
     // 3 - gets e sets
 
 
-    public List<Location> getLocationList() {
+    public List<Location> getLocationListBase() {
         return locationList;
     }
 
+    public List<LocationPlus> getLocationListPlus() {
+        return locationListPlus;
+    }
     // 4 - comportamentos
     /**
      * Metódo utilizado para selecionar um local de interese do utilizador
@@ -63,14 +68,14 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
      * @throws RequestException o index seja maior que a lista ou a lista não existir ele está la para informar ao utilizador
      */
     @Override
-    public Location selecionar(int index) {
+    public LocationPlus selecionar(int index) {
     	if (locationList == null || index > locationList.size() || locationList.isEmpty()) {
 			if (index > locationList.size()) {
 				throw new LocationListException("index invalida");
 			}
 			throw new LocationListException("a lista não existe");
 		}
-        return locationList.get(index);
+        return locationListPlus.get(index);
     }
 
 
@@ -82,10 +87,10 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
      * caso não seja encontrato
      * @throws RequestException informar o erro que ocorreu
      */
-	public Location selecionarPorNome(String name) {
+	public LocationPlus selecionar(String name) {
     	for (int i = 0; i < locationList.size(); i++) {
-			if (locationList.get(i).getNameLocation().contains(name)) {
-				return locationList.get(i);
+			if (locationList.get(i).getNameLocation().toLowerCase().contains(name)) {
+				return locationListPlus.get(i);
 			}
 		}
     	throw new LocationListException("nome não encontrado");
@@ -98,7 +103,7 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
      * @return List this is will return a list with all necessary information
      */
     @Override
-    public List<Location> pesquisar(String local) {
+    public void pesquisar(String local) {
         try {
             locations = requestLocation.search(local);
         } catch (LocationSearchException e) {
@@ -107,14 +112,13 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
 
         for(int i = 0 ; i < locations.size(); i++){
             model = requestMetreologia.createMetrologiaRequest(locations.get(i).getLatitute(), locations.get(i).getLongitude());
-            locationList.add(new LocationPlus(locations.get(i).getDisplayName(),locations.get(i).getLatitute(),
-                    locations.get(i).getLongitude(), model.getWeather().get(i).getMain() + " "+ model.getWeather().get(i).getDescription(),
-                    model.getTemperatura().getTempC(), model.getTemperatura().getMinTempC(),model.getTemperatura().getMaxTempC(), locations.get(i).getType(),
-                    locations.get(i).getIcon()));
+            locationListPlus.add(new LocationPlus(locations.get(i).getDisplayName(), locations.get(i).getLatitute(),
+                    locations.get(i).getLongitude(), model.getWeather().get(0).getMain() + " "+ model.getWeather().get(0).getDescription(),
+                    model.getTemperatura().getTempC(), model.getTemperatura().getMinTempC(),
+                    model.getTemperatura().getMaxTempC(), locations.get(i).getType(), locations.get(i).getIcon()));
             locationList.add(new Location(locations.get(i).getDisplayName(),locations.get(i).getLatitute(),
-                    locations.get(i).getLongitude(), model.getWeather().get(i).getMain() + " "+ model.getWeather().get(i).getDescription()));
+                    locations.get(i).getLongitude(), model.getWeather().get(0).getMain() + " "+ model.getWeather().get(0).getDescription()));
         }
-        return locationList;
     }
 
 	
@@ -125,9 +129,13 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
      * Passa a classe para uma forma textual
      */
     @Override
-	public String toString() {
-		return "RequestMetreologiaAndLocation [requestMetreologia=" + requestMetreologia + ", requestLocation="
-				+ requestLocation + ", locationList=" + locationList + ", locationPlus=" + locationPlus + ", locations="
-				+ locations + ", model=" + model + "]";
-	}
+    public String toString() {
+        return "RequestMetreologiaAndLocation{" +
+                "requestMetreologia=" + requestMetreologia +
+                ", requestLocation=" + requestLocation +
+                ", locationList=" + locationList +
+                ", locations=" + locations +
+                ", model=" + model +
+                '}';
+    }
 }
