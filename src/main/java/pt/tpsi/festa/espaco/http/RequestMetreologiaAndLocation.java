@@ -10,8 +10,8 @@ import pt.tpsi.festa.espaco.EspacoInterface;
 import pt.tpsi.festa.espaco.model.Location;
 import pt.tpsi.festa.espaco.model.LocationPlus;
 import pt.tpsi.festa.espaco.model.MetereologiaModel;
-import pt.tpsi.festa.execeptions.LocationListException;
-import pt.tpsi.festa.execeptions.RequestException;
+import pt.tpsi.festa.espaco.execeptions.LocationListException;
+import pt.tpsi.festa.espaco.execeptions.RequestException;
 
 public class RequestMetreologiaAndLocation implements EspacoInterface {
     
