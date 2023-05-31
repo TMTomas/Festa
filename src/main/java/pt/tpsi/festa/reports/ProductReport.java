@@ -68,6 +68,7 @@ public class ProductReport extends ReportExporter{
 	public ProductReport(ProductReport productReport) {
 		this(productReport.getComesEBebes(), productReport.getList());
 	}
+	
 	// COMPORTAMENTOS
 	
 	/**
