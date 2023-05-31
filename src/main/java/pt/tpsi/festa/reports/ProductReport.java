@@ -20,7 +20,6 @@ public class ProductReport extends ReportExporter{
 	// ATRIBUTOS
 	
 	protected ComesEBebes comesEBebes;
-	protected final ReportCompiler compiler;
 	protected List<Product> list;
 	
 	// ACESSORES
@@ -45,18 +44,17 @@ public class ProductReport extends ReportExporter{
 		super();
 		comesEBebes = new ComesEBebes();
 		list = new ArrayList<>();
-		compiler = new ReportCompiler();
+		
 	}
 
-	public ProductReport(ComesEBebes comesEBebes, ReportCompiler compiler, List<Product> list) {
+	public ProductReport(ComesEBebes comesEBebes, List<Product> list) {
 		super();
 		this.comesEBebes = comesEBebes;
-		this.compiler = compiler;
 		this.list = list;
 	}
 	
 	public ProductReport(ProductReport productReport) {
-		this(productReport.getComesEBebes(), productReport.getCompiler(), productReport.getList());
+		this(productReport.getComesEBebes(), productReport.getList());
 	}
 	// COMPORTAMENTOS
 	
@@ -96,5 +94,14 @@ public class ProductReport extends ReportExporter{
 
 		return new ProductReport(this);
 	}
+
+
+	@Override
+	public String toString() {
+		return "ProductReport [comesEBebes=" + comesEBebes + ", list=" + list + ", report=" + report + ", compiler="
+				+ compiler + ", exporterHtml=" + exporterHtml + ", exporterPdf=" + exporterPdf + ", exporterXml="
+				+ exporterXml + ", viewer=" + viewer + ", reportData=" + reportData + "]";
+	}
+	
 
 }
