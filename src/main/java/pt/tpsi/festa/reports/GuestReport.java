@@ -26,12 +26,12 @@ import java.util.List;
 	
 public class GuestReport extends ReportExporter{
 
-	// 1 ATRIBUTOS
+	// ATRIBUTOS
 
-	ConvidadosList convidados;
+	protected ConvidadosList convidados;
 	protected List<Guest> list;
 	
-	// 2 ACESSORES
+	// ACESSORES
 	
 	public ConvidadosList getConvidados() {
 		return convidados;
@@ -41,7 +41,7 @@ public class GuestReport extends ReportExporter{
 		return list;
 	}
 	
-	// 3 CONSTRUTORES
+	// CONSTRUTORES
 
 	public GuestReport() {
 		super();
@@ -59,7 +59,7 @@ public class GuestReport extends ReportExporter{
     	this(guestReport.getConvidados(), guestReport.getList());
     }
     
-	// 4 COMPORTAMENTOS
+	// COMPORTAMENTOS
     
     /**
      * Método que "compila" a lista de convidados, resume-se a usar a "List<Guest> list" e preenchê-la com a listaDeConvidados da classe {@link convidadosList.java} para poder ser usada no guestReportData.
@@ -100,7 +100,7 @@ public class GuestReport extends ReportExporter{
 		
 	}
 	
-	// 5 METODOS COMPLEMENTARES
+	// METODOS COMPLEMENTARES
 	
 	public boolean equals(GuestReport guestReport) {
 
