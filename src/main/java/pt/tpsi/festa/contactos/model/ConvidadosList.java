@@ -1,6 +1,7 @@
 package pt.tpsi.festa.contactos.model;
 
 import pt.brunojesus.contactslib.model.Contact;
+import pt.brunojesus.contactslib.ContactApi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,78 +19,125 @@ public class ConvidadosList implements ContactInterface {
 
 	// ATRIBUTOS
 
-	private List<Contact> lista;
+	private List<Contact> listaConvidados;
 	private ObservacoesContacto observacoes;
+	private ContactApi contactApi;
+	private List<Contact> listaCompleta;
 
 	// CONTRUTORES
 
 	/**
-	 * Constrói uma nova instância de ConvidadosList com uma lista vazia e
-	 * observações padrão.
+	 * Constrói uma nova instância de ConvidadosList com uma lista vazia de
+	 * convidados e observações padrão.
 	 */
 	public ConvidadosList() {
-		this.lista = new ArrayList<>();
+		this.listaConvidados = new ArrayList<>();
 		this.observacoes = new ObservacoesContacto();
+		this.contactApi = new ContactApi();
+		iniciarListaCompleta();
 	}
 
 	/**
-	 * Constrói uma nova instância de ConvidadosList com a lista de contactos e
-	 * observações especificadas.
+	 * Constrói uma nova instância de ConvidadosList com a lista especificada de
+	 * contactos e observações.
 	 *
-	 * @param lista       - a lista de contactos para inicializar a instância
-	 * @param observacoes - as observações associadas aos contactos
+	 * @param listaConvidados - a lista de contactos para inicializar a instância
+	 * @param observacoes     - as observações associadas aos contactos
+	 * @param contactApi      - a instância de ContactApi
+	 * @param listaCompleta   - a lista completa de contactos
 	 */
-	public ConvidadosList(List<Contact> lista, ObservacoesContacto observacoes) {
-		this.lista = lista;
-		this.observacoes = new ObservacoesContacto();
+	public ConvidadosList(List<Contact> listaConvidados, ObservacoesContacto observacoes, ContactApi contactApi,
+			List<Contact> listaCompleta) {
+		super();
+		this.listaConvidados = listaConvidados;
+		this.observacoes = observacoes;
+		this.contactApi = contactApi;
+		this.listaCompleta = listaCompleta;
 	}
 
 	/**
-	 * Constrói uma nova instância de ConvidadosList a partir de outra instância,
-	 * realizando uma cópia profunda dos contactos e das observações.
+	 * Constrói uma nova instância de ConvidadosList com base em outra instância,
+	 * realizando uma cópia profunda dos contactos e observações.
 	 *
 	 * @param convidado - a instância de ConvidadosList a ser copiada
 	 */
 	public ConvidadosList(ConvidadosList convidado) {
-		this(convidado.getLista(), convidado.getObservacoes());
+		this(convidado.getListaConvidados(), convidado.getObservacoes(), convidado.getContactApi(),
+				convidado.getListaCompleta());
 	}
 
 	// GETTERS AND SETTERS
 
 	/**
-	 * Obtém a lista de contactos.
+	 * Retorna a lista de contactos na lista de convidados.
 	 *
-	 * @return a lista de contactos
+	 * @return a lista de contactos na lista de convidados
 	 */
-	public List<Contact> getLista() {
-		return lista;
+	public List<Contact> getListaConvidados() {
+		return listaConvidados;
 	}
 
 	/**
-	 * Obtém as observações associadas aos contactos.
+	 * Retorna as observações associadas aos contactos na lista de convidados.
 	 *
-	 * @return as observações associadas aos contactos
+	 * @return as observações associadas aos contactos na lista de convidados
 	 */
 	public ObservacoesContacto getObservacoes() {
 		return observacoes;
 	}
 
 	/**
-	 * Define a lista de contactos.
+	 * Retorna a ContactApi utilizada pela lista de convidados.
 	 *
-	 * @param lista - a lista de contactos a ser definida
+	 * @return a ContactApi utilizada pela lista de convidados
 	 */
-	public void setLista(List<Contact> lista) {
-		this.lista = lista;
+	public ContactApi getContactApi() {
+		return contactApi;
 	}
 
 	/**
-	 * Define as observações associadas aos contactos.
+	 * Retorna a lista completa de contactos gerados pela API.
 	 *
-	 * @param observacoes as observações associadas aos contactos
+	 * @return a lista completa de contactos gerados pela API
+	 */
+	public List<Contact> getListaCompleta() {
+		return listaCompleta;
+	}
+
+	/**
+	 * Define a lista de contactos na lista de convidados.
+	 *
+	 * @param lista a lista de contactos a ser definida
+	 */
+	public void setLista(List<Contact> listaConvidados) {
+		this.listaConvidados = listaConvidados;
+	}
+
+	/**
+	 * Define as observações associadas aos contactos na lista de convidados.
+	 *
+	 * @param observacoes as observações a serem definidas
 	 */
 	public void setObservacoes(ObservacoesContacto observacoes) {
 		this.observacoes = observacoes;
+	}
+
+	/**
+	 * Define a ContactApi a ser utilizada pela lista de convidados.
+	 *
+	 * @param contactApi a ContactApi a ser definida
+	 */
+	public void setContactApi(ContactApi contactApi) {
+		this.contactApi = contactApi;
+	}
+
+	/**
+	 * Define a lista completa de contactos gerados pela API.
+	 *
+	 * @param listaCompleta a lista completa de contactos a ser definida
+	 */
+	public void setListaCompleta(List<Contact> listaCompleta) {
+		this.listaCompleta = listaCompleta;
 	}
 
 	// COMPORTAMENTOS
@@ -110,10 +158,10 @@ public class ConvidadosList implements ContactInterface {
 
 	@Override
 	public void convidar(int index, List<Contact> contacts, String observacao) {
-		if (index >= 0 && index < contacts.size()) {
-			Contact contact = contacts.get(index);
-			if (!lista.contains(contact)) {
-				lista.add(contact);
+		if (index >= 0 && index < listaCompleta.size()) {
+			Contact contact = listaCompleta.get(index);
+			if (!listaConvidados.contains(contact)) {
+				listaConvidados.add(contact);
 				observacoes.adicionarObservacao(contact, observacao);
 			} else {
 				throw new IllegalArgumentException("O contacto já está na lista de convidados.");
@@ -134,9 +182,9 @@ public class ConvidadosList implements ContactInterface {
 
 	@Override
 	public void desconvidar(int index) {
-		if (index >= 0 && index < lista.size()) {
-			Contact contact = lista.get(index);
-			lista.remove(index);
+		if (index >= 0 && index < listaConvidados.size()) {
+			Contact contact = listaConvidados.get(index);
+			listaConvidados.remove(index);
 			observacoes.removerObservacao(contact);
 		} else {
 			throw new IndexOutOfBoundsException("Índice inválido.");
@@ -154,7 +202,7 @@ public class ConvidadosList implements ContactInterface {
 	@Override
 	public List<String> listarConvidados() {
 		List<String> listaContactos = new ArrayList<>();
-		for (Contact contacto : lista) {
+		for (Contact contacto : listaConvidados) {
 			String nomeCompleto = contacto.getFirstName() + " " + contacto.getLastName();
 			String observacao = observacoes.getObservacao(contacto);
 			listaContactos
@@ -165,17 +213,15 @@ public class ConvidadosList implements ContactInterface {
 
 	/**
 	 * Retorna uma lista de strings contendo informações básicas sobre os contactos
-	 * na lista de convidados com todos os convidados possiveis de convidar. As
-	 * informações incluem o nome completo e número de telefone de cada contato.
+	 * na listaCompleta de contactos gerados pela API. As informações incluem o nome
+	 * completo e número de telefone de cada contacto.
 	 *
-	 * @param contactos a lista de contactos a serem listados
-	 * @return uma lista de strings com informações básicas dos contactos na lista
-	 *         de convidados
+	 * @return uma lista de strings com informações básicas dos contactos na
+	 *         listaCompleta de contactos gerados pela API
 	 */
-
-	public List<String> listarContactos(List<Contact> contactos) {
+	public List<String> listarContactos() {
 		List<String> listaContactos = new ArrayList<>();
-		for (Contact contacto : contactos) {
+		for (Contact contacto : listaCompleta) {
 			String nomeCompleto = contacto.getFirstName() + " " + contacto.getLastName();
 			listaContactos.add(nomeCompleto + " - Telemovel: " + contacto.getPhoneNumber());
 		}
@@ -183,6 +229,14 @@ public class ConvidadosList implements ContactInterface {
 	}
 
 	// MÉTODOS COMPLEMENTARES
+
+	/**
+	 * Inicializa a lista completa de contactos criada pela ContactApi. O método
+	 * gera um número especificado de contactos e os atribui ao campo listaCompleta.
+	 */
+	public void iniciarListaCompleta() {
+		listaCompleta = contactApi.generateContacts(4);
+	}
 
 	/**
 	 * Compara se o objeto atual é igual a outro objeto.
@@ -200,7 +254,7 @@ public class ConvidadosList implements ContactInterface {
 			return false;
 		}
 		ConvidadosList other = (ConvidadosList) obj;
-		return lista.equals(other.lista) && observacoes.equals(other.observacoes);
+		return listaConvidados.equals(other.listaConvidados) && observacoes.equals(other.observacoes);
 	}
 
 	/**
@@ -211,6 +265,6 @@ public class ConvidadosList implements ContactInterface {
 
 	@Override
 	public String toString() {
-		return "ConvidadosList [lista=" + lista + ", observacoes=" + observacoes + "]";
+		return "ConvidadosList [lista=" + listaConvidados + ", observacoes=" + observacoes + "]";
 	}
 }
