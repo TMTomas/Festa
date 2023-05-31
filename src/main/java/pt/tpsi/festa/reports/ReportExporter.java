@@ -24,6 +24,10 @@ import pt.brunojesus.report.common.exporter.file.ReportFileExporter;
 import pt.brunojesus.report.common.exporter.file.ReportFileHtmlExporter;
 import pt.brunojesus.report.common.exporter.file.ReportFilePdfExporter;
 import pt.brunojesus.report.common.exporter.file.ReportFileXmlExporter;
+import pt.tpsi.festa.reports.exceptions.CompilerException;
+import pt.tpsi.festa.reports.exceptions.ExportHtmlExeption;
+import pt.tpsi.festa.reports.exceptions.ExportPdfException;
+import pt.tpsi.festa.reports.exceptions.ExportXmlException;
 
 public  class ReportExporter {
 
@@ -155,7 +159,7 @@ public  class ReportExporter {
 	
     public Report compiler() throws NullPointerException {
         if (reportData == null) {
-            throw new NullPointerException("reportData is null");
+            throw new CompilerException("reportData is null");
         }
        return report = compiler.apply(reportData);
     }
@@ -169,7 +173,7 @@ public  class ReportExporter {
 	
     public void exportHtml(String fileName) throws IllegalArgumentException {
         if (fileName == null || fileName.isEmpty()) {
-            throw new IllegalArgumentException("Invalid fileName");
+            throw new ExportHtmlExeption("Invalid fileName");
         }
         exporterHtml.accept(report, fileName);
     }
@@ -182,7 +186,7 @@ public  class ReportExporter {
 	
     public void exportPdf(String fileName) throws IllegalArgumentException {
         if (fileName == null || fileName.isEmpty()) {
-            throw new IllegalArgumentException("Invalid fileName");
+            throw new ExportPdfException("Invalid fileName");
         }
         exporterPdf.accept(report, fileName);
     }
@@ -195,7 +199,7 @@ public  class ReportExporter {
 	
     public void exportXml(String fileName) throws IllegalArgumentException {
         if (fileName == null || fileName.isEmpty()) {
-            throw new IllegalArgumentException("Invalid fileName");
+            throw new ExportXmlException("Invalid fileName");
         }
         exporterXml.accept(report, fileName);
     }
