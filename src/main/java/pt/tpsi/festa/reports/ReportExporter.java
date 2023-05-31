@@ -153,11 +153,11 @@ public  class ReportExporter {
      * @return report	dá return ao report compilado
      */
 	
-    public void compiler() throws NullPointerException {
+    public Report compiler() throws NullPointerException {
         if (reportData == null) {
             throw new NullPointerException("reportData is null");
         }
-        report = compiler.apply(reportData);
+       return report = compiler.apply(reportData);
     }
 
 
