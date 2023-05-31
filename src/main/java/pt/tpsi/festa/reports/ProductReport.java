@@ -22,7 +22,6 @@ public class ProductReport extends ReportExporter{
 	protected ComesEBebes comesEBebes;
 	protected final ReportCompiler compiler;
 	protected List<Product> list;
-	protected ReportData reportData;
 	
 	// ACESSORES
 
@@ -100,6 +99,10 @@ public class ProductReport extends ReportExporter{
 
 		exporterXml.accept(report, fileName);
 	}
+	
+	public void reportViewer() {
+    	viewer.accept(report);
+    }
 	
 	// METODOS COMPLEMENTARES
 
