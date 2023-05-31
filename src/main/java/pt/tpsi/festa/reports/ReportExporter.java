@@ -5,8 +5,10 @@
  * @author Nuno Dias
  * @author Tiago Tomás
  * 
- * @author Daniel Duarte (Special thanks for the help)
- * 
+ * Menções importantes
+ * @author ChatGPT (Mais valia de alguns membros)
+ * @author Daniel Duarte (Obrigado por toda a ajuda e disponibilidade)
+ *
  * A classe abstrata ReportExporter representa um exportador de relatórios.
  * Possui métodos para compilar um relatório e exportá-lo para HTML, PDF e XML
  * Também implementa métodos de acesso e verificação de igualdade.
