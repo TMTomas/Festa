@@ -1,7 +1,11 @@
 /**
+ * 
+ * @author António Ferraz, Daniel Duarte, Nuno Dias, Tiago Tomás
+ * 
  * A classe abstrata ReportExporter representa um exportador de relatórios.
  * Possui métodos para compilar um relatório e exportá-lo para HTML, PDF e XML
  * Também implementa métodos de acesso e verificação de igualdade.
+ * 
  */
 package pt.tpsi.festa.reports;
 
@@ -14,7 +18,7 @@ import pt.brunojesus.report.common.exporter.file.ReportFileHtmlExporter;
 import pt.brunojesus.report.common.exporter.file.ReportFilePdfExporter;
 import pt.brunojesus.report.common.exporter.file.ReportFileXmlExporter;
 
-public abstract class ReportExporter {
+public  class ReportExporter {
 
 	// 1 ATRIBUTOS
 	protected Report report;
@@ -180,7 +184,7 @@ public abstract class ReportExporter {
      * Mostra o relatório sem criar um ficheiro
      */
     
-    public void ReportViewer() {
+    public void reportViewer() {
     	viewer.accept(report);
     }
     
