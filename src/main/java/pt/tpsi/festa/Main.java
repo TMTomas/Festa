@@ -12,7 +12,10 @@ import pt.tpsi.festa.contactos.model.ConvidadosList;
 import pt.tpsi.festa.espaco.http.RequestMetreologiaAndLocation;
 import pt.tpsi.festa.reports.ProductReport;
 
-
+/**
+ * @author Daniel Duarte AND Pedro Pacheco
+ * @version 1.0
+ */
 public class Main {
 
 	public static void main(String[] args) {

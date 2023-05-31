@@ -1,10 +1,18 @@
 package pt.tpsi.festa.espaco.model;
 
 import lombok.Data;
+/**
+ * This class serves to create a structure for the list with the important data with more data
+ * than the class {@link Location}
+ *
+ * @author Daniel Duarte AND Pedro Pacheco
+ * @version 1.0
+ *
+ */
 
 @Data
 public class LocationPlus extends Location{
-   
+
 	// 1 - atributos
 	/**
 	 * atributos da classe são os que definimos a baixo
@@ -56,22 +64,42 @@ public class LocationPlus extends Location{
     }
     // 3 - gets e sets
 
+	/**
+	 * This method will give the temperature
+	 * @return temperature
+	 */
 	public double getTemperature() {
 		return temperature;
 	}
 
+	/**
+	 * This method will give the temperature Minimum
+	 * @return temperatureMin
+	 */
 	public double getTemperatureMin() {
 		return temperatureMin;
 	}
 
+	/**
+	 * This method will give the temperature Max
+	 * @return temperatureMax
+	 */
 	public double getTemperatureMax() {
 		return temperatureMax;
 	}
 
+	/**
+	 * This method will give the type
+	 * @return type
+	 */
 	public String getType() {
 		return type;
 	}
 
+	/**
+	 * This method will give the icon
+	 * @return icon
+	 */
 	public String getIcon() {
 		return icon;
 	}
@@ -81,13 +109,8 @@ public class LocationPlus extends Location{
     
     // 5 - metodos complementares
     /**
-     * Metódo que representa a classe de forma escrita 
+     * Convert the class to a textual form
      */
-
-	//    private String nameLocation;
-	//    private String latitude;
-	//    private String longitude;
-	//    private String weather;
 	@Override
 	public String toString() {
 		return "LocationPlus{" +
