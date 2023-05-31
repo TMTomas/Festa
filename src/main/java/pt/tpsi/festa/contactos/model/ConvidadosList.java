@@ -106,7 +106,7 @@ public class ConvidadosList implements ContactInterface {
 	 *
 	 * @param lista a lista de contactos a ser definida
 	 */
-	public void setLista(List<Contact> listaConvidados) {
+	public void setListaConvidados(List<Contact> listaConvidados) {
 		this.listaConvidados = listaConvidados;
 	}
 
@@ -179,14 +179,12 @@ public class ConvidadosList implements ContactInterface {
 
 	@Override
 	public void desconvidar(int index) {
-		if (index >= 0 && index < listaConvidados.size()) {
-			Contact contact = listaConvidados.get(index);
-			listaConvidados.remove(index);
-			observacoes.removerObservacao(contact);
-		} else {
-			throw new IndexOutOfBoundsException("Índice inválido.");
-		}
+	    if (index < 0 || index >= listaConvidados.size()) {
+	        throw new IndexOutOfBoundsException("Índice inválido");
+	    }
+	    listaConvidados.remove(index);
 	}
+
 
 	/**
 	 * Retorna uma lista de strings contendo informações detalhadas sobre os
