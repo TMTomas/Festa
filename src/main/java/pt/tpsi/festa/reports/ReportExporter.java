@@ -8,6 +8,7 @@ package pt.tpsi.festa.reports;
 import pt.brunojesus.report.common.Report;
 import pt.brunojesus.report.common.ReportCompiler;
 import pt.brunojesus.report.common.ReportData;
+import pt.brunojesus.report.common.ReportViewer;
 import pt.brunojesus.report.common.exporter.file.ReportFileExporter;
 import pt.brunojesus.report.common.exporter.file.ReportFileHtmlExporter;
 import pt.brunojesus.report.common.exporter.file.ReportFilePdfExporter;
@@ -21,7 +22,9 @@ public abstract class ReportExporter {
 	protected final ReportFileExporter exporterHtml;
 	protected final ReportFileExporter exporterPdf;
 	protected final ReportFileExporter exporterXml;
+	protected final ReportViewer viewer;
 	protected ReportData reportData;
+	
 
 	// 2 ACESSORES
 	
@@ -74,10 +77,20 @@ public abstract class ReportExporter {
     public ReportFileExporter getExporterXml() {
         return exporterXml;
     }
-
+    
+    /**
+     * Obtém o viewer.
+     *
+     * @return viewer
+     */
+    
+    public ReportViewer getViewer() {
+  		return viewer;
+  	}
+    
     // 3 CONSTRUTORES
 
-    /**
+	/**
      * Construtor padrão da classe ReportExporter.
      * Inicializa os objetos compiler, exporterHtml, exporterPdf e exporterXml.
      */
@@ -87,6 +100,7 @@ public abstract class ReportExporter {
         this.exporterHtml = new ReportFileHtmlExporter();
         this.exporterPdf = new ReportFilePdfExporter();
         this.exporterXml = new ReportFileXmlExporter();
+        this.viewer = new ReportViewer();
     }
 
     /**
@@ -100,12 +114,13 @@ public abstract class ReportExporter {
      */
 	
     public ReportExporter(Report report, ReportCompiler compiler, ReportFileExporter exporterHtml,
-                          ReportFileExporter exporterPdf, ReportFileExporter exporterXml) {
+                          ReportFileExporter exporterPdf, ReportFileExporter exporterXml, ReportViewer viewer) {
         this.report = report;
         this.compiler = compiler;
         this.exporterHtml = exporterHtml;
         this.exporterPdf = exporterPdf;
         this.exporterXml = exporterXml;
+        this.viewer = viewer;
     }
 
     /**
@@ -116,7 +131,7 @@ public abstract class ReportExporter {
 	
     public ReportExporter(ReportExporter reportExporter) {
         this(reportExporter.getReport(), reportExporter.getCompiler(), reportExporter.getExporterHtml(),
-                reportExporter.getExporterPdf(), reportExporter.getExporterXml());
+                reportExporter.getExporterPdf(), reportExporter.getExporterXml(), reportExporter.getViewer());
     }
 
     // 4 COMPORTAMENTOS
@@ -160,6 +175,15 @@ public abstract class ReportExporter {
     public void exportXml(String fileName) {
         exporterXml.accept(report, fileName);
     }
+    
+    /**
+     * Mostra o relatório sem criar um ficheiro
+     */
+    
+    public void ReportViewer() {
+    	viewer.accept(report);
+    }
+    
 
     // 5 METODOS COMPLEMENTARES
     
