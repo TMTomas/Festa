@@ -7,7 +7,7 @@ import java.util.List;
 public interface ContactInterface {
 
 	// lista os contactos
-	List<String> listarContactos(List<Contact> contactos);
+	List<String> listarContactos();
 
 	// lista os convidados
 	List<String> listarConvidados();
