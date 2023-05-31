@@ -127,7 +127,7 @@ public abstract class ReportExporter {
      * @param reportData os dados do relatório a serem compilados
      */
 	
-    public void compiler(ReportData reportData) {
+    public void compiler() {
         report = compiler.apply(reportData);
     }
 
