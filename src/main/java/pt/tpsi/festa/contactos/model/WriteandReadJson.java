@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WriteandReadJson {
-    private ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
     private List<Contact> contactList;
-    private File filePath;
+    private final File filePath;
 
     public WriteandReadJson() {
         objectMapper = new ObjectMapper();
@@ -20,17 +20,17 @@ public class WriteandReadJson {
         filePath = new File("contactList.json");
     }
 
-    public void writeListOnFile(){
+    public void writeListOnFile(List<Contact> list){
         try {
-            objectMapper.writeValue(filePath, contactList);
+            objectMapper.writeValue(filePath, list);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-    public void readFiletoList(){
+    public void readFiletoList(List<Contact> list){
         try {
             if(!filePath.exists()){
-                writeListOnFile();
+                writeListOnFile(list);
             }
             contactList = objectMapper.readValue(filePath, new TypeReference<List<Contact>>(){});
         } catch (IOException e) {
