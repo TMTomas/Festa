@@ -27,14 +27,14 @@ public class WriteandReadJson {
             throw new RuntimeException(e);
         }
     }
-    public void readFiletoList(List<Contact> list){
+    public List<Contact> readFiletoList(List<Contact> list){
         try {
             if(!filePath.exists()){
                 writeListOnFile(list);
             }
-            contactList = objectMapper.readValue(filePath, new TypeReference<List<Contact>>(){});
+            return contactList = objectMapper.readValue(filePath, new TypeReference<List<Contact>>(){});
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
-    }
+		}
+	}
 }
