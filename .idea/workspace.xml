@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d77898b2-fd52-46f4-b34a-d5ddd3580ea8" name="Changes" comment="Make atributes private">
+      <change afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/contactos/model/WriteandReadJson.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/reports/GuestReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/reports/GuestReport.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
