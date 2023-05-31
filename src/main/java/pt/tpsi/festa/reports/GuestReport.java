@@ -1,10 +1,8 @@
 package pt.tpsi.festa.reports;
 
-import pt.brunojesus.contactslib.model.Contact;
 import pt.brunojesus.report.common.ReportData;
 import pt.brunojesus.report.guestlist.model.Guest;
 import pt.brunojesus.report.guestlist.model.GuestReportData;
-import pt.brunojesus.report.productlist.model.Product;
 import pt.tpsi.festa.contactos.model.ConvidadosList;
 
 import java.util.ArrayList;
