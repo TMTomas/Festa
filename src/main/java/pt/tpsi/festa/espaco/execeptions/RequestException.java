@@ -1,4 +1,4 @@
-package pt.tpsi.festa.execeptions;
+package pt.tpsi.festa.espaco.execeptions;
 
 /**
  * Uma exceção personalizada que representa um erro durante uma requisição.
