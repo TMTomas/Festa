@@ -2,7 +2,6 @@ package pt.tpsi.festa.espaco.http;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import pt.brunojesus.locationsearch.api.OpenStreetMap;
 import pt.brunojesus.locationsearch.exception.LocationSearchException;
@@ -20,16 +19,16 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
 	/**
 	 * Um atributo do tipo MetereologiaRequest, que instancia a classe
 	 */
-	private MetereologiaRequest requestMetreologia;
+	private final MetereologiaRequest requestMetreologia;
 	/**
 	 * Um atributo do tipo OpenStreetMap, que instancia a classe
 	 */
-    private OpenStreetMap requestLocation;
+    private final OpenStreetMap requestLocation;
     /**
 	 * Um atributo do tipo list, lista criada para guardar os nomes das localizações
 	 */
-    private List<Location> locationList;
-    private List<LocationPlus> locationListPlus;
+    private final List<Location> locationList;
+    private final List<LocationPlus> locationListPlus;
     /**
 	 * Um atributo do tipo LocationPlus, que instancia a classe
 	 */
@@ -100,7 +99,6 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
      * this metodo is used to make, the Metrology request that will give the temperature
      * from the respective place that will be search and the
      * @param local this is the local that will be search
-     * @return List this is will return a list with all necessary information
      */
     @Override
     public void pesquisar(String local) {
