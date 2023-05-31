@@ -1,8 +1,3 @@
-
- // A classe ProductReport representa o relatório de produtos para a festa.
- // O relatório contém informações sobre os produtos, como nome, quantidade e preço.
- // Pode ser exportado para um arquivo PDF.
- 
 package pt.tpsi.festa.reports;
 
 import java.util.ArrayList;
@@ -13,127 +8,112 @@ import pt.brunojesus.report.common.Report;
 import pt.brunojesus.report.common.ReportCompiler;
 import pt.brunojesus.report.common.ReportData;
 import pt.brunojesus.report.common.ReportViewer;
-
+import pt.brunojesus.report.common.exporter.file.ReportFileExporter;
+import pt.brunojesus.report.common.exporter.file.ReportFileHtmlExporter;
 import pt.brunojesus.report.productlist.model.Product;
 import pt.brunojesus.report.productlist.model.ProductReportData;
 import pt.tpsi.festa.comesebebes.model.ComesEBebes;
 import pt.tpsi.festa.espaco.http.RequestMetreologiaAndLocation;
 
-public class ProductReport {
+public class ProductReport extends ReportExporter{
 
 	// ATRIBUTOS
-
 	
-	// Representa a instância da classe ComesEBebes.
-	 
 	protected ComesEBebes comesEBebes;
-	
-	// Representa uma lista de produtos.
-	 
-	private List<Product> list; 
+	protected final ReportCompiler compiler;
+	protected List<Product> list;
+	protected ReportData reportData;
 	
 	// ACESSORES
-
-	//Obtém a instância da classe ComesEBebes.
 
 	public ComesEBebes getComesEBebes() {
 		return comesEBebes;
 	}
-	
-	//Obtém a lista de produtos.
+
+
+	public ReportCompiler getCompiler() {
+		return compiler;
+	}
+
 
 	public List<Product> getList() {
 		return list;
 	}
-
-	//Define a instância da classe ComesEBebes.
-
-	public void setComesEBebes(ComesEBebes comesEBebes) {
-		this.comesEBebes = comesEBebes;
-	}
-
-	 // Define a lista de produtos.
-
-	public void setList(List<Product> list) {
-		this.list = list;
-	}
-
+	
 	// CONSTRUTORES
 
-	
-	//Construtor padrão da classe ProductReport.
-	//Cria uma instância de ComesEBebes e uma lista vazia de produtos.
-	
 	public ProductReport() {
+		super();
 		comesEBebes = new ComesEBebes();
 		list = new ArrayList<>();
-	}
-		
-	//Construtor da classe ProductReport.
-
-	public ProductReport(ComesEBebes comesEBebes, List<Product> list) {
-		this.comesEBebes = new ComesEBebes();
-		this.list = new ArrayList<>();
+		compiler = new ReportCompiler();
 	}
 
-	//Construtor de cópia da classe ProductReport.
-
+	public ProductReport(ComesEBebes comesEBebes, ReportCompiler compiler, List<Product> list) {
+		super();
+		this.comesEBebes = comesEBebes;
+		this.compiler = compiler;
+		this.list = list;
+	}
+	
 	public ProductReport(ProductReport productReport) {
-		this(productReport.getComesEBebes(), productReport.getList());
+		this(productReport.getComesEBebes(), productReport.getCompiler(), productReport.getList());
 	}
-
 	// COMPORTAMENTOS
+	
+	public List<Product> compileCarrinho() {
 
-	//Compila o carrinho de compras da festa.
-
-	public List<Product> compilarCarrinho() {
-
-	// Implementação do método
-		
 		for (int i = 0; i < comesEBebes.getCarrinho().getListaDeCompras().size(); i++) {
 			list.add(new Product().setId(String.valueOf(i))
-					.setName(comesEBebes.getCarrinho().getListaDeCompras().get(i).getNome())
-					.setQuantity(comesEBebes.getCarrinho().getListaDeCompras().get(i).getQuantidade())
-					.setPrice(comesEBebes.getCarrinho().getListaDeCompras().get(i).getPreco()));
-		}
+				.setName(comesEBebes.getCarrinho().getListaDeCompras().get(i).getNome())
+				.setQuantity(comesEBebes.getCarrinho().getListaDeCompras().get(i).getQuantidade())
+				.setPrice(comesEBebes.getCarrinho().getListaDeCompras().get(i).getPreco()));
+			}
 		return list;
-		
+
 	}
 	
-	//Cria um arquivo PDF contendo o relatório dos produtos da festa.
-	
-	public void createPDF(String nomeFesta, String address, String date) {
+	public void productReportData(String partyName, String date, String address) {
+		 reportData = new ProductReportData()
+                .setName(partyName)
+                .setDate(new Date(date))
+                .setAddress(address)
+                .setCurrency("€")
+                .setProducts(list);
 		
-		// Implementação do método
-		
-		ReportData productReportData = new ProductReportData().setName(nomeFesta).setDate(new Date(date)).setAddress("ESGTS\nIPSantarem").setCurrency("€").setProducts(compilarCarrinho());
-		final ReportCompiler compiler = new ReportCompiler();
-		Report productReport = compiler.apply(productReportData);
-		final ReportViewer viewer = new ReportViewer();
-		viewer.accept(productReport);
+	}
+	public void compiler() {
+		report = compiler.apply(reportData);
+	}
+
+	public void exportHtml(String fileName) {
+
+		exporterHtml.accept(report, fileName);
+	}
+
+	public void exportPdf(String fileName) {
+
+		exporterPdf.accept(report, fileName);
+	}
+
+	public void exportXml(String fileName) {
+
+		exporterXml.accept(report, fileName);
 	}
 	
 	// METODOS COMPLEMENTARES
 
-	//Verifica se o objeto ProductReport é igual a outro objeto.
-	
 	public boolean equals(ProductReport productReport) {
-		
-	//Implementação do método
-		
+
 		if (productReport == productReport)
 			return false;
 		else
-		return list.equals(productReport.getList());
+			return list.equals(productReport.getList());
 	}
-	
-	//Cria uma cópia do objeto ProductReport.
-	
+
 	public ProductReport clone() {
-		
-	//Implementação do método
-		
+
 		return new ProductReport(this);
 	}
-	
+
 }
