@@ -124,7 +124,7 @@ public  class ReportExporter {
      * @param exporterXml    o exportador de arquivos XML
      */
 	
-    public ReportExporter(Report report, ReportCompiler compiler, ReportFileExporter exporterHtml,
+    public ReportExporter(Report report, ReportCompiler compiler, ReportFileExporter exporterHtml,	
                           ReportFileExporter exporterPdf, ReportFileExporter exporterXml, ReportViewer viewer) {
         this.report = report;
         this.compiler = compiler;

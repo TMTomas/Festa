@@ -1,3 +1,18 @@
+/**
+ * 
+ * @author António Ferraz
+ * @author Eduardo Ribeiro
+ * @author Nuno Dias
+ * @author Tiago Tomás
+ * 
+ * Menções importantes
+ * @author ChatGPT (Mais valia de alguns membros)
+ * @author Daniel Duarte (Obrigado por toda a ajuda e disponibilidade)
+ * 
+ * Esta classe cria um ProductReport, que se pode exportar para Html, Pdf e Xml.
+ * É também possível visualizar o Report sem se criar um ficheiro. Para mais informações consultar a superclasse {@link ReportExporter.java}.
+ *
+ */
 package pt.tpsi.festa.reports;
 
 import pt.brunojesus.report.common.ReportData;
@@ -8,7 +23,7 @@ import pt.tpsi.festa.contactos.model.ConvidadosList;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+	
 public class GuestReport extends ReportExporter{
 
 	// 1 ATRIBUTOS
@@ -46,6 +61,12 @@ public class GuestReport extends ReportExporter{
     
 	// 4 COMPORTAMENTOS
     
+    /**
+     * Método que "compila" a lista de convidados, resume-se a usar a "List<Guest> list" e preenchê-la com a listaDeConvidados da classe {@link convidadosList.java} para poder ser usada no guestReportData.
+     * 
+     * @return list;
+     */
+    
     public List<Guest> compileShoppingList() {
 
 		for (int i = 0; i < convidados.getListaConvidados().size(); i++) {
@@ -59,6 +80,16 @@ public class GuestReport extends ReportExporter{
 		return list;
 
 	}
+    
+    /**
+	 * Atribui valores ao reportData
+	 *  
+	 * @param partyName	Nome da festa
+	 * @param date Data da festa (MM/DD/AAAA HH:mm)
+	 * @param address Morada da festa
+	 * @param list Lista de convidados
+	 * @return 
+	 */
 	
 	public ReportData guestReportData(String partyName, String date, String address) {
 		 return reportData = new GuestReportData()
