@@ -23,30 +23,20 @@ public class Main {
 //        System.out.println(convidados.listarConvidados());
         
     	final ContactApi contactApi = new ContactApi();
-    	List<Contact> contactList = contactApi.generateContacts(4);
+    	List<Contact> l1 = contactApi.generateContacts(4);
+		ConvidadosList listaConvidados = new ConvidadosList();
 
-    	System.out.println("LISTA CONTACTOS");
-    	
-        for (int i = 0; i < contactList.size(); i++) {
-			System.out.println(contactList.get(i).getFirstName()); 
-			System.out.println(contactList.get(i).getLastName());  
-			System.out.println(contactList.get(i).getPhoneNumber());
-		}
-        
-    	List<Guest> guestList = new ArrayList<>();
-        
-        guestList.add(new Guest().setName(contactList.get(0).getFirstName() + " " + contactList.get(0).getLastName())
-				.setContact(contactList.get(0).getPhoneNumber()).setPresent(true));
-        
-        
-        System.out.println("LISTA CONVIDADOS");
-        
-        for (int i = 0; i < guestList.size(); i++) {
-			System.out.println(guestList.get(i).getName());
-			System.out.println(guestList.get(i).getContact());
+		listaConvidados.convidar(0, l1, "nao gosta de vodka");
+		listaConvidados.convidar(1, l1, "nao bebe alcool");
 
-		}
-        
+		System.out.println("LISTA COMPLETA DE CONTACTOS:");
+		System.out.println(listaConvidados.listarContactos(l1));
+		System.out.println();
+
+		System.out.println("LISTA DOS CONVIDADOS:");
+		System.out.println(listaConvidados.listarConvidados());
+		System.out.println();
+
 //        RequestMetreologiaAndLocation request = new RequestMetreologiaAndLocation();
 //		ProductReport productReport = new ProductReport();
 //        request.pesquisar("Continente");
