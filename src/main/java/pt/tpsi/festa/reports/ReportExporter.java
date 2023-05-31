@@ -16,6 +16,7 @@ public abstract class ReportExporter {
 	protected final ReportFileExporter exporterHtml;
 	protected final ReportFileExporter exporterPdf;
 	protected final ReportFileExporter exporterXml;
+	protected ReportData reportData;
 
 	// 2 ACESSORES
 
@@ -65,7 +66,7 @@ public abstract class ReportExporter {
 	
 	// 4 COMPORTAMENTOS
 
-	public void compiler(ReportData reportData) {
+	public void compiler() {
 		report = compiler.apply(reportData);
 	}
 
