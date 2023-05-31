@@ -81,28 +81,6 @@ public class ProductReport extends ReportExporter{
                 .setProducts(list);
 		
 	}
-	public void compiler() {
-		report = compiler.apply(reportData);
-	}
-
-	public void exportHtml(String fileName) {
-
-		exporterHtml.accept(report, fileName);
-	}
-
-	public void exportPdf(String fileName) {
-
-		exporterPdf.accept(report, fileName);
-	}
-
-	public void exportXml(String fileName) {
-
-		exporterXml.accept(report, fileName);
-	}
-	
-	public void reportViewer() {
-    	viewer.accept(report);
-    }
 	
 	// METODOS COMPLEMENTARES
 
