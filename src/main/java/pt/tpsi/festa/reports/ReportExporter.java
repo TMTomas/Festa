@@ -151,9 +151,13 @@ public  class ReportExporter {
      * @return report	dá return ao report compilado
      */
 	
-    public Report compiler() {
-        return report = compiler.apply(reportData);
+    public void compiler() throws NullPointerException {
+        if (reportData == null) {
+            throw new NullPointerException("reportData is null");
+        }
+        report = compiler.apply(reportData);
     }
+
 
     /**
      * Exporta o relatório atual para um arquivo HTML.
@@ -161,7 +165,10 @@ public  class ReportExporter {
      * @param fileName o nome do arquivo HTML a ser exportado
      */
 	
-    public void exportHtml(String fileName) {
+    public void exportHtml(String fileName) throws IllegalArgumentException {
+        if (fileName == null || fileName.isEmpty()) {
+            throw new IllegalArgumentException("Invalid fileName");
+        }
         exporterHtml.accept(report, fileName);
     }
 
@@ -171,7 +178,10 @@ public  class ReportExporter {
      * @param fileName o nome do arquivo PDF a ser exportado
      */
 	
-    public void exportPdf(String fileName) {
+    public void exportPdf(String fileName) throws IllegalArgumentException {
+        if (fileName == null || fileName.isEmpty()) {
+            throw new IllegalArgumentException("Invalid fileName");
+        }
         exporterPdf.accept(report, fileName);
     }
 
@@ -181,7 +191,10 @@ public  class ReportExporter {
      * @param fileName o nome do arquivo XML a ser exportado
      */
 	
-    public void exportXml(String fileName) {
+    public void exportXml(String fileName) throws IllegalArgumentException {
+        if (fileName == null || fileName.isEmpty()) {
+            throw new IllegalArgumentException("Invalid fileName");
+        }
         exporterXml.accept(report, fileName);
     }
     
