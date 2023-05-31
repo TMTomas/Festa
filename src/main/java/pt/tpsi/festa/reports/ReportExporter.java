@@ -1,6 +1,11 @@
 /**
  * 
- * @author António Ferraz, Daniel Duarte, Nuno Dias, Tiago Tomás
+ * @author António Ferraz
+ * @author Eduardo Ribeiro
+ * @author Nuno Dias
+ * @author Tiago Tomás
+ * 
+ * @author Daniel Duarte (Special thanks for the help)
  * 
  * A classe abstrata ReportExporter representa um exportador de relatórios.
  * Possui métodos para compilar um relatório e exportá-lo para HTML, PDF e XML
@@ -21,14 +26,14 @@ import pt.brunojesus.report.common.exporter.file.ReportFileXmlExporter;
 public  class ReportExporter {
 
 	// 1 ATRIBUTOS
+	
 	protected Report report;
+	protected ReportData reportData;
 	protected final ReportCompiler compiler;
 	protected final ReportFileExporter exporterHtml;
 	protected final ReportFileExporter exporterPdf;
 	protected final ReportFileExporter exporterXml;
 	protected final ReportViewer viewer;
-	protected ReportData reportData;
-	
 
 	// 2 ACESSORES
 	
@@ -146,8 +151,8 @@ public  class ReportExporter {
      * @param reportData os dados do relatório a serem compilados
      */
 	
-    public void compiler() {
-        report = compiler.apply(reportData);
+    public Report compiler() {
+        return report = compiler.apply(reportData);
     }
 
     /**

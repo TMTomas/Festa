@@ -6,11 +6,11 @@ import java.util.List;
 
 
 import pt.brunojesus.report.common.ReportCompiler;
+import pt.brunojesus.report.common.ReportData;
 import pt.brunojesus.report.productlist.model.Product;
 import pt.brunojesus.report.productlist.model.ProductReportData;
 
 import pt.tpsi.festa.comesebebes.model.ComesEBebes;
-
 
 public class ProductReport extends ReportExporter{
 
@@ -67,13 +67,14 @@ public class ProductReport extends ReportExporter{
 
 	}
 	
-	public void productReportData(String partyName, String date, String address) {
+	public ReportData productReportData(String partyName, String date, String address) {
 		 reportData = new ProductReportData()
                 .setName(partyName)
                 .setDate(new Date(date))
                 .setAddress(address)
                 .setCurrency("€")
                 .setProducts(list);
+		return reportData;
 		
 	}
 	
