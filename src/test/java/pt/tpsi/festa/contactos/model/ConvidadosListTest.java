@@ -1,10 +1,3 @@
-/**
- * Classe de testes para a classe ConvidadosList.
-
- * @author Diogo Carvalho, Francisco Simões, Tomás Monteiro
- * @version 1.0.0
- * @since 31-05-2023
- */
 package pt.tpsi.festa.contactos.model;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -18,6 +11,14 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
+/**
+ * Classe de testes para a classe ConvidadosList.
+ * 
+ * @author Diogo Carvalho, Francisco Simões, Tomás Monteiro
+ * @version 1.0.0
+ * @since 31-05-2023
+ */
 class ConvidadosListTest {
 
 	private ConvidadosList convidadosList;
