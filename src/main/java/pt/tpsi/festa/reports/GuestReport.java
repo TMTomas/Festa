@@ -60,7 +60,7 @@ public class GuestReport extends ReportExporter{
 
 	}
 	
-	public ReportData productReportData(String partyName, String date, String address) {
+	public ReportData guestReportData(String partyName, String date, String address) {
 		 return reportData = new GuestReportData()
                .setEventName(partyName)
                .setEventDate(new Date(date))
