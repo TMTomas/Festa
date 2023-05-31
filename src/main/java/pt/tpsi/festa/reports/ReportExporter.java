@@ -148,7 +148,7 @@ public  class ReportExporter {
     /**
      * Compila um relatório com base nos dados fornecidos.
      *
-     * @param reportData os dados do relatório a serem compilados
+     * @return report	dá return ao report compilado
      */
 	
     public Report compiler() {
