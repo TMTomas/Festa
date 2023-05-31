@@ -3,13 +3,14 @@
 
  * @author Diogo Carvalho, Francisco Simões, Tomás Monteiro
  * @version 1.0.0
- * @since 26-05-2023
+ * @since 31-05-2023
  */
 package pt.tpsi.festa.contactos.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import pt.brunojesus.contactslib.ContactApi;
 import pt.brunojesus.contactslib.model.Contact;
 
 import java.util.ArrayList;
@@ -21,6 +22,8 @@ class ConvidadosListTest {
 
 	private ConvidadosList convidadosList;
 	private List<Contact> contacts;
+	private List<Contact> listaCompleta;
+	private ContactApi contactApi;
 
 	/**
 	 * Configuração inicial para os testes.
@@ -32,15 +35,23 @@ class ConvidadosListTest {
 		contacts.add(new Contact().setFirstName("Ana").setLastName("Patricio").setPhoneNumber("922222222"));
 		contacts.add(new Contact().setFirstName("Alice").setLastName("Marques").setPhoneNumber("933333333"));
 
-		convidadosList = new ConvidadosList(contacts, new ObservacoesContacto());
+		convidadosList = new ConvidadosList(contacts, new ObservacoesContacto(), contactApi, listaCompleta);
 	}
 
 	/**
 	 * Testa o método listar para listar todos os contactos.
 	 */
 	@Test
-	void listarTodosContactos() {
-		List<String> listaContactos = convidadosList.listarContactos(convidadosList.getLista());
+	void listarContactos() {
+		List<Contact> contacts = new ArrayList<>();
+		contacts.add(new Contact().setFirstName("Rui").setLastName("Martins").setPhoneNumber("911111111"));
+		contacts.add(new Contact().setFirstName("Ana").setLastName("Patricio").setPhoneNumber("922222222"));
+		contacts.add(new Contact().setFirstName("Alice").setLastName("Marques").setPhoneNumber("933333333"));
+
+		ConvidadosList convidadosList = new ConvidadosList(contacts, new ObservacoesContacto(), null, contacts);
+
+		List<String> listaContactos = convidadosList.listarContactos();
+
 		assertEquals(3, listaContactos.size());
 		assertTrue(listaContactos.contains("Rui Martins - Telemovel: 911111111"));
 		assertTrue(listaContactos.contains("Ana Patricio - Telemovel: 922222222"));
@@ -64,20 +75,23 @@ class ConvidadosListTest {
 	 */
 	@Test
 	void convidar() {
-		List<Contact> newContacts = new ArrayList<>();
-		newContacts.add(new Contact().setFirstName("Hugo").setLastName("Oliveira").setPhoneNumber("944444444"));
-		newContacts.add(new Contact().setFirstName("Sara").setLastName("Lima").setPhoneNumber("955555555"));
+		List<Contact> contacts = new ArrayList<>();
+		contacts.add(new Contact().setFirstName("Rui").setLastName("Martins").setPhoneNumber("911111111"));
+		contacts.add(new Contact().setFirstName("Ana").setLastName("Patricio").setPhoneNumber("922222222"));
+		contacts.add(new Contact().setFirstName("Alice").setLastName("Marques").setPhoneNumber("933333333"));
 
-		convidadosList.convidar(0, newContacts, "alcoolico");
-		convidadosList.convidar(1, newContacts, "dancarino");
+		ConvidadosList convidadosList = new ConvidadosList(new ArrayList<>(), new ObservacoesContacto(), null,
+				contacts);
+
+		convidadosList.convidar(0, contacts, "alcoolico");
 
 		List<String> listaContactos = convidadosList.listarConvidados();
-		assertEquals(5, listaContactos.size());
-		assertTrue(listaContactos.contains("Rui Martins - Telemovel: 911111111 - Observacao: null"));
-		assertTrue(listaContactos.contains("Ana Patricio - Telemovel: 922222222 - Observacao: null"));
-		assertTrue(listaContactos.contains("Alice Marques - Telemovel: 933333333 - Observacao: null"));
-		assertTrue(listaContactos.contains("Hugo Oliveira - Telemovel: 944444444 - Observacao: alcoolico"));
-		assertTrue(listaContactos.contains("Sara Lima - Telemovel: 955555555 - Observacao: dancarino"));
+		assertEquals(1, listaContactos.size());
+		assertTrue(listaContactos.contains("Rui Martins - Telemovel: 911111111 - Observacao: alcoolico"));
+
+		assertThrows(IllegalArgumentException.class, () -> convidadosList.convidar(0, contacts, "dancarino"));
+
+		assertThrows(IndexOutOfBoundsException.class, () -> convidadosList.convidar(5, contacts, "observacao"));
 	}
 
 	/**
@@ -85,11 +99,15 @@ class ConvidadosListTest {
 	 */
 	@Test
 	void convidarIndexInvalido() {
-		List<Contact> newContacts = new ArrayList<>();
-		newContacts.add(new Contact().setFirstName("Hugo").setLastName("Oliveira"));
-		newContacts.add(new Contact().setFirstName("Sara").setLastName("Lima"));
+		List<Contact> contacts = new ArrayList<>();
+		contacts.add(new Contact().setFirstName("Rui").setLastName("Martins").setPhoneNumber("911111111"));
+		contacts.add(new Contact().setFirstName("Ana").setLastName("Patricio").setPhoneNumber("922222222"));
+		contacts.add(new Contact().setFirstName("Alice").setLastName("Marques").setPhoneNumber("933333333"));
 
-		assertThrows(IndexOutOfBoundsException.class, () -> convidadosList.convidar(5, newContacts, "teste1"));
+		ConvidadosList convidadosList = new ConvidadosList(new ArrayList<>(), new ObservacoesContacto(), null,
+				contacts);
+
+		assertThrows(IndexOutOfBoundsException.class, () -> convidadosList.convidar(5, contacts, "teste1"));
 	}
 
 	/**

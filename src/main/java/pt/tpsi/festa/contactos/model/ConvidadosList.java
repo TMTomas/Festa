@@ -19,10 +19,10 @@ public class ConvidadosList implements ContactInterface {
 
 	// ATRIBUTOS
 
-	private List<Contact> listaConvidados;
-	private ObservacoesContacto observacoes;
-	private ContactApi contactApi;
-	private List<Contact> listaCompleta;
+	private List<Contact> listaConvidados = new ArrayList<>();
+	private ObservacoesContacto observacoes = new ObservacoesContacto();
+	private ContactApi contactApi = new ContactApi();
+	private List<Contact> listaCompleta = iniciarListaCompleta();
 
 	// CONTRUTORES
 
@@ -31,10 +31,7 @@ public class ConvidadosList implements ContactInterface {
 	 * convidados e observações padrão.
 	 */
 	public ConvidadosList() {
-		this.listaConvidados = new ArrayList<>();
-		this.observacoes = new ObservacoesContacto();
-		this.contactApi = new ContactApi();
-		iniciarListaCompleta();
+
 	}
 
 	/**
@@ -109,7 +106,7 @@ public class ConvidadosList implements ContactInterface {
 	 *
 	 * @param lista a lista de contactos a ser definida
 	 */
-	public void setLista(List<Contact> listaConvidados) {
+	public void setListaConvidados(List<Contact> listaConvidados) {
 		this.listaConvidados = listaConvidados;
 	}
 
@@ -182,14 +179,12 @@ public class ConvidadosList implements ContactInterface {
 
 	@Override
 	public void desconvidar(int index) {
-		if (index >= 0 && index < listaConvidados.size()) {
-			Contact contact = listaConvidados.get(index);
-			listaConvidados.remove(index);
-			observacoes.removerObservacao(contact);
-		} else {
-			throw new IndexOutOfBoundsException("Índice inválido.");
-		}
+	    if (index < 0 || index >= listaConvidados.size()) {
+	        throw new IndexOutOfBoundsException("Índice inválido");
+	    }
+	    listaConvidados.remove(index);
 	}
+
 
 	/**
 	 * Retorna uma lista de strings contendo informações detalhadas sobre os
@@ -233,9 +228,18 @@ public class ConvidadosList implements ContactInterface {
 	/**
 	 * Inicializa a lista completa de contactos criada pela ContactApi. O método
 	 * gera um número especificado de contactos e os atribui ao campo listaCompleta.
+	 * 
+	 * @return
 	 */
-	public void iniciarListaCompleta() {
-		listaCompleta = contactApi.generateContacts(4);
+	public List<Contact> iniciarListaCompleta() {
+		WriteandReadJson writeandReadJson = new WriteandReadJson();
+		listaCompleta = writeandReadJson.readFiletoList(listaCompleta);
+		
+		if (listaCompleta == null || listaCompleta.isEmpty()) {
+			listaCompleta = contactApi.generateContacts(30);
+			writeandReadJson.writeListOnFile(listaCompleta);
+		}
+		return listaCompleta;
 	}
 
 	/**
