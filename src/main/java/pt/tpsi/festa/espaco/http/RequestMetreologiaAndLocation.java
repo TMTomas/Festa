@@ -12,33 +12,29 @@ import pt.tpsi.festa.espaco.model.LocationPlus;
 import pt.tpsi.festa.espaco.model.MetereologiaModel;
 import pt.tpsi.festa.espaco.execeptions.LocationListException;
 import pt.tpsi.festa.espaco.execeptions.RequestException;
-
+/**
+ * @author Daniel Duarte AND Pedro Pacheco
+ * @version 1.0
+ */
 public class RequestMetreologiaAndLocation implements EspacoInterface {
     
 	// 1 - atributos
-	/**
-	 * Um atributo do tipo MetereologiaRequest, que instancia a classe
-	 */
 	private final MetereologiaRequest requestMetreologia;
-	/**
-	 * Um atributo do tipo OpenStreetMap, que instancia a classe
-	 */
+
     private final OpenStreetMap requestLocation;
-    /**
-	 * Um atributo do tipo list, lista criada para guardar os nomes das localizações
-	 */
+
     private final List<Location> locationList;
+
     private final List<LocationPlus> locationListPlus;
-    /**
-	 * Um atributo do tipo LocationPlus, que instancia a classe
-	 */
+
     private List<OpenStreetMapLocation> locations = null;
 
     private MetereologiaModel model;
+
     // 2 - construtores
     /**
-     * Construtor da clase RequestMetereologiaAndLocation e fazer 
-     * seus requests atraves delas e guardar a reposta do que foi pedido
+     * Constructor of the RequestMetereologyAndLocation class and do
+     *  your requests through them and save the response of what was requested
      */
     public RequestMetreologiaAndLocation() {
         requestMetreologia = new MetereologiaRequest();
@@ -50,21 +46,28 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
     
     // 3 - gets e sets
 
-
+    /**
+     * Will give a list with only the basic data
+     * @return locationList
+     */
     public List<Location> getLocationListBase() {
         return locationList;
     }
 
+    /**
+     * Will give a list with all information of the request
+     * @return locationListPlus
+     */
     public List<LocationPlus> getLocationListPlus() {
         return locationListPlus;
     }
     // 4 - comportamentos
     /**
-     * Metódo utilizado para selecionar um local de interese do utilizador
+     * Method used to select a user's place of interest by index
      *
-     * @param index o Int serve para receber um index
-     * @return retorna o correspondente ao index
-     * @throws RequestException o index seja maior que a lista ou a lista não existir ele está la para informar ao utilizador
+     * @param index Int serves to receive an index
+     * @return LocationPlus returns the corresponding to the index
+     * @throws RequestException if the index is greater than the list or the list does not exist it is there to inform the user
      */
     @Override
     public LocationPlus selecionar(int index) {
@@ -79,12 +82,13 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
 
 
     /**
-     * Este metódo serve para selecionar um nome, o utilizador preenche com um nome
-     * o metodo pescorre toda a lista a procura de um nome que de match e o retorna
-     * @param name O nome para pesquisar e selecionar na lista
-     * @return o nome que foi dito como parametro
-     * caso não seja encontrato
-     * @throws RequestException informar o erro que ocorreu
+     * This method serves to select a name, the user fills in a name
+     * the method searches the entire list looking for a name until it matches and it will return
+     *
+     * @param name The name to search and select from the list
+     * @return LocationPlus Found LocationPlus type object
+     *
+     * @throws RequestException will inform the user if was not found
      */
 	public LocationPlus selecionar(String name) {
     	for (int i = 0; i < locationList.size(); i++) {
@@ -96,7 +100,7 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
     }
 	
     /**
-     * this metodo is used to make, the Metrology request that will give the temperature
+     * this method is used to make, the Metrology request that will give the temperature
      * from the respective place that will be search and the
      * @param local this is the local that will be search
      */
@@ -124,7 +128,7 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
 
     // 5- metodos complementares
     /**
-     * Passa a classe para uma forma textual
+     * Convert the class to a textual form
      */
     @Override
     public String toString() {

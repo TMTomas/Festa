@@ -6,23 +6,18 @@ import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
-
 /**
- * Classe que representa um modelo de dados para informações meteorológicas.
+ * This class Just save the data from the json that are given from the {@link pt.tpsi.festa.espaco.http.MetereologiaRequest}
+ * @author Daniel Duarte AND Pedro Pacheco
+ * @version 1.0
  */
 @Data
 public class MetereologiaModel {
 
 	// 1 - ATRIBUTOS
-	 /**
-     * Lista de informações meteorológicas.
-     */
-	
+
     private List<Weather> weather;
 
-    /**
-     * Objeto que representa a temperatura.
-     */
     @JsonProperty("main")
     private Main Temperatura;
 
@@ -45,14 +40,25 @@ public class MetereologiaModel {
 	}
     // 3 - GETS E SETS
 
+	/**
+	 * This method will give the weather
+	 * @return weather
+	 */
 	public List<Weather> getWeather() {
 		return weather;
 	}
 
+	/**
+	 * This method will set the weather
+	 */
 	public void setWeather(List<Weather> weather) {
 		this.weather = weather;
 	}
 
+	/**
+	 * This method will give the Object from type Main
+	 * @return Temperature
+	 */
 	public Main getTemperatura() {
 		return Temperatura;
 	}
@@ -61,7 +67,7 @@ public class MetereologiaModel {
     
     // 5 - metodos complementares
     /**
-     * metódo que faz uma apresentação textual da classe
+     * Convert the class to a textual form
      */
     @Override
 	public String toString() {
