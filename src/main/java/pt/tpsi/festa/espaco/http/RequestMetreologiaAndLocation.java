@@ -71,7 +71,7 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
      */
     @Override
     public LocationPlus selecionar(int index) {
-    	if (locationList == null || index > locationList.size() || locationList.isEmpty()) {
+    	if (index > locationList.size() || locationList.isEmpty()) {
 			if (index > locationList.size()) {
 				throw new LocationListException("index invalida");
 			}

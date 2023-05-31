@@ -35,15 +35,15 @@ public class LocationPlus extends Location{
 	}
     /**
      * Construtor com paramentros da classe LocationPlus
-     * @param nameLocation
-     * @param latitude
-     * @param longitude
-     * @param weather
-     * @param temperature
-     * @param temperatureMin
-     * @param temperatureMax
-     * @param type
-     * @param icon
+     * @param nameLocation from the location
+     * @param latitude from the location
+     * @param longitude from the location
+     * @param weather from the location
+     * @param temperature from the location
+     * @param temperatureMin from the location
+     * @param temperatureMax from the location
+     * @param type from the location
+     * @param icon from the location
      */
     public LocationPlus(String nameLocation, String latitude, String longitude, String weather, double temperature,
 			double temperatureMin, double temperatureMax, String type, String icon) {
@@ -56,7 +56,7 @@ public class LocationPlus extends Location{
 	}
     /**
      * Construtor clone da classe, que recebe um objeto do mesmo tipo
-     * @param locationPlus
+     * @param locationPlus an objecto of type LocationpPlus
      */
     public LocationPlus(LocationPlus locationPlus) {
     	this(locationPlus.getNameLocation(), locationPlus.getLatitude(), locationPlus.getLongitude(),
