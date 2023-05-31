@@ -23,10 +23,10 @@ public class Location {
     }
     /**
      * constructor with parameters from classe Location
-     * @param nameLocation 
-     * @param latitude 
-     * @param longitude
-     * @param weather
+     * @param nameLocation name of the location
+     * @param latitude from the location
+     * @param longitude from the location
+     * @param weather from the location
      */
     public Location(String nameLocation, String latitude, String longitude, String weather) {
         this.nameLocation = nameLocation;
@@ -36,7 +36,7 @@ public class Location {
     }
     /**
      * Clone constructor of the class that has an object of the same class as a parameter
-     * @param location
+     * @param location an object of type Location
      */
     public Location(Location location) {
     	this(location.getNameLocation(), location.getLatitude(), location.getLongitude(), location.getWeather());

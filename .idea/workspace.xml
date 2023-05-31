@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d77898b2-fd52-46f4-b34a-d5ddd3580ea8" name="Changes" comment="trocar de package as classes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/execeptions/LocationListException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/execeptions/LocationListException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/execeptions/RequestException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/execeptions/RequestException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/http/MetereologiaRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/http/MetereologiaRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/http/MetereologiaResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/http/MetereologiaResponseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/http/RequestMetreologiaAndLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/http/RequestMetreologiaAndLocation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/model/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/model/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/model/LocationPlus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/model/LocationPlus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/model/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/model/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/model/MetereologiaModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/model/MetereologiaModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/model/Weather.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/model/Weather.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
