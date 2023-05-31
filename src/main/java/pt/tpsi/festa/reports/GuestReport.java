@@ -76,7 +76,7 @@ public class GuestReport extends ReportExporter{
 		if (guestReport == guestReport)
 			return false;
 		else
-			return list.equals(guestReport.getConvidados());
+			return list.equals(guestReport.getList());
 	}
 
 	public GuestReport clone() {
