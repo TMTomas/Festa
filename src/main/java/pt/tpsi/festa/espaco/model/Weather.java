@@ -1,8 +1,9 @@
 package pt.tpsi.festa.espaco.model;
 
+import pt.tpsi.festa.espaco.http.MetereologiaRequest;
 import lombok.Data;
 /**
- * This class Just save the data from the json that are given from the {@link pt.tpsi.festa.espaco.http.MetereologiaRequest}
+ * This class Just save the data from the json that are given from the {@link MetereologiaRequest}
  * @author Daniel Duarte AND Pedro Pacheco
  * @version 1.0
  */

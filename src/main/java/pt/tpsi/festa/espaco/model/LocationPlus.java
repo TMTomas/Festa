@@ -1,6 +1,7 @@
 package pt.tpsi.festa.espaco.model;
 
 import lombok.Data;
+
 /**
  * This class serves to create a structure for the list with the important data with more data
  * than the class {@link Location}
@@ -11,7 +12,7 @@ import lombok.Data;
  */
 
 @Data
-public class LocationPlus extends Location{
+public class LocationPlus extends Location {
 
 	// 1 - atributos
 	/**

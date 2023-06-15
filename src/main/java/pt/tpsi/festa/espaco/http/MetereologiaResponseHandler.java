@@ -1,14 +1,15 @@
 package pt.tpsi.festa.espaco.http;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import pt.tpsi.festa.espaco.model.MetereologiaModel;
 import org.apache.hc.core5.http.ClassicHttpResponse;
 import org.apache.hc.core5.http.io.HttpClientResponseHandler;
-import pt.tpsi.festa.espaco.model.MetereologiaModel;
+
+import java.io.IOException;
+import java.io.InputStream;
+
 /**
  * @author Daniel Duarte AND Pedro Pacheco
  * @version 1.0
