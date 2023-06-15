@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d77898b2-fd52-46f4-b34a-d5ddd3580ea8" name="Changes" comment="trocar de package as classes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/reports/exceptions/CompilerException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/reports/exceptions/ExportHtmlExeption.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/reports/exceptions/ExportPdfException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/reports/exceptions/ExportXmlException.java" afterDir="false" />
+    <list default="true" id="d77898b2-fd52-46f4-b34a-d5ddd3580ea8" name="Changes" comment="Add Javadoc in Exceptions-">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/reports/ReportExporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/reports/ReportExporter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/EspacoInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pt/tpsi/festa/espaco/EspacoInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,22 +64,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/DanielDuarte/Intelij-workspace/Testeparte_II&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.notifications&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/DanielDuarte/Intelij-workspace/Testeparte_II",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="pt.tpsi.festa.espaco.model" />
@@ -95,37 +91,8 @@
       <recent name="pt.tpsi.festa.espaco.http" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ReportExporterTest.testExportTest">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="pt.tpsi.festa.Main" />
-      <module name="FestaProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pt.tpsi.festa.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ReportExporterTest.testExportTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="FestaProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pt.tpsi.festa.reports.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pt.tpsi.festa.reports" />
-      <option name="MAIN_CLASS_NAME" value="pt.tpsi.festa.reports.ReportExporterTest" />
-      <option name="METHOD_NAME" value="testExportTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RequestMetreologiaAndLocationTest.pesquisar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.RequestMetreologiaAndLocationTest.pesquisarListBase">
+    <configuration name="RequestMetreologiaAndLocationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="FestaProject" />
       <extension name="coverage">
         <pattern>
@@ -135,7 +102,54 @@
       </extension>
       <option name="PACKAGE_NAME" value="pt.tpsi.festa.espaco.http" />
       <option name="MAIN_CLASS_NAME" value="pt.tpsi.festa.espaco.http.RequestMetreologiaAndLocationTest" />
-      <option name="METHOD_NAME" value="pesquisar" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RequestMetreologiaAndLocationTest.pesquisarListBase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FestaProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pt.tpsi.festa.espaco.http.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pt.tpsi.festa.espaco.http" />
+      <option name="MAIN_CLASS_NAME" value="pt.tpsi.festa.espaco.http.RequestMetreologiaAndLocationTest" />
+      <option name="METHOD_NAME" value="pesquisarListBase" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RequestMetreologiaAndLocationTest.pesquisarListPlus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FestaProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pt.tpsi.festa.espaco.http.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pt.tpsi.festa.espaco.http" />
+      <option name="MAIN_CLASS_NAME" value="pt.tpsi.festa.espaco.http.RequestMetreologiaAndLocationTest" />
+      <option name="METHOD_NAME" value="pesquisarListPlus" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RequestMetreologiaAndLocationTest.selecionar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="FestaProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pt.tpsi.festa.espaco.http.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pt.tpsi.festa.espaco.http" />
+      <option name="MAIN_CLASS_NAME" value="pt.tpsi.festa.espaco.http.RequestMetreologiaAndLocationTest" />
+      <option name="METHOD_NAME" value="selecionar" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -172,11 +186,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ReportExporterTest.testExportTest" />
+        <item itemvalue="JUnit.RequestMetreologiaAndLocationTest.pesquisarListBase" />
+        <item itemvalue="JUnit.RequestMetreologiaAndLocationTest.pesquisarListPlus" />
         <item itemvalue="JUnit.RequestMetreologiaAndLocationTest.selecionarPorNome" />
-        <item itemvalue="JUnit.RequestMetreologiaAndLocationTest.pesquisar" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.RequestMetreologiaAndLocationTest.selecionarPorNome" />
+        <item itemvalue="JUnit.RequestMetreologiaAndLocationTest.selecionar" />
+        <item itemvalue="JUnit.RequestMetreologiaAndLocationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -371,7 +385,21 @@
       <option name="project" value="LOCAL" />
       <updated>1685546614320</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Add Exceptions to Report">
+      <created>1685573518201</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1685573518201</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Add Javadoc in Exceptions-">
+      <created>1685573706108</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1685573706108</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -402,8 +430,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Make some refacctor on request again and create classes for json data" />
-    <MESSAGE value="Solving problems in model and request" />
     <MESSAGE value="Add method to convert temperature to celcius" />
     <MESSAGE value="Create Location class and create RequestMetreologiaAndLocation class to send a list with all information" />
     <MESSAGE value="Make some changes" />
@@ -427,10 +453,17 @@
     <MESSAGE value="Refactor WriteandReadJson" />
     <MESSAGE value="Refactor RequestMetreologiaAndLocation" />
     <MESSAGE value="trocar de package as classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="trocar de package as classes" />
+    <MESSAGE value="Add Exceptions to Report" />
+    <MESSAGE value="Add Javadoc in Exceptions-" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Javadoc in Exceptions-" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Festa$RequestMetreologiaAndLocationTest_pesquisarListBase.ic" NAME="RequestMetreologiaAndLocationTest.pesquisarListBase Coverage Results" MODIFIED="1686147495918" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>pt.tpsi.festa.espaco.http.*</FILTER>
+    </SUITE>
   </component>
 </project>
