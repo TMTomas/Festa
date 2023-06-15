@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface EspacoInterface {
 
-	Location selecionar(int index);
+	LocationPlus selecionar(int index);
 	
 	void pesquisar(String local);
 

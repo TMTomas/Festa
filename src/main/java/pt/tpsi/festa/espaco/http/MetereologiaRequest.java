@@ -4,10 +4,13 @@ import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import pt.tpsi.festa.espaco.model.MetereologiaModel;
-import pt.tpsi.festa.execeptions.RequestException;
+import pt.tpsi.festa.espaco.execeptions.RequestException;
 
 import java.io.IOException;
-
+/**
+ * @author Daniel Duarte AND Pedro Pacheco
+ * @version 1.0
+ */
 public class MetereologiaRequest {
 	
 	// 1 - atributos
@@ -15,9 +18,7 @@ public class MetereologiaRequest {
 	 * Atributo do tipo string, que guarda o token que da a acesso a api utilizada na classe
 	 */
 	private final String token = "0bc9afaa68eeaa9997d66aa2404b4b5b";
-	/**
-	 * Atributo do tipo MetereologiaResponseHandler, que instancia a classe
-	 */
+
 	private final MetereologiaResponseHandler metereologiaResponseHandler;
 
 	// 2 - construtores
@@ -28,17 +29,15 @@ public class MetereologiaRequest {
 		metereologiaResponseHandler = new MetereologiaResponseHandler();
 	}
 	// 3 - gets e set
-	
-	public MetereologiaResponseHandler getMetereologiaResponseHandler() {
-		return metereologiaResponseHandler;
-	}
+
 	// 4 - comportamentos
 	/**
-	 * Este metodo serve para fazer um request, atraves de uma API de metereologia, da cidade escolhida
-	 * o nome da cidade é traduzido em Latitude e Longitude
-	 * @param latitude da cidade
-	 * @param longitude da cidade 
-	 * @return retorno o resultado do pedido, com varios atributos 
+	 * This method is used to make a request, and through an API metrology, from the city
+	 * is used the Latitude and Longitude
+	 *
+	 * @param latitude from the city
+	 * @param longitude from the city
+	 * @return result of the request, with several attributes
 	 */
 	public MetereologiaModel createMetrologiaRequest(String latitude, String longitude) {
 		MetereologiaModel result = null;
@@ -60,7 +59,7 @@ public class MetereologiaRequest {
 	
 	// 5 - metodos complementares
 	/**
-	 * metódo que faz uma apresentação de maneira textual
+	 * Convert the class to a textual form
 	 */
 	@Override
 	public String toString() {

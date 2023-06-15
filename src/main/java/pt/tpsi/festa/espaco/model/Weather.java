@@ -1,9 +1,10 @@
 package pt.tpsi.festa.espaco.model;
 
 import lombok.Data;
-
 /**
- * Representa informações sobre as condições climáticas.
+ * This class Just save the data from the json that are given from the {@link pt.tpsi.festa.espaco.http.MetereologiaRequest}
+ * @author Daniel Duarte AND Pedro Pacheco
+ * @version 1.0
  */
 @Data
 public class Weather {
@@ -14,11 +15,43 @@ public class Weather {
 	private String description;
 	private String icon;
 
-	// gets e sets são tratados pela anotação Data
+	// gets e sets
+
+	/**
+	 * This method will give the id
+	 * @return id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * This method will give the main
+	 * @return main
+	 */
+	public String getMain() {
+		return main;
+	}
+
+	/**
+	 * This method will give the description
+	 * @return description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * This method will give the Icon
+	 * @return Icon
+	 */
+	public String getIcon() {
+		return icon;
+	}
 
 	// 5 - metódos complementares
 	/**
-	 * Metódo que tranforma a classe para um estilo textual
+	 * Convert the class to a textual form
 	 */
 	@Override
 	public String toString() {

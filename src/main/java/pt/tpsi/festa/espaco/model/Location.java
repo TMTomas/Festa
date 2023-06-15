@@ -1,18 +1,15 @@
 package pt.tpsi.festa.espaco.model;
 
 import lombok.Data;
-
+/**
+ * This class serves to create a structure for the list with the important data
+ * @author Daniel Duarte AND Pedro Pacheco
+ * @version 1.0
+ */
 @Data
 public class Location {
 	
-	// 1 - atributos 
-	/**
-	 * Atributos necessarios para esta classe
-	 * nameLocatios que vai guardar o nome do local 
-	 * latitude para guardar a latitude do local localizado no nameLocation
-	 * logitude para guardar a longitude do local localizado no nameLocation
-	 * weather guarda como está o clima no local guardado no nameLocation
-	 */
+	// 1 - atributos
     private String nameLocation;
     private String latitude;
     private String longitude;
@@ -20,16 +17,16 @@ public class Location {
 
     // 2 - construtores
     /**
-     * construtor default da classe Location
+     * constructor default from classe Location
      */
     public Location() {
     }
     /**
-     * construtor com paramentros da classe Location
-     * @param nameLocation 
-     * @param latitude 
-     * @param longitude
-     * @param weather
+     * constructor with parameters from classe Location
+     * @param nameLocation name of the location
+     * @param latitude from the location
+     * @param longitude from the location
+     * @param weather from the location
      */
     public Location(String nameLocation, String latitude, String longitude, String weather) {
         this.nameLocation = nameLocation;
@@ -38,8 +35,8 @@ public class Location {
         this.weather = weather;
     }
     /**
-     * Construtor clone da classe que tem como paramentro um objeto da mesma classe
-     * @param location
+     * Clone constructor of the class that has an object of the same class as a parameter
+     * @param location an object of type Location
      */
     public Location(Location location) {
     	this(location.getNameLocation(), location.getLatitude(), location.getLongitude(), location.getWeather());
@@ -47,13 +44,45 @@ public class Location {
 	
     
     // 3 - gets e sets
-    // a anotação Data ja serve para ter os gets e sets da classe
-    
+
+    /**
+     * This method will give the nameLocation
+     * @return nameLocation
+     */
+    public String getNameLocation() {
+        return nameLocation;
+    }
+
+    /**
+     * This method will give the latitude
+     * @return latitude
+     */
+    public String getLatitude() {
+        return latitude;
+    }
+
+    /**
+     * This method will give the longitude
+     * @return longitude
+     */
+    public String getLongitude() {
+        return longitude;
+    }
+
+    /**
+     * This method will give the weather
+     * @return weather
+     */
+    public String getWeather() {
+        return weather;
+    }
+
+
     // 4 - comportamentos
     
     // 5 - metodos complementares
     /**
-     * metódo toString para representar de forma escrita a classe
+     * Convert the class to a textual form
      */
     @Override
 	public String toString() {

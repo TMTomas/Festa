@@ -9,7 +9,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.hc.core5.http.ClassicHttpResponse;
 import org.apache.hc.core5.http.io.HttpClientResponseHandler;
 import pt.tpsi.festa.espaco.model.MetereologiaModel;
-
+/**
+ * @author Daniel Duarte AND Pedro Pacheco
+ * @version 1.0
+ */
 public class MetereologiaResponseHandler implements HttpClientResponseHandler<MetereologiaModel> {
 	
 	// 1 - atributos
@@ -17,7 +20,7 @@ public class MetereologiaResponseHandler implements HttpClientResponseHandler<Me
 	
 	// 2 - construtores
 	/**
-	 * Construtor para a classe MeterologiaResponseHandler
+	 * Constructor for the Meteorology ResponseHandler class
 	 */
 	public MetereologiaResponseHandler() {
 		this.objectMapper = new ObjectMapper()
@@ -29,11 +32,12 @@ public class MetereologiaResponseHandler implements HttpClientResponseHandler<Me
 	
 	// 4 - comportamentos
 	/**
-	 * Metódo que vai verificar o codigo de resposta,
-	 * se for bem sucedido e irá ler o conteudo para classe MetereologiaModel
-	 * Caso falhe irá retornar null
-	 * @param response O response é a resposta do request
-	 * @return o objetoMapper lido e para a classe MetereoogiaModel
+	 * Method that will check the response code,
+	 * if successful and will read the content for class MetereologiaModel
+	 * If it fails, it will return null
+	 *
+	 * @param response The response is the request response
+	 * @return the read Mapper object and to the MeteorologyModel class
 	 */
 	@Override
 	public MetereologiaModel handleResponse(ClassicHttpResponse response) throws IOException {
@@ -50,7 +54,7 @@ public class MetereologiaResponseHandler implements HttpClientResponseHandler<Me
 	
 	// 5 - metodos complementares
 	/**
-	 * Transforma a classe para uma forma textual
+	 * Convert the class to a textual form
 	 */
 	@Override
 	public String toString() {
