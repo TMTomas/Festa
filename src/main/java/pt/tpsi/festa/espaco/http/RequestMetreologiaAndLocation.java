@@ -12,97 +12,93 @@ import pt.tpsi.festa.espaco.model.LocationPlus;
 import pt.tpsi.festa.espaco.model.MetereologiaModel;
 import pt.tpsi.festa.espaco.execeptions.LocationListException;
 import pt.tpsi.festa.espaco.execeptions.RequestException;
-/**
- * @author Daniel Duarte AND Pedro Pacheco
- * @version 1.0
- */
+
 public class RequestMetreologiaAndLocation implements EspacoInterface {
     
 	// 1 - atributos
-	private final MetereologiaRequest requestMetreologia;
+	/**
+	 * Um atributo do tipo MetereologiaRequest, que instancia a classe
+	 */
+	MetereologiaRequest requestMetreologia;
+	/**
+	 * Um atributo do tipo OpenStreetMap, que instancia a classe
+	 */
+    OpenStreetMap requestLocation;
+    /**
+	 * Um atributo do tipo list, lista criada para guardar os nomes das localizações
+	 */
+    List<Location> locationList;
+    List<LocationPlus> locationListPlus;
+    /**
+	 * Um atributo do tipo LocationPlus, que instancia a classe
+	 */
+    List<OpenStreetMapLocation> locations = null;
 
-    private final OpenStreetMap requestLocation;
-
-    private final List<Location> locationList;
-
-    private final List<LocationPlus> locationListPlus;
-
-    private List<OpenStreetMapLocation> locations = null;
-
-    private MetereologiaModel model;
-
+    MetereologiaModel model;
     // 2 - construtores
     /**
-     * Constructor of the RequestMetereologyAndLocation class and do
-     *  your requests through them and save the response of what was requested
+     * Construtor da clase RequestMetereologiaAndLocation e fazer 
+     * seus requests atraves delas e guardar a reposta do que foi pedido
      */
     public RequestMetreologiaAndLocation() {
         requestMetreologia = new MetereologiaRequest();
         requestLocation = new OpenStreetMap();
         locationList = new ArrayList<>();
         locationListPlus = new ArrayList<>();
-        model = new MetereologiaModel();
     }
     
     // 3 - gets e sets
 
-    /**
-     * Will give a list with only the basic data
-     * @return locationList
-     */
+
     public List<Location> getLocationListBase() {
         return locationList;
     }
 
-    /**
-     * Will give a list with all information of the request
-     * @return locationListPlus
-     */
     public List<LocationPlus> getLocationListPlus() {
         return locationListPlus;
     }
     // 4 - comportamentos
     /**
-     * Method used to select a user's place of interest by index
+     * Metódo utilizado para selecionar um local de interese do utilizador
      *
-     * @param index Int serves to receive an index
-     * @return LocationPlus returns the corresponding to the index
-     * @throws RequestException if the index is greater than the list or the list does not exist it is there to inform the user
+     * @param index o Int serve para receber um index
+     * @return retorna o correspondente ao index
+     * @throws RequestException o index seja maior que a lista ou a lista não existir ele está la para informar ao utilizador
      */
     @Override
-    public LocationPlus selecionar(int index) {
-    	if (index > locationList.size() || locationList.isEmpty()) {
+    public Location selecionar(int index) {
+    	if (locationList == null || index > locationList.size() || locationList.isEmpty()) {
 			if (index > locationList.size()) {
 				throw new LocationListException("index invalida");
 			}
 			throw new LocationListException("a lista não existe");
 		}
-        return locationListPlus.get(index);
+        return locationList.get(index);
     }
 
 
     /**
-     * This method serves to select a name, the user fills in a name
-     * the method searches the entire list looking for a name until it matches and it will return
-     *
-     * @param name The name to search and select from the list
-     * @return LocationPlus Found LocationPlus type object
-     *
-     * @throws RequestException will inform the user if was not found
+     * Este metódo serve para selecionar um nome, o utilizador preenche com um nome
+     * o metodo pescorre toda a lista a procura de um nome que de match e o retorna
+     * @param name O nome para pesquisar e selecionar na lista
+     * @return o nome que foi dito como parametro
+     * caso não seja encontrato
+     * @throws RequestException informar o erro que ocorreu
      */
-	public LocationPlus selecionar(String name) {
+	public Location selecionarPorNome(String name) {
     	for (int i = 0; i < locationList.size(); i++) {
-			if (locationList.get(i).getNameLocation().toLowerCase().contains(name)) {
-				return locationListPlus.get(i);
+			if (locationList.get(i).getNameLocation().contains(name)) {
+				return locationList.get(i);
 			}
 		}
     	throw new LocationListException("nome não encontrado");
     }
 	
     /**
-     * this method is used to make, the Metrology request that will give the temperature
+     * this metodo is used to make, the Metrology request that will give the temperature
      * from the respective place that will be search and the
      * @param local this is the local that will be search
+     * @return List this is will return a list with all necessary information
      */
     @Override
     public void pesquisar(String local) {
@@ -128,7 +124,7 @@ public class RequestMetreologiaAndLocation implements EspacoInterface {
 
     // 5- metodos complementares
     /**
-     * Convert the class to a textual form
+     * Passa a classe para uma forma textual
      */
     @Override
     public String toString() {

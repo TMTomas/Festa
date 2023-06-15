@@ -1,14 +1,17 @@
 package pt.tpsi.festa.espaco.execeptions;
 
 /**
- * @author Daniel Duarte AND Pedro Pacheco
- * @version 1.0
+ * Uma exceção personalizada que representa um erro durante uma requisição.
+ * Essa exceção é uma subclasse de RuntimeException.
  */
+
 public class RequestException extends RuntimeException{
+    
+
     /**
-     * Constructs a new instance of RequestException with the specified error message.
+     * Constrói uma nova instância de RequestException com a mensagem de erro especificada.
      *
-     * @message the error message describing the exception
+     * @message a mensagem de erro que descreve a exceção
      */
 	
 	public RequestException( String message ) {
